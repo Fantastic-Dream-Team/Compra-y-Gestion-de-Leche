@@ -1,2 +1,2 @@
-# Compra-y-Gesti-n-de-Leche
+# Compra-y-Gestión-de-Leche
 Proyecto de DS5
