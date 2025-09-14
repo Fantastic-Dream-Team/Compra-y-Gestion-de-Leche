@@ -1,5 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 header {
-  height: 600px;
+  height: 500px;
+  background-image: url("/assets/images/header-background-2.webp"); /* Replace with your image path */
+  background-size: cover; /* or 'contain', '100% 100%', etc. */
+  background-repeat: no-repeat; /* Prevents image from repeating */
+  background-position: center center; /* Centers the background image */
+
+  width: 100%; /* Example width, adjust as needed */
 }
 
 #barra-negra {
@@ -8,8 +16,33 @@ header {
 }
 
 #barra-principal {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  display: flex;
   margin-top: 40px;
-  background-color: gray;
+  height: 50px;
+  background-color: #c0c0c0;
+  width: 100%;
+}
+
+.informacion-contacto {
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.social-correo {
+  width: 400px;
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  width: 100%;
 }
 
 ul li {
@@ -17,8 +50,68 @@ ul li {
   margin-left: 10px;
 }
 
+.logo-container {
+  position: absolute;
+  top: 14%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  background: white;
+  width: 200px;
+  height: 80px; /* taller than the bar */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  z-index: 1; /* ensures it stays on top of bar */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  position: absolute;
+  top: 35%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  background: white;
+  width: 60%;
+  height: 60px; /* taller than the bar */
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+  z-index: 1; /* ensures it stays on top of bar */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 #logo {
   height: 100px !important;
   width: 100px !important;
   border-radius: 50%;
+}
+
+header h1 {
+  position: absolute;
+  top: 50%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  width: 60%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+  z-index: 1;
 }
