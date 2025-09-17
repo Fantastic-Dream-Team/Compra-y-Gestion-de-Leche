@@ -1,152 +1,108 @@
 <!DOCTYPE html>
-
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/reseteo.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Don Joaquín</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lácteos Don Joaquín</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <body>
-    <header>
-      <div id="barra-negra"></div>
+  <!-- 🔹 BARRA SUPERIOR -->
+  <div class="top-bar">
+    <div class="ubicacion">Ubicación, ubicación, ubicación - Teléfono</div>
+    <div class="redes">Redes · Correo@lacteosdonjoaquin.com</div>
+  </div>
 
-      <div id="barra-principal">
-        <div class="informacion-contacto">
-          <ul>
-            <li>Ubicación</li>
-            <li>Ubicación</li>
-            <li>Ubicación</li>
-            <li>Telefono</li>
-          </ul>
-        </div>
-        <div class="social-correo">
-          <ul>
-            <li>Facebook</li>
-            <li>e-mail</li>
-            <li>Instagram</li>
-            <li>X Twitter</li>
-          </ul>
-        </div>
-      </div>
-      <div class="logo-container">
-        <img
-          id="logo"
-          alt="Logo de Lácteos Don Joaquín"
-          src="assets/images/logo-cremaAzul.png"
-        />
-      </div>
+  <!-- 🔹 HEADER CON LOGO Y MENÚ -->
+  <header class="header">
+    <div class="logo">
+      <img src="assets/images/logo-cremaAzul.png" alt="Logo Don Joaquín">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Pedidos</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Recetas</a></li>
+        <li><a href="#">Acerca de Nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="pedidos.html">Pedidos</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="recetas.html">Recetas</a></li>
-          <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
-        </ul>
-      </nav>
+  <!-- 🔹 HERO / FRASE BIENVENIDA -->
+  <section class="hero">
+    <h1>Frase de bienvenida</h1>
+  </section>
 
-      <h1>Para los que le encanta la lehce...</h1>
-    </header>
+  <!-- 🔹 SECCIÓN 1 -->
+  <section class="seccion">
+    <div class="texto">
+      <h2>Título</h2>
+      <p>Texto descriptivo de la empresa, misión, visión, valores o historia.</p>
+    </div>
+    <div class="imagen">
+      <img src="assets/images/Glep_.jpg" alt="Imagen representativa">
+    </div>
+  </section>
 
-    <main>
-      <hr />
-      <Div id="bienvenida">
-   <h2>Bienvenidos a Lácteos Don Joaquín</h2>
-      <p>
-        Somos una empresa familiar dedicada a la producción y comercialización
-        de productos lácteos de alta calidad. Nuestra misión es ofrecer a
-        nuestros clientes productos frescos y saludables, elaborados con la
-        mejor leche proveniente de nuestras propias vacas.
-      </p>
+  <!-- 🔹 SECCIÓN CON TÍTULO CENTRADO -->
+  <section class="seccion centrado">
+    <h2>Título - Centrado</h2>
+    <div class="cards">
+      <div class="card">Subtítulo</div>
+      <div class="card">Subtítulo</div>
+      <div class="card">Subtítulo</div>
+    </div>
+  </section>
 
-    </Div>
-      <section class="seccion-bienvenida">
-        <div class="contenido-seccion">
-          <div class="texto-contenido">
-            <h2>Nuestra razón de ser</h2>
-            <p>
-              Aquí va el texto que se quiera poner para esta sección bla bla bla
-              que divertido es hacer esto, jijija el que lo lee es un loquito
-              jajajaja ayuda tengo problemas mentales
-            </p>
-          </div>
+  <!-- 🔹 SECCIÓN PRODUCTOS / SERVICIOS -->
+  <section class="seccion gris">
+    <h2>Título - Centrado</h2>
+    <div class="grid">
+      <div class="item">Subtítulo - Descriptivo</div>
+      <div class="item">Subtítulo - Descriptivo</div>
+      <div class="item">Subtítulo - Descriptivo</div>
+      <div class="item">Subtítulo - Descriptivo</div>
+    </div>
+  </section>
 
-          <div class="imagen-contenido">
-            <img
-              alt="Imagen representativa de Lácteos Don Joaquín"
-              width="350"
-              src="assets/images/Glep_.jpg"
-            />
-          </div>
-        </div>
-      </section>
+  <!-- 🔹 BLOG / EVENTOS -->
+  <section class="seccion naranja">
+    <h2>Título - Centrado</h2>
+    <div class="blog">
+      <div class="post">Fecha <br> Subtítulo - Descriptivo</div>
+      <div class="post">Fecha <br> Subtítulo - Descriptivo</div>
+      <div class="post">Fecha <br> Subtítulo - Descriptivo</div>
+    </div>
+  </section>
 
-      <hr />
+  <!-- 🔹 FOOTER -->
+  <footer class="footer">
+    <div class="logo">
+      <img src="assets/images/logo-cremaAzul.png" alt="Logo Don Joaquín">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Pedidos</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Recetas</a></li>
+        <li><a href="#">Acerca de Nosotros</a></li>
+      </ul>
+    </nav>
+    <div class="social">
+      <a href="#">IG</a>
+      <a href="#">FB</a>
+      <a href="#">WA</a>
+      <a href="#">Mail</a>
+    </div>
+  </footer>
 
-      <section class="etapas-control-calidad">
-        <div class="contenido-etapas">
-          <h2>Gestionamos la calidad en cada etapa</h2>
-          <ul class="lista-etapas">
-            <li>
-              <strong>Compra local</strong>
-              <p>Texto para la primera etapa</p>
-            </li>
-            <li>
-              <strong>Análisis de calidad</strong>
-              <p>Texto para la segunda etapa</p>
-            </li>
-            <li>
-              <strong>Gestión eficiente</strong>
-              <p>Texto para la tercera etapa</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <hr />
-
-      <section class="imagenes-productos-servicios">
-        <div class="contenido-imagenes">
-          <h2>Nuestra Pasión</h2>
-          <div class="imagen-vacas">
-            <img
-              alt="Proyecto de vacas Jersey"
-              width="300"
-              src="assets/images/vacaJersey.jpg"
-            />
-            <p>
-              Había una vez un gatito
-              <a href="vacasJersey.html"> Vacas Jersey</a>
-            </p>
-          </div>
-          <div class="imagen-ordeño">
-            <img
-              alt="Proceso de ordeño"
-              width="300"
-              src="assets/images/ordeño.jpg"
-            />
-            <p>
-              Que tenía los huevitos de trapo
-              <a href="proceso-ordeño.html"> Proceso de ordeño</a>
-            </p>
-          </div>
-          <div class="imagen-laboratorio">
-            <img alt="Producto 3" width="300" src="assets/images/lab.jpg" />
-            <p>Y los tenía al revés <a href="lab.html"> Laboratorios</a></p>
-          </div>
-        </div>
-      </section>
-    </main>
-  </body>
+</body>
 </html>
