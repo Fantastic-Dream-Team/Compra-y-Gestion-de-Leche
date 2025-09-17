@@ -1,117 +1,168 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-
-header {
-  height: 500px;
-  background-image: url("/assets/images/header-background-2.webp"); /* Replace with your image path */
-  background-size: cover; /* or 'contain', '100% 100%', etc. */
-  background-repeat: no-repeat; /* Prevents image from repeating */
-  background-position: center center; /* Centers the background image */
-
-  width: 100%; /* Example width, adjust as needed */
+/* Reset rápido */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-#barra-negra {
-  background-color: #2c2e33;
-  height: 40px;
+body {
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
 }
 
-#barra-principal {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  display: flex;
-  margin-top: 40px;
-  height: 50px;
-  background-color: #c0c0c0;
-  width: 100%;
-}
-
-.informacion-contacto {
-  margin-left: 15%;
+/* 🔹 Barra superior */
+.top-bar {
+  background: #333;
+  color: #fff;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
-  align-items: center;
-  width: 100%;
+  padding: 5px 20px;
 }
 
-.social-correo {
-  width: 400px;
-  margin-left: 20%;
+/* 🔹 Header */
+.header {
+  background: #c3541c;
+  color: #fff;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  align-items: center;
-  width: 100%;
+  padding: 10px 30px;
 }
 
-ul li {
-  display: inline;
-  margin-left: 10px;
-}
-
-.logo-container {
-  position: absolute;
-  top: 14%; /* center vertically relative to bar */
-  left: 50%; /* center horizontally */
-  transform: translate(-50%, -50%); /* perfect centering */
-
-  background: white;
-  width: 200px;
-  height: 80px; /* taller than the bar */
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-
-  z-index: 1; /* ensures it stays on top of bar */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-nav ul {
-  position: absolute;
-  top: 35%; /* center vertically relative to bar */
-  left: 50%; /* center horizontally */
-  transform: translate(-50%, -50%); /* perfect centering */
-
-  background: white;
-  width: 60%;
-  height: 60px; /* taller than the bar */
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: x-large;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-
-  z-index: 1; /* ensures it stays on top of bar */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-#logo {
-  height: 100px !important;
-  width: 100px !important;
-  border-radius: 50%;
-}
-
-header h1 {
-  position: absolute;
-  top: 50%; /* center vertically relative to bar */
-  left: 50%; /* center horizontally */
-  transform: translate(-50%, -50%); /* perfect centering */
-
-  width: 60%;
+.header .logo img {
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+}
 
-  z-index: 1;
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+/* 🔹 Hero */
+.hero {
+  background: url('../assets/images/leche.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 🔹 Secciones */
+.seccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 80px;
+  gap: 20px;
+}
+
+.seccion img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.seccion.centrado {
+  flex-direction: column;
+  text-align: center;
+}
+
+.seccion h2 {
+  margin-bottom: 20px;
+  color: #c3541c;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background: #444;
+  color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+/* 🔹 Grid estilo servicios */
+.seccion.gris {
+  background: #f2f2f2;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.item {
+  background: #fff;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* 🔹 Blog / eventos */
+.seccion.naranja {
+  background: #c3541c;
+  color: #fff;
+  flex-direction: column;
+  text-align: center;
+}
+
+.blog {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.post {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+/* 🔹 Footer */
+.footer {
+  background: #c3541c;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+
+.footer ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .social a {
+  margin-left: 10px;
 }
