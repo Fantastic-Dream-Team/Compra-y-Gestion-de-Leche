@@ -14,7 +14,7 @@ body {
 
 /* 🔹 Barra superior */
 .top-bar {
-  background: #333;
+  background: #f4a261;
   color: #fff;
   font-size: 14px;
   display: flex;
@@ -24,28 +24,36 @@ body {
 
 /* 🔹 Header */
 .header {
-  background: #c3541c;
+  background: url('../assets/images/Headerbg.png') center/cover no-repeat;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
+  height: 150px;
 }
 
 .header .logo img {
-  height: 60px;
+  height: 100px;
+}
+
+.nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 10px;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
 .nav a {
   text-decoration: none;
-  color: #fff;
-  font-weight: 500;
+  color: #c3541c;
+  font-weight: 900;
 }
 
 .nav a:hover {
@@ -60,18 +68,38 @@ body {
   padding: 120px 20px;
   font-size: 2rem;
   font-weight: bold;
+  position: relative;
+}
+
+.hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* 🔹 Secciones */
 .seccion {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 50px 80px;
   gap: 20px;
 }
 
-.seccion img {
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro .texto {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.intro .imagen {
+  flex: 1;
+}
+
+.intro img {
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
@@ -165,4 +193,49 @@ body {
 
 .footer .social a {
   margin-left: 10px;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro .texto, .intro .imagen {
+    flex: none;
+    width: 100%;
+  }
+
+  .seccion {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog {
+    flex-direction: column;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer nav, .footer .social {
+    margin-top: 10px;
+  }
 }
