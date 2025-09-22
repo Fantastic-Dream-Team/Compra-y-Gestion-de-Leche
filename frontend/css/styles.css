@@ -23,41 +23,194 @@ body {
 }
 
 /* 🔹 Header */
-.header {
-  background: #a7591a;
-  color: #fff;
+header {
+  height: 500px;
+  background-image: url("/assets/images/header-background-2.webp"); /* Replace with your image path */
+  background-size: cover; /* or 'contain', '100% 100%', etc. */
+  background-repeat: no-repeat; /* Prevents image from repeating */
+  background-position: center center; /* Centers the background image */
+
+}
+
+
+.bienvenida {
+  padding: 20px;
+}
+
+.contenedor-bienvenida {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 10px 100px;
-  height: 150px;
+  gap: 20px;
+  flex-wrap: wrap; /* permite que se acomode en pantallas pequeñas */
 }
 
-.header .logo img {
-  height: 120px;
+/* Columna izquierda */
+.texto-bienvenida {
+  flex: 1 1 300px; /* crece, encoge y mínimo 300px */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.nav {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 30px;
-  padding: 10px 30px;
+/* Icono */
+.icono img {
+  width: 40px;
+  height: auto;
 }
 
-.nav ul {
-  list-style: none;
+/* Título con fondo naranja */
+.titulo h2 {
+  background-color: #d2691e;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 40 px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Caja de texto */
+.parrafo {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: white;
+  font-size: 14px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Columna derecha */
+.imagen-bienvenida {
+  flex: 1 1 300px;
   display: flex;
   justify-content: center;
-  gap: 20px; 
 }
 
-.nav a {
-  text-decoration: none;
-  color: #c3541c;
-  font-weight: 600;
+.imagen-bienvenida img {
+  width: 75%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.nav a:hover {
-  border-bottom: 2px solid #fff;
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedor-bienvenida {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .texto-bienvenida {
+    align-items: center;
+  }
+
+  .parrafo {
+    text-align: justify;
+  }
+}
+
+#barra-principal {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  display: flex;
+  margin-top: 40px;
+  height: 50px;
+  background-color: #c0c0c0;
+  width: 100%;
+}
+
+.informacion-contacto {
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.social-correo {
+  width: 400px;
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  width: 100%;
+}
+
+ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 14%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  background: white;
+  width: 200px;
+  height: 80px; /* taller than the bar */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  z-index: 1; /* ensures it stays on top of bar */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  position: absolute;
+  top: 35%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  background: white;
+  width: 60%;
+  height: 60px; /* taller than the bar */
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+  z-index: 1; /* ensures it stays on top of bar */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+  height: 100px !important;
+  width: 100px !important;
+  border-radius: 50%;
+}
+
+header h1 {
+  position: absolute;
+  top: 50%; /* center vertically relative to bar */
+  left: 50%; /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
+
+  width: 60%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+  z-index: 1;
 }
 
 /* 🔹 Hero */
