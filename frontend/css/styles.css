@@ -147,3 +147,270 @@ header h1 {
 
   z-index: 1;
 }
+
+
+/* ==== CARRUSEL Etapas-Control-Calidad ==== */
+
+/* contenedor principal */
+.etapas-control-calidad {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #CC5F1C;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Título Superior */
+.titulo-carrusel {
+  font-size: 32px;
+  margin: 0 -20px 25px -20px;
+  color: #000;
+  background: #F5E1BF;
+  padding: 15px 20px;
+  width: calc(100% + 40px);
+  box-sizing: border-box;
+}
+
+/* Contenedor de Fondo de Slides */
+.carrusel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fffdf7;
+  padding: 20px;
+  border-radius: 15px;
+  gap: 15px; /* Espacio entre flechas y contenido */
+}
+
+/* Slides de Información */
+.carrusel-slide {
+  display: flex;
+  align-items: center;
+  background: #fdf3e6;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 1200px;
+  min-height: 350px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: 25px; /* Espacio entre imagen y texto */
+}
+
+/* Imagen Slide */
+.carrusel-img {
+  flex-shrink: 0;
+}
+
+.carrusel-img img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Contenedor de texto */
+.carrusel-description {
+  text-align: left;
+  flex: 1;
+  min-width: 0; /* Permite que el flexbox se ajuste */
+}
+
+/* Título de la información */
+.subtitulo {
+  font-size: 28px;
+  background: #4B2E1A;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 18px;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+
+/* Información */
+.carrusel-description p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 0;
+}
+
+/* Flechas */
+.flecha {
+  font-size: 40px;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.flecha:hover {
+  color: #CC5F1C;
+}
+
+/* ===== MEDIA QUERIES RESPONSIVE ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .carrusel-slide {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    min-height: auto;
+  }
+  
+  .carrusel-img img {
+    max-width: 350px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .carrusel-description {
+    text-align: center;
+  }
+  
+  .subtitulo {
+    font-size: 24px;
+    padding: 12px 20px;
+  }
+  
+  .carrusel-description p {
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .titulo-carrusel {
+    font-size: 28px;
+    margin: 0 -15px 20px -15px;
+    padding: 12px 15px;
+    width: calc(100% + 30px);
+  }
+}
+
+/* Mobile Grande (576px - 768px) */
+@media (max-width: 768px) {
+  .etapas-control-calidad {
+    padding: 15px;
+  }
+  
+  .carrusel-container {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .carrusel-slide {
+    padding: 20px;
+    width: 95%;
+    gap: 20px;
+  }
+  
+  .carrusel-img img {
+    max-width: 300px;
+  }
+  
+  .subtitulo {
+    font-size: 22px;
+    padding: 10px 18px;
+    margin-bottom: 15px;
+  }
+  
+  .carrusel-description p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .flecha {
+    font-size: 32px;
+    padding: 5px;
+  }
+  
+  .titulo-carrusel {
+    font-size: 24px;
+    margin: 0 -10px 15px -10px;
+    padding: 10px 12px;
+    width: calc(100% + 20px);
+  }
+}
+
+/* Mobile Pequeño (hasta 576px) */
+@media (max-width: 576px) {
+  .etapas-control-calidad {
+    padding: 10px;
+  }
+  
+  .carrusel-container {
+    padding: 12px;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .carrusel-slide {
+    padding: 15px;
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .carrusel-img img {
+    max-width: 250px;
+    margin-bottom: 15px;
+  }
+  
+  .subtitulo {
+    font-size: 20px;
+    padding: 8px 15px;
+    margin-bottom: 12px;
+  }
+  
+  .carrusel-description p {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+  }
+  
+  .flecha {
+    font-size: 28px;
+    order: 2; /* Flechas al final en móvil */
+    margin: 10px 0;
+  }
+  
+  .titulo-carrusel {
+    font-size: 20px;
+    margin: 0 -8px 12px -8px;
+    padding: 8px 10px;
+    width: calc(100% + 16px);
+  }
+}
+
+/* Ajustes para pantallas muy grandes */
+@media (min-width: 1600px) {
+  .carrusel-slide {
+    max-width: 1400px;
+    min-height: 450px;
+  }
+  
+  .carrusel-img img {
+    max-width: 500px;
+  }
+  
+  .carrusel-description {
+    max-width: 700px;
+  }
+}
+
+/* Mejora de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .flecha {
+    transition: none;
+  }
+}
