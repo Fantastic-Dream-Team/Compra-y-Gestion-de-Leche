@@ -14,7 +14,7 @@ body {
 
 /* 🔹 Barra superior */
 .top-bar {
-  background: #f4a261;
+  background: #422413;
   color: #fff;
   font-size: 14px;
   display: flex;
@@ -24,36 +24,36 @@ body {
 
 /* 🔹 Header */
 .header {
-  background: url('../assets/images/Headerbg.png') center/cover no-repeat;
+  background: #a7591a;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 10px 100px;
   height: 150px;
 }
 
 .header .logo img {
-  height: 100px;
+  height: 120px;
 }
 
 .nav {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 30px;
-  padding: 10px;
+  padding: 10px 30px;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; 
 }
 
 .nav a {
   text-decoration: none;
   color: #c3541c;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .nav a:hover {
@@ -62,7 +62,8 @@ body {
 
 /* 🔹 Hero */
 .hero {
-  background: url('../assets/images/leche.jpg') center/cover no-repeat;
+  background: url('../assets/images/Headerbg.png') no-repeat center center/cover;
+  min-height: 800px;   /* para que se vea aunque no haya contenido */
   color: #fff;
   text-align: center;
   padding: 120px 20px;
@@ -70,6 +71,7 @@ body {
   font-weight: bold;
   position: relative;
 }
+
 
 .hero h1 {
   position: absolute;
@@ -233,9 +235,21 @@ body {
   .footer {
     flex-direction: column;
     text-align: center;
+    gap: 10px;
+
   }
 
+  
   .footer nav, .footer .social {
     margin-top: 10px;
   }
+}
+.footer{
+
+  background: #825338;
+}
+
+.footer .logo img {
+  height: 100px;   /* ajusta a tu gusto */
+  width: auto;  
 }
