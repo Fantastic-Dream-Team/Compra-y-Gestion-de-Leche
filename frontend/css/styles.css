@@ -6,8 +6,8 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-body {
-  background: #ffffff;
+body { 
+  background: #ff0000;
   color: #333;
   line-height: 1.6;
 }
@@ -32,9 +32,10 @@ header {
 
 }
 
-
+/* 🔹 Sección de bienvenida */
 .bienvenida {
   padding: 20px;
+  background-color: #f9f9f9;
 }
 
 .contenedor-bienvenida {
@@ -111,7 +112,7 @@ header {
     text-align: justify;
   }
 }
-
+/* 🔹 fin bienvenida */
 #barra-principal {
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;
