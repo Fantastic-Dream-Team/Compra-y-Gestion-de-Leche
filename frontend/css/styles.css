@@ -358,7 +358,7 @@ nav ul li a:hover {
 }
 
 /* ===== BLOG Y EVENTOS ===== */
-.seccion.naranja-claro {
+.seccion.blog-y-eventos {
   background: var(--color-naranja-claro);
   padding: 100px 5% 80px;
   position: relative;
