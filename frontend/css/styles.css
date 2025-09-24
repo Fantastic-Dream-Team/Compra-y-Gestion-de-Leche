@@ -186,6 +186,8 @@ nav ul li a:hover {
   background: var(--color-blanco);
   font-size: 1.1rem;
   line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .imagen-bienvenida {
@@ -274,6 +276,8 @@ nav ul li a:hover {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-gris);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .flecha {
