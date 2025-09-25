@@ -112,24 +112,142 @@
       </div>
     </section>
 
-    <!-- Sección de productos y servicios -->
-    <section class="imagenes-productos-servicios" aria-labelledby="titulo-pasion">
-      <div class="contenido-imagenes">
-        <h2 id="titulo-pasion">Nuestra Pasión</h2>
-        <div class="galeria-pasion">
-          <div class="imagen-vacas">
-            <img src="assets/images/vacaJersey.jpg" alt="Vacas Jersey en nuestro campo" width="300" height="200">
-            <p>Conoce nuestro proyecto especial de crianza de <a href="vacasJersey.html">Vacas Jersey</a></p>
+    <!-- NUEVA SECCIÓN: NUESTRO ENTORNO (reemplaza imagenes-productos-servicios) -->
+    <section class="nuestro-entorno" aria-labelledby="titulo-entorno">
+      <h2 id="titulo-entorno" class="titulo-seccion">Nuestro Entorno</h2>
+
+      <div class="proyectos-grid">
+        <!-- Proyecto 1: Vacas Jersey -->
+        <article class="proyecto-card vacas-jersey">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-vacas" id="vacas-1" checked>
+              <input type="radio" name="carrusel-vacas" id="vacas-2">
+              <input type="radio" name="carrusel-vacas" id="vacas-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="vacas-1" class="carrusel-punto"></label>
+                <label for="vacas-2" class="carrusel-punto"></label>
+                <label for="vacas-3" class="carrusel-punto"></label>
+              </div>
+            </div>
           </div>
-          <div class="imagen-ordeño">
-            <img src="assets/images/ordeño.jpg" alt="Proceso de ordeño higiénico" width="300" height="200">
-            <p>Descubre nuestro innovador <a href="proceso-ordeño.html">Proceso de ordeño</a></p>
+          <div class="contenido-proyecto">
+            <h3>Proyecto - Vacas Jersey</h3>
+            <a href="vacasJersey.html" class="ver-mas">VER MÁS</a>
           </div>
-          <div class="imagen-laboratorio">
-            <img src="assets/images/lab.jpg" alt="Laboratorio de control de calidad" width="300" height="200">
-            <p>Conoce nuestros avanzados <a href="lab.html">Laboratorios</a></p>
+        </article>
+        
+        <!-- Proyecto 2: Laboratorio de Ordeño -->
+        <article class="proyecto-card laboratorio-ordeño">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-lab" id="lab-1" checked>
+              <input type="radio" name="carrusel-lab" id="lab-2">
+              <input type="radio" name="carrusel-lab" id="lab-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="lab-1" class="carrusel-punto"></label>
+                <label for="lab-2" class="carrusel-punto"></label>
+                <label for="lab-3" class="carrusel-punto"></label>
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="contenido-proyecto">
+            <h3>Laboratorio de Ordeño</h3>
+            <a href="laboratorio-ordeño.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+        
+        <!-- Proyecto 3: Proceso de Ordeño -->
+        <article class="proyecto-card proceso-ordeño">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-proceso" id="proceso-1" checked>
+              <input type="radio" name="carrusel-proceso" id="proceso-2">
+              <input type="radio" name="carrusel-proceso" id="proceso-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="proceso-1" class="carrusel-punto"></label>
+                <label for="proceso-2" class="carrusel-punto"></label>
+                <label for="proceso-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Proceso de Ordeño</h3>
+            <a href="proceso-ordeño.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+        
+        <!-- Proyecto 4: Productos -->
+        <article class="proyecto-card productos">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-productos" id="productos-1" checked>
+              <input type="radio" name="carrusel-productos" id="productos-2">
+              <input type="radio" name="carrusel-productos" id="productos-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="productos-1" class="carrusel-punto"></label>
+                <label for="productos-2" class="carrusel-punto"></label>
+                <label for="productos-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Productos</h3>
+            <a href="productos.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -167,7 +285,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer" >
+  <footer class="footer">
     <div class="logo">
       <img src="assets/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
     </div>
