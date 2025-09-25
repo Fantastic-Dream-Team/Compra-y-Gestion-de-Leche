@@ -1,4 +1,4 @@
-/* ===== RESET Y CONFIGURACIÓN GLOBAL ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -320,7 +320,6 @@ nav ul li a:hover {
   background: var(--color-secundario);
 }
 
-/* MODIFICACIÓN: Cuadrícula 2x2 fija */
 .proyectos-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -330,7 +329,6 @@ nav ul li a:hover {
   margin: 0 auto;
 }
 
-/* MODIFICACIÓN: Ajustar altura de las tarjetas para cuadrícula uniforme */
 .proyecto-card {
   background: var(--color-blanco);
   border-radius: var(--radio-borde);
@@ -339,8 +337,8 @@ nav ul li a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Asegura que todas tengan la misma altura */
-  min-height: 350px; /* Altura mínima uniforme */
+  height: 100%;
+  min-height: 350px; 
 }
 
 .proyecto-card:hover {
@@ -348,12 +346,11 @@ nav ul li a:hover {
   box-shadow: var(--sombra-media);
 }
 
-/* MODIFICACIÓN: Carrusel más compacto para cuadrícula */
 .carrusel-contenedor {
   position: relative;
   height: 200px;
   overflow: hidden;
-  flex-shrink: 0; /* Evita que el carrusel se reduzca */
+  flex-shrink: 0; 
 }
 
 .carrusel {
@@ -407,7 +404,6 @@ nav ul li a:hover {
   background: var(--color-primario);
 }
 
-/* Lógica del carrusel (se mantiene igual) */
 #vacas-1:checked ~ .carrusel-slides { transform: translateX(0%); }
 #vacas-2:checked ~ .carrusel-slides { transform: translateX(-33.333%); }
 #vacas-3:checked ~ .carrusel-slides { transform: translateX(-66.666%); }
@@ -441,11 +437,10 @@ nav ul li a:hover {
   transform: scale(1.2);
 }
 
-/* MODIFICACIÓN: Contenido flexible para ocupar espacio restante */
 .contenido-proyecto {
   padding: 20px;
   text-align: center;
-  flex: 1; /* Ocupa el espacio restante */
+  flex: 1; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -479,7 +474,6 @@ nav ul li a:hover {
   color: var(--color-blanco);
 }
 
-/* Bordes de colores para cada tarjeta */
 .vacas-jersey { border-left: 4px solid #e74c3c; }
 .laboratorio-ordeño { border-left: 4px solid #3498db; }
 .proceso-ordeño { border-left: 4px solid #2ecc71; }
@@ -518,7 +512,6 @@ nav ul li a:hover {
   display: block;
 }
 
-/* Contenedor del carrusel del blog */
 .carrusel-blog {
   position: relative;
   display: flex;
@@ -537,7 +530,6 @@ nav ul li a:hover {
   width: 100%;
 }
 
-/* Imágenes de fondo para los posts */
 .post {
   position: relative;
   height: 400px;
@@ -609,7 +601,6 @@ nav ul li a:hover {
   margin: 0;
 }
 
-/* Flechas del carrusel del blog */
 .carrusel-blog .flecha {
   font-size: 2.5rem;
   color: var(--color-gris);
@@ -669,7 +660,6 @@ nav ul li a:hover {
 
 /* ===== MEDIA QUERIES RESPONSIVE ===== */
 
-/* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
   .bienvenida h1 {
     font-size: 2.8rem;
@@ -701,7 +691,6 @@ nav ul li a:hover {
   }
 }
 
-/* Mobile Grande (576px - 768px) */
 @media (max-width: 768px) {
   #barra-principal {
     flex-direction: column;
@@ -752,7 +741,6 @@ nav ul li a:hover {
   }
 }
 
-/* Mobile Pequeño (hasta 576px) */
 @media (max-width: 576px) {
   .logo-container {
     position: relative;
@@ -800,7 +788,6 @@ nav ul li a:hover {
   }
 }
 
-/* Mejora de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
@@ -808,7 +795,6 @@ nav ul li a:hover {
   }
 }
 
-/* Modo alto contraste */
 @media (prefers-contrast: high) {
   :root {
     --color-primario: #000000;
@@ -818,7 +804,7 @@ nav ul li a:hover {
   }
 }
 
-/* Tablet (768px - 1024px) */
+
 @media (max-width: 1024px) {
   .proyectos-grid {
     gap: 20px;
@@ -833,7 +819,6 @@ nav ul li a:hover {
   }
 }
 
-/* Mobile Grande (576px - 768px) - MODIFICACIÓN: Cambiar a 1 columna */
 @media (max-width: 768px) {
   .proyectos-grid {
     grid-template-columns: 1fr;
@@ -858,7 +843,6 @@ nav ul li a:hover {
   }
 }
 
-/* Mobile Pequeño (hasta 576px) */
 @media (max-width: 576px) {
   .nuestro-entorno {
     padding: 40px 5%;
@@ -895,7 +879,6 @@ nav ul li a:hover {
   }
 }
 
-/* Para pantallas muy grandes (opcional) */
 @media (min-width: 1400px) {
   .proyectos-grid {
     max-width: 1400px;
