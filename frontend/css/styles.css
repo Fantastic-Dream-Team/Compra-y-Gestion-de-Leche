@@ -398,13 +398,13 @@ nav ul li a:hover {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-negro);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .carrusel-punto:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--color-primario);
 }
 
 /* Lógica del carrusel (se mantiene igual) */
@@ -437,7 +437,7 @@ nav ul li a:hover {
 #productos-1:checked ~ .carrusel-controles label[for="productos-1"],
 #productos-2:checked ~ .carrusel-controles label[for="productos-2"],
 #productos-3:checked ~ .carrusel-controles label[for="productos-3"] {
-  background: var(--color-blanco);
+  background: var(--color-primario);
   transform: scale(1.2);
 }
 
