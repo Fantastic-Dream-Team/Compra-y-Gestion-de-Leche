@@ -285,3 +285,317 @@ header h1 {
   object-fit: cover;
 }
 /*fin parte de fabian bienvenida*/
+
+
+
+<!-- 🔹 Inicio de la parte de Angélica - CSS -->
+/* 🔹 SCROLL SUAVE PARA TODA LA PÁGINA */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 🔹 ESTILOS PARA EL HEADER SUPERIOR */
+.header-superior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px 0;
+}
+
+.iconos-titulo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icono-grande {
+    font-size: 40px;
+    color: #d2691e;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(210, 105, 30, 0.2);
+}
+
+/* 🔹 TÍTULO PRINCIPAL CON ICONOS A LOS LADOS */
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #d2691e;
+    position: relative;
+}
+
+.titulo-seccion h2 {
+    color: #2c3e50;
+    font-size: 36px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+}
+
+/* Icono a la izquierda del título */
+.titulo-seccion h2::before {
+    content: "\f0e4"; /* Código de Font Awesome para fa-wine-bottle */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 28px;
+    color: #d2691e;
+    margin-right: 15px;
+    position: relative;
+    top: 2px;
+}
+
+/* Icono a la derecha del título */
+.titulo-seccion h2::after {
+    content: "\f0d1"; /* Código de Font Awesome para fa-truck */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 28px;
+    color: #d2691e;
+    margin-left: 15px;
+    position: relative;
+    top: 2px;
+}
+
+/* 🔹 ELIMINA O COMENTA EL HEADER SUPERIOR (opcional) */
+.header-superior {
+    display: none; /* Oculta los iconos grandes de arriba */
+}
+
+/* 🔹 CARRUSEL */
+.carrusel-contenedor {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #d46724;
+}
+
+.carrusel {
+    position: relative;
+    height: 100%;
+}
+
+.carrusel input[type="radio"] {
+    display: none;
+}
+
+.carrusel-slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.carrusel-slide {
+    width: 33.333%;
+    flex-shrink: 0;
+}
+
+.carrusel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrusel-controles {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carrusel-punto {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carrusel-punto:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Lógica del carrusel */
+#vacas-1:checked ~ .carrusel-slides { transform: translateX(0%); }
+#vacas-2:checked ~ .carrusel-slides { transform: translateX(-33.333%); }
+#vacas-3:checked ~ .carrusel-slides { transform: translateX(-66.666%); }
+
+#lab-1:checked ~ .carrusel-slides { transform: translateX(0%); }
+#lab-2:checked ~ .carrusel-slides { transform: translateX(-33.333%); }
+#lab-3:checked ~ .carrusel-slides { transform: translateX(-66.666%); }
+
+#proceso-1:checked ~ .carrusel-slides { transform: translateX(0%); }
+#proceso-2:checked ~ .carrusel-slides { transform: translateX(-33.333%); }
+#proceso-3:checked ~ .carrusel-slides { transform: translateX(-66.666%); }
+
+#productos-1:checked ~ .carrusel-slides { transform: translateX(0%); }
+#productos-2:checked ~ .carrusel-slides { transform: translateX(-33.333%); }
+#productos-3:checked ~ .carrusel-slides { transform: translateX(-66.666%); }
+
+/* Puntos activos */
+#vacas-1:checked ~ .carrusel-controles label[for="vacas-1"],
+#vacas-2:checked ~ .carrusel-controles label[for="vacas-2"],
+#vacas-3:checked ~ .carrusel-controles label[for="vacas-3"],
+#lab-1:checked ~ .carrusel-controles label[for="lab-1"],
+#lab-2:checked ~ .carrusel-controles label[for="lab-2"],
+#lab-3:checked ~ .carrusel-controles label[for="lab-3"],
+#proceso-1:checked ~ .carrusel-controles label[for="proceso-1"],
+#proceso-2:checked ~ .carrusel-controles label[for="proceso-2"],
+#proceso-3:checked ~ .carrusel-controles label[for="proceso-3"],
+#productos-1:checked ~ .carrusel-controles label[for="productos-1"],
+#productos-2:checked ~ .carrusel-controles label[for="productos-2"],
+#productos-3:checked ~ .carrusel-controles label[for="productos-3"] {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* 🔹 ESTILOS DE LAS TARJETAS DE PROYECTOS */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    scroll-margin-top: 50px; /* Espacio para el scroll */
+}
+
+.proyecto-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* 🔹 EFECTO HOVER MANTENIDO (sin funcionalidad del botón VER MÁS) */
+.proyecto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #d2691e;
+}
+
+.contenido-proyecto {
+    padding: 25px;
+    text-align: center;
+}
+
+.proyecto-card h3 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+
+.icono-proyecto {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #d2691e, #b85c1a);
+    border-radius: 50%;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(210, 105, 30, 0.3);
+}
+
+/* 🔹 BOTÓN "VER MÁS" - ESTILO NORMAL (primera imagen) */
+.ver-mas {
+    display: inline-block;
+    margin-top: 15px;
+    color: #d2691e;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #d2691e;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: 'Ubuntu', sans-serif;
+    background: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🔹 BOTÓN "VER MÁS" - EFECTO HOVER (segunda imagen) */
+.ver-mas:hover {
+    background: linear-gradient(135deg, #d2691e, #b85c1a);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+}
+
+/* Colores específicos para cada tarjeta */
+.vacas-jersey { border-left: 5px solid #e74c3c; }
+.laboratorio-ordeño { border-left: 5px solid #3498db; }
+.proceso-ordeño { border-left: 5px solid #2ecc71; }
+.productos { border-left: 5px solid #f39c12; }
+
+/* Iconos específicos para cada proyecto */
+.vacas-jersey .icono-proyecto::before { content: "🐄"; }
+.laboratorio-ordeño .icono-proyecto::before { content: "🔬"; }
+.proceso-ordeño .icono-proyecto::before { content: "🥛"; }
+.productos .icono-proyecto::before { content: "🧀"; }
+
+/* 🔹 SECCIÓN PRINCIPAL */
+.nuestro-entorno {
+    max-width: 1200px;
+    margin: 50px auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6;
+}
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 768px) {
+    .header-superior {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .iconos-titulo {
+        justify-content: center;
+    }
+    
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+        scroll-margin-top: 30px;
+    }
+    
+    .icono-grande {
+        font-size: 30px;
+        padding: 10px;
+    }
+    
+    .proyecto-card h3 {
+        font-size: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .icono-proyecto {
+        margin-right: 0;
+    }
+}
+<!-- 🔹 Fin de la parte de Angélica - CSS -->
