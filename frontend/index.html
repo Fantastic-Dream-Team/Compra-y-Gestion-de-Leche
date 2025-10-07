@@ -1,110 +1,304 @@
 <!DOCTYPE html>
-
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/reseteo.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Don Joaquín</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
+  <link rel="stylesheet" href="css/reseteo.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <title>Lácteos Don Joaquín - Inicio</title>
+</head>
 <body>
+  <header>
+    <!-- Barra superior -->
+    <div class="top-bar">
+      <div class="ubicacion"></div>
+      <div class="redes"></div>
+    </div>
 
-  <!-- 🔹 fabian version -->
-<header>
-  <!-- 🔹 BARRA SUPERIOR -->
-  <div class="top-bar">
-    <div class="ubicacion">  </div>
-    <div class="redes">  </div>
-  </div>
+    <!-- Header con logo y menú -->
+    <div id="barra-negra"></div>
 
-  <!-- 🔹 HEADER CON LOGO Y MENÚ -->
-   
-      <div id="barra-negra"></div>
-
-      <div id="barra-principal">
-        <div class="informacion-contacto">
-          <ul>
-            <li>Ubicación</li>
-            <li>Ubicación</li>
-            <li>Ubicación</li>
-            <li>Telefono</li>
-          </ul>
-        </div>
-        <div class="social-correo">
-          <ul>
-            <li>Facebook</li>
-            <li>e-mail</li>
-            <li>Instagram</li>
-            <li>X Twitter</li>
-          </ul>
-        </div>
-      </div>
-      <div class="logo-container">
-        <img
-          id="logo"
-          alt="Logo de Lácteos Don Joaquín"
-          src="assets/images/LogoBlanco.png"
-        />
-      </div>
-
-      <nav>
+    <div id="barra-principal">
+      <div class="informacion-contacto">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="pedidos.html">Pedidos</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="recetas.html">Recetas</a></li>
-          <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
+          <li>Av. Principal 123</li>
+          <li>Sucursal Centro</li>
+          <li>Sucursal Norte</li>
+          <li>(123) 456-7890</li>
         </ul>
-      </nav>
-  <!-- 🔹 HERO / FRASE BIENVENIDA -->
-  <section class="hero">
-    <h1>Frase de bienvenida</h1>
-  </section>
-</header>
-  
-  <body>
-    <main>
-
-      
-<!-- 🔹bienvenida fabian-->
-
-<section class="bienvenida">
-  <div class="contenedor-bienvenida">
-    <!-- Columna izquierda -->
-    <div class="texto-bienvenida">
-     
-      <div class="titulo">
-        <h2>Título</h2>
       </div>
-      <div class="parrafo">
-        <p>
-          texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-                    texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-
-          texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-        </p>
+      <div class="social-correo">
+        <ul>
+          <li>Facebook</li>
+          <li>info@lacteosdonjoaquin.com</li>
+          <li>Instagram</li>
+          <li>X Twitter</li>
+        </ul>
       </div>
     </div>
-
-    <!-- Columna derecha -->
-    <div class="imagen-bienvenida">
-      <img src="assets/images/vacas.png" alt="Imagen representativa">
+    
+    <div class="logo-container">
+      <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="100" height="100">
     </div>
-  </div>
-</section>
- <!-- 🔹 Fin de parte de fabian -->
 
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="pedidos.html">Pedidos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
+      </ul>
+    </nav>
 
-    </main>
-  </body>
+    <!-- Hero / Frase de bienvenida -->
+    <section class="bienvenida" aria-labelledby="titulo-bienvenida">
+      <h1 id="titulo-bienvenida">Bienvenido a Lácteos Don Joaquín</h1>
+      <p>En Lácteos Don Joaquín, nos apasiona ofrecer productos lácteos de la más alta calidad, elaborados con amor y dedicación.</p>
+    </section>
+  </header>
+
+  <main>
+    <!-- Sección de bienvenida -->
+    <section class="seccion-bienvenida" aria-labelledby="titulo-razon">
+      <div class="contenido-seccion">
+        <div class="contenido-texto">
+          <div class="titulo">
+            <h2 id="titulo-razon">Nuestra Razón de Ser</h2>
+          </div>
+          <div class="parrafo">
+            <p>
+              En Lácteos Don Joaquín, nuestra misión es ofrecer productos lácteos de la más alta calidad, 
+              elaborados con técnicas tradicionales y el máximo cuidado. Con más de 30 años de experiencia, 
+              mantenemos el compromiso de llevar a su mesa el auténtico sabor de los lácteos artesanales, 
+              respetando los procesos naturales y garantizando la frescura en cada uno de nuestros productos.
+            </p>
+          </div>
+        </div>
+
+        <div class="imagen-bienvenida">
+          <img src="assets/images/vacas.png" alt="Vacas en nuestro campo" width="500" height="300">
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de etapas de control de calidad -->
+    <section class="etapas-control-calidad" aria-labelledby="titulo-calidad">
+      <h2 id="titulo-calidad" class="titulo-carrusel">Gestionamos la Calidad en Cada Etapa</h2>
+      <div class="carrusel-container">
+        <button class="flecha flecha-izq" aria-label="Diapositiva anterior">&#10094;</button>
+        
+        <div class="carrusel-slide">
+          <div class="carrusel-img">
+            <img src="assets/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Análisis de Calidad en laboratorio" width="600" height="400">
+          </div>
+          <div class="carrusel-description">
+            <h3 class="subtitulo">Permanentes Controles de calidad</h3>
+            <p>
+              El primer análisis ocurre en laboratorio y sucede antes de la manipulación de la materia prima. 
+              Una vez aprueba el primer filtro, se procesa en la fábrica, con rigurosos controles de higiene. 
+              Personal técnico vigila que se cumplan las temperaturas ideales durante toda la preparación de nuestros productos. 
+              Un tercer análisis sucede, previo a su distribución, para garantizar que cumplen con altos estándares de calidad.
+            </p>
+          </div>
+        </div>
+
+        <button class="flecha flecha-der" aria-label="Diapositiva siguiente">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="nuestro-entorno" aria-labelledby="titulo-entorno">
+      <h2 id="titulo-entorno" class="titulo-seccion">Nuestro Entorno</h2>
+
+      <div class="proyectos-grid">
+        <!-- Proyecto 1: Vacas Jersey -->
+        <article class="proyecto-card vacas-jersey">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-vacas" id="vacas-1" checked>
+              <input type="radio" name="carrusel-vacas" id="vacas-2">
+              <input type="radio" name="carrusel-vacas" id="vacas-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="vacas-1" class="carrusel-punto"></label>
+                <label for="vacas-2" class="carrusel-punto"></label>
+                <label for="vacas-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Proyecto - Vacas Jersey</h3>
+            <a href="vacasJersey.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+        
+        <!-- Proyecto 2: Laboratorio de Ordeño -->
+        <article class="proyecto-card laboratorio-ordeño">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-lab" id="lab-1" checked>
+              <input type="radio" name="carrusel-lab" id="lab-2">
+              <input type="radio" name="carrusel-lab" id="lab-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="lab-1" class="carrusel-punto"></label>
+                <label for="lab-2" class="carrusel-punto"></label>
+                <label for="lab-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Laboratorio de Ordeño</h3>
+            <a href="laboratorio-ordeño.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+        
+        <!-- Proyecto 3: Proceso de Ordeño -->
+        <article class="proyecto-card proceso-ordeño">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-proceso" id="proceso-1" checked>
+              <input type="radio" name="carrusel-proceso" id="proceso-2">
+              <input type="radio" name="carrusel-proceso" id="proceso-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="proceso-1" class="carrusel-punto"></label>
+                <label for="proceso-2" class="carrusel-punto"></label>
+                <label for="proceso-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Proceso de Ordeño</h3>
+            <a href="proceso-ordeño.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+        
+        <!-- Proyecto 4: Productos -->
+        <article class="proyecto-card productos">
+          <div class="carrusel-contenedor">
+            <div class="carrusel">
+              <input type="radio" name="carrusel-productos" id="productos-1" checked>
+              <input type="radio" name="carrusel-productos" id="productos-2">
+              <input type="radio" name="carrusel-productos" id="productos-3">
+              
+              <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 1">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 2">
+                </div>
+                <div class="carrusel-slide">
+                  <img src="assets/images/productos.jpg" alt="Productos Lácteos - Imagen 3">
+                </div>
+              </div>
+              
+              <div class="carrusel-controles">
+                <label for="productos-1" class="carrusel-punto"></label>
+                <label for="productos-2" class="carrusel-punto"></label>
+                <label for="productos-3" class="carrusel-punto"></label>
+              </div>
+            </div>
+          </div>
+          <div class="contenido-proyecto">
+            <h3>Productos</h3>
+            <a href="productos.html" class="ver-mas">VER MÁS</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección de blog y eventos -->
+    <section class="seccion blog-y-eventos" aria-labelledby="titulo-blog">
+      <div class="franja-naranja">
+        <h2 id="titulo-blog" class="titulo">Blog y Eventos</h2>
+      </div>
+
+      <div class="carrusel-blog">
+        <button class="flecha flecha-izq" aria-label="Publicaciones anteriores">&#10094;</button>
+
+        <div class="blog">
+          <article class="post post1">
+            <span class="fecha">15/08/2025</span>
+            <h3 class="subtitulo">Control de Calidad: Nuevos estándares implementados para garantizar la excelencia en todos nuestros productos</h3>
+          </article>
+
+          <article class="post post2">
+            <span class="fecha">06/09/2025</span>
+            <h3 class="subtitulo">Ganadería Sostenible: Innovaciones en el cuidado y manejo responsable del ganado bovino</h3>
+          </article>
+
+          <article class="post post3">
+            <span class="fecha">15/09/2025</span>
+            <h3 class="subtitulo">Tecnología GLEP: Revolucionando los procesos industriales con soluciones inteligentes</h3>
+          </article>
+        </div>
+
+        <button class="flecha flecha-der" aria-label="Publicaciones siguientes">&#10095;</button>
+      </div>
+
+      <div class="franja-naranja"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="logo">
+      <img src="assets/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
+    </div>
+    
+    <div class="social">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
+    </div>
+    
+    <div class="derechos">
+      <p>&copy; 2025 Lácteos Don Joaquín. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
 </html>
