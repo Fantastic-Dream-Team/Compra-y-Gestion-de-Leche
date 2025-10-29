@@ -68,6 +68,7 @@ header {
   font-size: 0.9rem;
 }
 
+
 /* Logo */
 .logo-container {
   position: absolute;
@@ -121,8 +122,6 @@ nav ul li a {
 nav ul li a:hover {
   opacity: 0.8;
 }
-
-/* Sección de bienvenida */
 .bienvenida {
   min-height: 800px;
   color: var(--color-blanco);
@@ -152,53 +151,133 @@ nav ul li a:hover {
   padding: 60px 5%;
   background-color: var(--color-gris-claro);
 }
+/* Sección de bienvenida */
 
-.contenido-seccion {
+/* ===== CARRUSEL STICKY ===== */
+.sticky-carousel {
+  position: sticky;
+  top: 0;
+  background: var(--color-secundario);
+  padding: 10px;
+  z-index: 5;
+  box-shadow: var(--sombra-suave);
+}
+
+.carousel-container {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  gap: 10px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
-.contenido-texto {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.titulo h2 {
-  background-color: var(--color-secundario);
+.arrow {
+  background: var(--color-primario);
   color: var(--color-blanco);
-  padding: 12px 30px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
   border-radius: var(--radio-borde);
-  font-size: 2rem;
-  text-align: center;
-  display: inline-block;
 }
 
-.parrafo {
-  border: 2px solid #ccc;
-  border-radius: var(--radio-borde);
-  padding: 25px;
-  background: var(--color-blanco);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-.imagen-bienvenida {
-  flex: 1;
+.categories {
   display: flex;
+  gap: 10px;
+  overflow: hidden;
+  flex: 1;
   justify-content: center;
 }
 
-.imagen-bienvenida img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
+.categories button {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-primario);
+  padding: 10px 20px;
+  cursor: pointer;
   border-radius: var(--radio-borde);
-  object-fit: cover;
+  font-weight: 500;
+}
+
+input[type="search"] {
+  padding: 10px;
+  border: 1px solid var(--color-gris);
+  border-radius: var(--radio-borde);
+  width: 200px;
+}
+
+/* ===== SECCIÓN DE POSTS ===== */
+.blog-posts {
+  padding: 40px 5%;
+  background-color: var(--color-naranja-claro);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: var(--color-blanco);
+  padding: 10px;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+  text-align: left;
+}
+
+.label {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.img-placeholder {
+  background: #ccc;
+  height: 150px;
+  width: 100%;
+  border-radius: var(--radio-borde);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 0.9rem;
+  color: var(--color-gris);
+}
+
+/* ===== PAGINACIÓN ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 0;
+  padding-bottom: 20px;
+}
+
+.pagination button {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: var(--radio-borde);
+}
+
+.pagination span {
+  background: var(--color-naranja-claro);
+  padding: 10px 15px;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-weight: 500;
 }
