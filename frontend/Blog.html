@@ -1,168 +1,189 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
   <link rel="stylesheet" href="css/Blogcss.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <title>Lácteos Don Joaquín - Blog</title>
 </head>
 <body>
   <header>
-    <!-- Barra superior -->
-    <div class="top-bar">
-      <div class="ubicacion"></div>
-      <div class="redes"></div>
-    </div>
+    <!-- Barra superior decorativa -->
+    <div class="top-bar"></div>
 
-    <!-- Header con logo y menú -->
-    <div id="barra-negra"></div>
-
+    <!-- Información de contacto y redes -->
     <div id="barra-principal">
-      <div class="informacion-contacto">
-        <ul>
-          <li>Av. Principal 123</li>
-          <li>Sucursal Centro</li>
-          <li>Sucursal Norte</li>
-          <li>(123) 456-7890</li>
-        </ul>
-      </div>
-      <div class="social-correo">
-        <ul>
-          <li>Facebook</li>
-          <li>info@lacteosdonjoaquin.com</li>
-          <li>Instagram</li>
-          <li>X Twitter</li>
-        </ul>
-      </div>
+      <ul class="informacion-contacto">
+        <li>Av. Principal 123</li>
+        <li>Sucursal Centro</li>
+        <li>Sucursal Norte</li>
+        <li>(123) 456-7890</li>
+      </ul>
+      <ul class="social-correo">
+        <li>Facebook</li>
+        <li>info@lacteosdonjoaquin.com</li>
+        <li>Instagram</li>
+        <li>X (Twitter)</li>
+      </ul>
     </div>
-    
+
+    <!-- Logo centrado -->
     <div class="logo-container">
-      <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="100" height="100">
+      <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="90" height="90">
     </div>
 
-
+    <!-- Menú principal -->
     <nav aria-label="Navegación principal">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="productos.html">Productos</a></li>
         <li><a href="pedidos.html">Pedidos</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="recetas.html">Recetas</a></li>
         <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
       </ul>
     </nav>
-    <!-- Hero / Frase de bienvenida -->
+
+    <!-- Hero con frase -->
     <section class="bienvenida" aria-labelledby="titulo-bienvenida">
       <h1 id="titulo-bienvenida">Descubre historias, consejos y sabores directamente de nuestra tierra.</h1>
     </section>
   </header>
+
   <main>
+    <!-- Carrusel sticky de filtros -->
     <div class="sticky-carousel">
       <div class="carousel-container">
-        <button class="arrow left">&lt;</button>
-        <div class="categories">
-          <button>Todas</button>
-          <button>Recetas</button>
-          <button>Blogs</button>
+        <!-- Flecha izquierda -->
+        <button class="arrow left" aria-label="Desplazar categorías a la izquierda">&lt;</button>
+
+        <!-- Categorías desplazables -->
+        <div class="categories" id="categories">
+          <button class="category-btn active" data-filter="all">Todas</button>
+          <button class="category-btn" data-filter="receta">Recetas</button>
+          <button class="category-btn" data-filter="blog">Blogs</button>
         </div>
-        <input type="search" placeholder="Search">
-        <button class="arrow right">&gt;</button>
+
+        <!-- Flecha derecha -->
+        <button class="arrow right" aria-label="Desplazar categorías a la derecha">&gt;</button>
+
+        <!-- Campo de búsqueda -->
+        <input type="search" id="search-input" placeholder="Buscar..." aria-label="Buscar en blog">
       </div>
     </div>
 
+    <!-- Grid de publicaciones -->
     <section class="blog-posts">
       <div class="grid" id="post-grid">
-        <div class="card">
+        <!-- Post 1 -->
+        <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta This spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's a great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Flan Casero con Leche Fresca</h3>
+          <p>Un postre tradicional con nuestra leche entera. Suave, cremoso y fácil de preparar en casa.</p>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
-          <span class="label blog">Blog</span>
-          <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Beneficios de la Leche Fresca</h3>
+          <p>Conoce por qué la leche de vacas alimentadas con pasto es más nutritiva y sabrosa.</p>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta This spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's a great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Queso Casero Fácil</h3>
+          <p>Aprende a hacer un queso fresco en casa con pocos ingredientes y mucho sabor.</p>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Cómo Elegir Productos Lácteos</h3>
+          <p>Consejos para leer etiquetas y escoger leche, yogur y queso de calidad.</p>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta This spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's a great for relieving nausea.</p>
-        </div>
-        <div class="card">
-          <span class="label receta">Receta</span>
-          <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta This spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's a great for relieving nausea.</p>
-        </div>
-        <div class="card">
-          <span class="label receta">Receta</span>
-          <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta Tris spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Batido Energético de Yogur y Frutas</h3>
+          <p>Un batido nutritivo para comenzar el día con energía usando nuestro yogur natural.</p>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
-          <span class="label blog">Blog</span>
-          <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Historias de Nuestra Lechería</h3>
+          <p>Conoce la historia familiar detrás de Lácteos Don Joaquín y nuestras prácticas sostenibles.</p>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Receta</h3>
-          <p>Extracto Receta This spicy blend of ginger root. Known for its aid in digestion and anti-inflammation. It's a great for relieving nausea.</p>
-        </div>
-        <div class="card">
+          <h3>Mousse de Queso y Limón</h3>
+          <p>Postre ligero y cítrico elaborado con queso crema artesanal.</p>
+        </article>
+
+        <!-- Post 8 -->
+        <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
-          <h3>Nombre Blog</h3>
-          <p>Extracto Blog This spicy blend of ginger root. Known for its aid in digestion and reduce inflammation. It's also great for relieving nausea.</p>
-        </div>
+          <h3>La Importancia del Pasto Natural</h3>
+          <p>Exploramos cómo la alimentación del ganado impacta la calidad de la leche.</p>
+        </article>
+
+        <!-- Post 9 -->
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Panqueques Esponjosos con Leche</h3>
+          <p>Una receta clásica para el desayuno que usa leche fresca para mejorar textura y sabor.</p>
+        </article>
+
+        <!-- Post 10 -->
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>Preguntas Frecuentes sobre Lácteos</h3>
+          <p>Respondemos dudas comunes sobre conservación, caducidad y tipos de leche.</p>
+        </article>
+
+        <!-- Post 11 -->
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Crema de Queso para Untar</h3>
+          <p>Prepara una crema de queso casera ideal para panes y snacks rápidos.</p>
+        </article>
+
+        <!-- Post 12 -->
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>¿Leche entera o descremada?</h3>
+          <p>Te explicamos las diferencias y cuál es mejor según tus necesidades.</p>
+        </article>
       </div>
     </section>
 
-    <div class="pagination" id="pagination">
-      <button>&lt;</button>
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <span>5</span>
-      <span>...</span>
-      <button>&gt;</button>
+    <!-- Paginación -->
+    <div class="pagination" id="pagination" aria-label="Paginación">
+      <button id="prev-page" aria-label="Página anterior">&lt;</button>
+      <div id="page-numbers"></div>
+      <button id="next-page" aria-label="Página siguiente">&gt;</button>
     </div>
   </main>
 
   <script src="js/Blogjs.js"></script>
 </body>
 </html>
+    
