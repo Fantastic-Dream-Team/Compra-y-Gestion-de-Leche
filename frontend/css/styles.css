@@ -6,7 +6,7 @@
 }
 
 :root {
-  --color-primario: #c3541c;
+  --color-primario: #f5712f;
   --color-secundario: #d2691e;
   --color-naranja-claro: #f5e1bf;
   --color-marron: #4b2e1a;
@@ -508,7 +508,7 @@ nav ul li a:hover {
 .franja-naranja .titulo {
   color: var(--color-negro);
   font-size: 2.2rem;
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
 }
 
@@ -576,8 +576,8 @@ nav ul li a:hover {
 }
 
 .post .fecha {
-  background: rgba(245, 225, 191, 0.95);
-  color: var(--color-negro);
+  background:var(--color-marron);
+  color: var(--color-blanco);
   padding: 10px 20px;
   font-weight: bold;
   position: absolute;
@@ -656,6 +656,646 @@ nav ul li a:hover {
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 20px;
+}
+
+/* ===== SECCIÓN PRODUCTORES ===== */
+.seccion-productores {
+  background: var(--color-primario); 
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Título con iconos */
+.titulo-productores {
+  font-size: 2.5rem;
+  color: var(--color-negro);
+  background: var(--color-naranja-claro); 
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.icono-izq,
+.icono-der {
+  font-size: 2rem;
+}
+
+.carrusel-container-productores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slide-productores {
+  display: flex;
+  align-items: stretch; /* Cambio: para igualar alturas */
+  gap: 0; /* Cambio: sin gap, las columnas están pegadas */
+  background: #fdf3e6; /* Beige claro, mismo que carrusel original */
+  border-radius: var(--radio-borde);
+  overflow: hidden; /* Cambio: para que las columnas no se salgan */
+  box-shadow: var(--sombra-media);
+  flex: 1;
+  min-height: 350px; /* Nuevo: altura mínima */
+}
+
+/* Columna izquierda - Información */
+.info-productor {
+  flex: 1; /* Ocupa la mitad del espacio */
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #fdf3e6; /* Mismo beige */
+}
+
+/* Etiqueta "Nombre" */
+.etiqueta-nombre {
+  background: var(--color-marron); /* Marrón oscuro #4b2e1a */
+  color: var(--color-blanco);
+  padding: 12px 30px;
+  border-radius: var(--radio-borde);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-start; /* Nuevo: se ajusta al contenido */
+}
+
+/* Lista de datos del productor */
+.datos-productor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.datos-productor li {
+  font-size: 1.1rem;
+  color: var(--color-gris);
+  padding-left: 0; /* Sin sangría */
+  line-height: 1.5;
+}
+
+/* Columna derecha - Imagen */
+.imagen-productor {
+  flex: 1; /* Ocupa la mitad del espacio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8dcc8; /* Beige más oscuro para contraste */
+  overflow: hidden;
+}
+
+.imagen-productor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cambio: la imagen cubre todo el espacio */
+}
+
+.flecha-productores {
+  font-size: 3rem; /* Más grandes que las originales */
+  color: var(--color-blanco); /* Cambio: blanco sobre fondo naranja */
+  cursor: pointer;
+  padding: 15px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3); /* Nuevo: fondo semi-transparente */
+  border: none;
+  border-radius: 50%; /* Nuevo: flechas circulares */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flecha-productores:hover {
+  background: rgba(0, 0, 0, 0.5); /* Cambio: más oscuro al hover */
+  color: var(--color-naranja-claro);
+  transform: scale(1.1); /* Nuevo: efecto de agrandamiento */
+}
+
+/* Indicadores de navegación (barras) */
+.indicadores-productores {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.indicador {
+  width: 80px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4); 
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicador:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.indicador.activo {
+  background: var(--color-negro); 
+  width: 100px; 
+}
+
+/* ===== SECCIÓN ¿ERES PRODUCTOR? ===== */
+.seccion-eres-productor {
+  background: var(--color-gris-claro);
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Título ¿ERES PRODUCTOR? */
+.titulo-eres-productor {
+  font-size: 2.5rem;
+  color: var(--color-blanco);
+  background: var(--color-marron); 
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+  box-shadow: var(--sombra-suave); 
+}
+
+.icono-botella-izq,
+.icono-botella-der {
+  font-size: 2.5rem;
+}
+
+/* Contenedor principal de dos columnas */
+.contenido-eres-productor {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  background: var(--color-naranja-claro);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  box-shadow: var(--sombra-media);
+  min-height: 450px;
+}
+
+/* Columna izquierda - Información */
+.info-beneficios {
+  flex: 1;
+  padding: 40px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: left;
+  background: var(--color-naranja-claro);
+}
+
+/* Botón "Conoce los Beneficios" */
+.btn-conoce-beneficios {
+  background: var(--color-blanco);
+  color: var(--color-negro);
+  border: 2px solid var(--color-negro);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  align-self: flex-start;
+}
+
+.btn-conoce-beneficios:hover {
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Textos incentivos */
+.textos-incentivo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.texto-principal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-negro);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.texto-secundario {
+  font-size: 1rem;
+  color: var(--color-gris);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Lista de beneficios */
+.lista-beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lista-beneficios h3 {
+  font-size: 1.3rem;
+  color: var(--color-negro);
+  margin: 0;
+  font-weight: 600;
+}
+
+.lista-beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.lista-beneficios ul li {
+  font-size: 1rem;
+  color: var(--color-gris);
+  position: relative;
+  padding-left: 15px;
+}
+
+/* Viñetas personalizadas */
+.lista-beneficios ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-negro);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Columna derecha - Imagen */
+.imagen-eres-productor {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #e8dcc8; 
+}
+
+.imagen-eres-productor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenedor de botones de acción */
+.botones-accion {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Botón "Postúlate Aquí" */
+.btn-postulate {
+  background: var(--color-secundario); 
+  color: var(--color-blanco);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  box-shadow: var(--sombra-suave);
+  min-width: 200px;
+}
+
+.btn-postulate:hover {
+  background: var(--color-primario); 
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Botón "Zona de Productores" */
+.btn-zona-productores {
+  background: var(--color-naranja-claro); 
+  color: var(--color-negro);
+  border: 2px solid var(--color-negro);
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  min-width: 200px;
+}
+
+.btn-zona-productores:hover {
+  background: var(--color-blanco);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-suave);
+}
+
+/* ===== SECCIÓN NUESTRAS RUTAS ===== */
+.seccion-nuestras-rutas {
+  background: var(--color-gris-claro);
+  padding: 60px 5% 80px;
+  text-align: center;
+}
+
+/* Título de la sección */
+.titulo-seccion-rutas {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.titulo-seccion-rutas::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--color-secundario);
+}
+
+/* Contenedor principal */
+.contenedor-rutas {
+  display: grid;
+  grid-template-columns: 280px 1fr; 
+  grid-template-rows: auto auto; 
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.panel-rutas {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.info-ruta-seleccionada {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contenedor-mapa {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+/* ===== PANEL LATERAL ===== */
+.panel-rutas {
+  background: var(--color-naranja-claro); 
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-media);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Header del panel */
+.header-panel {
+  background: var(--color-marron);
+  color: var(--color-blanco);
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--fuente-principal);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.header-panel:hover {
+  background: #5a3621; 
+}
+
+.texto-header {
+  flex: 1;
+  text-align: left;
+}
+
+.icono-flecha {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.icono-flecha.rotado {
+  transform: rotate(180deg);
+}
+
+/* Contenido colapsable del panel */
+.contenido-panel {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+/* Cuando está expandido, mayor altura */
+.contenido-panel.expandido {
+  max-height: 600px; 
+}
+
+/* ===== DROPDOWN DE RUTAS ===== */
+.dropdown-ruta {
+  margin-bottom: 20px;
+}
+
+/* Botón del dropdown */
+.btn-dropdown {
+  background: var(--color-secundario); 
+  color: var(--color-blanco);
+  border: none;
+  padding: 12px 20px;
+  width: 100%;
+  border-radius: 8px;
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-dropdown:hover {
+  background: var(--color-primario); 
+  transform: translateY(-2px);
+}
+
+.icono-dropdown {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.icono-dropdown.rotado {
+  transform: rotate(180deg);
+}
+
+/* Lista de items del dropdown */
+.lista-items-ruta {
+  max-height: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0 0 8px 8px;
+  margin-top: 5px;
+}
+
+/* Scrollbar personalizado para la lista */
+.lista-items-ruta::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lista-items-ruta::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.lista-items-ruta::-webkit-scrollbar-thumb {
+  background: var(--color-secundario);
+  border-radius: 4px;
+}
+
+.lista-items-ruta::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primario);
+}
+
+/* Items individuales de rutas */
+.item-ruta {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  color: var(--color-gris);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item-ruta:last-child {
+  border-bottom: none;
+}
+
+.item-ruta:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-negro);
+  padding-left: 25px; /* Efecto de deslizamiento */
+}
+
+/* Item seleccionado/activo */
+.item-ruta.activo {
+  background: var(--color-secundario);
+  color: var(--color-blanco);
+  font-weight: 600;
+}
+
+/* ===== INFORMACIÓN DE RUTA SELECCIONADA ===== */
+.info-ruta-seleccionada {
+  background: var(--color-naranja-claro); /* Beige */
+  padding: 25px 30px;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-media);
+  min-height: 120px;
+  text-align: left;
+}
+
+.info-ruta-seleccionada h3 {
+  font-size: 1.4rem;
+  color: var(--color-marron);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.info-ruta-seleccionada p {
+  font-size: 1rem;
+  color: var(--color-gris);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mensaje cuando no hay ruta seleccionada */
+.info-ruta-seleccionada .placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* ===== CONTENEDOR DEL MAPA ===== */
+.contenedor-mapa {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-media);
+  overflow: hidden;
+  min-height: 500px;
+  position: relative;
+}
+
+#mapa-rutas {
+  width: 100%;
+  height: 500px;
+  background: #e5e5e5;
+  position: relative;
+}
+
+/* Placeholder del mapa */
+.mensaje-mapa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-gris);
+  z-index: 1;
+  pointer-events: none; /* No interfiere con clics en el mapa */
+}
+
+.mensaje-mapa p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.mensaje-mapa small {
+  font-size: 1rem;
+  color: #999;
+}
+
+/* Ocultar mensaje cuando el mapa carga */
+#mapa-rutas.mapa-cargado .mensaje-mapa {
+  display: none;
 }
 
 /* ===== MEDIA QUERIES RESPONSIVE ===== */
@@ -891,5 +1531,274 @@ nav ul li a:hover {
   
   .proyecto-card {
     min-height: 400px;
+  }
+}
+
+/* ===== RESPONSIVE PARA PRODUCTORES ===== */
+@media (max-width: 768px) {
+  .titulo-productores {
+    font-size: 1.8rem;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .slide-productores {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .info-productor {
+    padding: 25px 20px;
+  }
+  
+  .etiqueta-nombre {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    align-self: center;
+  }
+  
+  .imagen-productor {
+    min-height: 250px;
+  }
+  
+  .flecha-productores {
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .indicadores-productores {
+    gap: 10px;
+  }
+  
+  .indicador {
+    width: 50px;
+  }
+  
+  .indicador.activo {
+    width: 70px;
+  }
+}
+
+/* ===== RESPONSIVE PARA ¿ERES PRODUCTOR? ===== */
+@media (max-width: 768px) {
+  .titulo-eres-productor {
+    font-size: 1.8rem;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contenido-eres-productor {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .info-beneficios {
+    padding: 30px 25px;
+  }
+  
+  .btn-conoce-beneficios {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    align-self: center; 
+  }
+  
+  .texto-principal {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .texto-secundario {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  .lista-beneficios {
+    text-align: left;
+  }
+  
+  .imagen-eres-productor {
+    min-height: 300px;
+  }
+  
+  .botones-accion {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .btn-postulate,
+  .btn-zona-productores {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo-eres-productor {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+  }
+  
+  .icono-botella-izq,
+  .icono-botella-der {
+    font-size: 2rem;
+  }
+  
+  .info-beneficios {
+    padding: 25px 20px;
+  }
+  
+  .btn-conoce-beneficios {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
+  .texto-principal {
+    font-size: 0.95rem;
+  }
+  
+  .texto-secundario {
+    font-size: 0.9rem;
+  }
+  
+  .lista-beneficios h3 {
+    font-size: 1.1rem;
+  }
+  
+  .lista-beneficios ul li {
+    font-size: 0.95rem;
+  }
+  
+  .imagen-eres-productor {
+    min-height: 250px;
+  }
+  
+  .btn-postulate,
+  .btn-zona-productores {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carrusel-container-productores {
+    padding: 0 10px;
+  }
+  
+  .datos-productor li {
+    font-size: 1rem;
+  }
+  
+  .flecha-productores {
+    display: none; 
+  }
+}
+
+/* ===== RESPONSIVE RUTAS ===== */
+@media (max-width: 1024px) {
+  .contenedor-rutas {
+    grid-template-columns: 250px 1fr;
+    gap: 15px;
+  }
+  
+  .header-panel {
+    font-size: 1.1rem;
+    padding: 12px 15px;
+  }
+  
+  #mapa-rutas {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenedor-rutas {
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-rows: auto auto auto; /* 3 filas */
+    gap: 20px;
+  }
+  
+  .panel-rutas {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+  }
+  
+  .info-ruta-seleccionada {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .contenedor-mapa {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  #mapa-rutas {
+    height: 400px;
+  }
+  
+  .titulo-seccion-rutas {
+    font-size: 2rem;
+  }
+  
+  .info-ruta-seleccionada {
+    padding: 20px;
+  }
+  
+  .info-ruta-seleccionada h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .seccion-nuestras-rutas {
+    padding: 40px 5% 60px;
+  }
+  
+  .titulo-seccion-rutas {
+    font-size: 1.8rem;
+  }
+  
+  .header-panel {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+  
+  .btn-dropdown {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+  
+  .item-ruta {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  #mapa-rutas {
+    height: 350px;
+  }
+  
+  .mensaje-mapa p {
+    font-size: 1.2rem;
+  }
+  
+  .info-ruta-seleccionada {
+    padding: 15px 20px;
+    min-height: 100px;
+  }
+  
+  .info-ruta-seleccionada h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-ruta-seleccionada p {
+    font-size: 0.95rem;
   }
 }
