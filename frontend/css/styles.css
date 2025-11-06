@@ -54,7 +54,7 @@ header {
   padding: 0 5%;
   font-family: var(--fuente-principal);
   font-weight: 500;
-  color: var(--color-negro);
+  color: var(--color-blanco);
 }
 
 .informacion-contacto ul,
@@ -892,4 +892,10 @@ nav ul li a:hover {
   .proyecto-card {
     min-height: 400px;
   }
+}
+
+
+
+.titulo titulo-blog {
+  color :white
 }
