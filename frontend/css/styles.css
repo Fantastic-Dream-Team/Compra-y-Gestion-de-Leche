@@ -54,7 +54,7 @@ header {
   padding: 0 5%;
   font-family: var(--fuente-principal);
   font-weight: 500;
-  color: var(--color-negro);
+  color: var(--color-blanco);
 }
 
 .informacion-contacto ul,
