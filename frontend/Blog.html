@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -10,10 +10,8 @@
 </head>
 <body>
   <header>
-    <!-- Barra superior decorativa -->
     <div class="top-bar"></div>
 
-    <!-- Información de contacto y redes -->
     <div id="barra-principal">
       <ul class="informacion-contacto">
         <li>Av. Principal 123</li>
@@ -29,12 +27,10 @@
       </ul>
     </div>
 
-    <!-- Logo centrado -->
     <div class="logo-container">
       <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="90" height="90">
     </div>
 
-    <!-- Menú principal -->
     <nav aria-label="Navegación principal">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -46,7 +42,6 @@
       </ul>
     </nav>
 
-    <!-- Hero con frase -->
     <section class="bienvenida" aria-labelledby="titulo-bienvenida">
       <h1 id="titulo-bienvenida">Descubre historias, consejos y sabores directamente de nuestra tierra.</h1>
     </section>
@@ -56,20 +51,16 @@
     <!-- Carrusel sticky de filtros -->
     <div class="sticky-carousel">
       <div class="carousel-container">
-        <!-- Flecha izquierda -->
         <button class="arrow left" aria-label="Desplazar categorías a la izquierda">&lt;</button>
 
-        <!-- Categorías desplazables -->
         <div class="categories" id="categories">
           <button class="category-btn active" data-filter="all">Todas</button>
           <button class="category-btn" data-filter="receta">Recetas</button>
           <button class="category-btn" data-filter="blog">Blogs</button>
         </div>
 
-        <!-- Flecha derecha -->
         <button class="arrow right" aria-label="Desplazar categorías a la derecha">&gt;</button>
 
-        <!-- Campo de búsqueda -->
         <input type="search" id="search-input" placeholder="Buscar..." aria-label="Buscar en blog">
       </div>
     </div>
@@ -77,7 +68,8 @@
     <!-- Grid de publicaciones -->
     <section class="blog-posts">
       <div class="grid" id="post-grid">
-        <!-- Post 1 -->
+        <!-- 12 posts originales + 12 nuevos = 24 -->
+        <!-- Posts originales -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -85,7 +77,6 @@
           <p>Un postre tradicional con nuestra leche entera. Suave, cremoso y fácil de preparar en casa.</p>
         </article>
 
-        <!-- Post 2 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
@@ -93,7 +84,6 @@
           <p>Conoce por qué la leche de vacas alimentadas con pasto es más nutritiva y sabrosa.</p>
         </article>
 
-        <!-- Post 3 -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -101,7 +91,6 @@
           <p>Aprende a hacer un queso fresco en casa con pocos ingredientes y mucho sabor.</p>
         </article>
 
-        <!-- Post 4 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
@@ -109,7 +98,6 @@
           <p>Consejos para leer etiquetas y escoger leche, yogur y queso de calidad.</p>
         </article>
 
-        <!-- Post 5 -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -117,7 +105,6 @@
           <p>Un batido nutritivo para comenzar el día con energía usando nuestro yogur natural.</p>
         </article>
 
-        <!-- Post 6 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
@@ -125,7 +112,6 @@
           <p>Conoce la historia familiar detrás de Lácteos Don Joaquín y nuestras prácticas sostenibles.</p>
         </article>
 
-        <!-- Post 7 -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -133,7 +119,6 @@
           <p>Postre ligero y cítrico elaborado con queso crema artesanal.</p>
         </article>
 
-        <!-- Post 8 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
@@ -141,7 +126,6 @@
           <p>Exploramos cómo la alimentación del ganado impacta la calidad de la leche.</p>
         </article>
 
-        <!-- Post 9 -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -149,7 +133,6 @@
           <p>Una receta clásica para el desayuno que usa leche fresca para mejorar textura y sabor.</p>
         </article>
 
-        <!-- Post 10 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
@@ -157,7 +140,6 @@
           <p>Respondemos dudas comunes sobre conservación, caducidad y tipos de leche.</p>
         </article>
 
-        <!-- Post 11 -->
         <article class="card" data-type="receta">
           <span class="label receta">Receta</span>
           <div class="img-placeholder"></div>
@@ -165,20 +147,104 @@
           <p>Prepara una crema de queso casera ideal para panes y snacks rápidos.</p>
         </article>
 
-        <!-- Post 12 -->
         <article class="card" data-type="blog">
           <span class="label blog">Blog</span>
           <div class="img-placeholder"></div>
           <h3>¿Leche entera o descremada?</h3>
           <p>Te explicamos las diferencias y cuál es mejor según tus necesidades.</p>
         </article>
+
+        <!-- 12 NUEVOS POSTS -->
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Salsa Bechamel con Leche Don Joaquín</h3>
+          <p>Una base cremosa perfecta para lasañas, gratinados y pastas. ¡Fácil y deliciosa!</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>¿Por qué el yogur es un superalimento?</h3>
+          <p>Probióticos, calcio y proteínas: todo lo que necesitas saber sobre el yogur natural.</p>
+        </article>
+
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Helado de Vainilla Casero</h3>
+          <p>Sin máquina, solo con leche, crema y vainilla. ¡Ideal para el verano!</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>El proceso de pasteurización explicado</h3>
+          <p>Cómo mantenemos la seguridad y el sabor en cada botella de leche.</p>
+        </article>
+
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Tostadas Francesas con Leche y Canela</h3>
+          <p>Desayuno dulce y esponjoso que toda la familia amará.</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>¿Los lácteos engordan? Mitos y verdades</h3>
+          <p>Desmontamos creencias populares con base científica.</p>
+        </article>
+
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Queso Panela a la Plancha</h3>
+          <p>Snack saludable y crujiente en solo 5 minutos.</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>Nuestras vacas: nombres y personalidades</h3>
+          <p>Conoce a las estrellas de nuestra lechería: ¡Lucero, Luna y más!</p>
+        </article>
+
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Pudín de Chia con Yogur</h3>
+          <p>Desayuno saludable, saciante y lleno de fibra.</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>Cómo almacenar correctamente tus lácteos</h3>
+          <p>Consejos para mantener frescura y sabor por más tiempo.</p>
+        </article>
+
+        <article class="card" data-type="receta">
+          <span class="label receta">Receta</span>
+          <div class="img-placeholder"></div>
+          <h3>Sopa de Queso y Brócoli</h3>
+          <p>Cremosa, reconfortante y lista en 20 minutos.</p>
+        </article>
+
+        <article class="card" data-type="blog">
+          <span class="label blog">Blog</span>
+          <div class="img-placeholder"></div>
+          <h3>El impacto ambiental de la lechería sostenible</h3>
+          <p>Cómo cuidamos el planeta mientras producimos lácteos de calidad.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Paginación -->
+    <!-- Paginación horizontal -->
     <div class="pagination" id="pagination" aria-label="Paginación">
       <button id="prev-page" aria-label="Página anterior">&lt;</button>
-      <div id="page-numbers"></div>
+      <div id="page-numbers" class="page-numbers-horizontal"></div>
       <button id="next-page" aria-label="Página siguiente">&gt;</button>
     </div>
   </main>
@@ -186,4 +252,3 @@
   <script src="js/Blogjs.js"></script>
 </body>
 </html>
-    

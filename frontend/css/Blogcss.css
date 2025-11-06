@@ -292,48 +292,37 @@ nav ul li a.active {
 /* ========================================
    PAGINACIÓN
    ======================================== */
+/* ========================================
+   PAGINACIÓN HORIZONTAL
+   ======================================== */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 40px 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0 10px;
 }
 
-.pagination button {
-  background: var(--color-primario);
-  color: var(--color-blanco);
-  border: none;
-  width: 40px;
-  height: 40px;
-  font-size: 1.3rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pagination button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.pagination button:hover:not(:disabled) {
-  background: var(--color-marron);
-  transform: scale(1.1);
+.page-numbers-horizontal {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .page-number {
-  background: var(--color-naranja-claro);
-  color: var(--color-marron);
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  cursor: pointer;
+  background: var(--color-naranja-claro);
+  color: var(--color-marron);
   font-weight: 500;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -345,6 +334,27 @@ nav ul li a.active {
 
 .page-number:hover:not(.active) {
   background: #f0c14b;
+}
+
+/* Evitar scroll horizontal innecesario */
+.pagination::-webkit-scrollbar {
+  display: none;
+}
+.pagination {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive: en móviles, permitir scroll suave */
+@media (max-width: 768px) {
+  .page-numbers-horizontal {
+    gap: 6px;
+  }
+  .page-number {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
 }
 
 /* ========================================
