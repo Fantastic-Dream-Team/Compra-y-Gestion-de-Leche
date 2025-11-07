@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    <link rel="stylesheet" href="css/reseteo.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <title>Lácteos Don Joaquín - Inicio</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+  <link rel="stylesheet" href="css/reseteo.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styleProductores.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <title>Lácteos Don Joaquín - Inicio</title>
 </head>
+
 <body>
   <header>
     <!-- Barra superior -->
@@ -43,7 +48,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="logo-container">
       <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="100" height="100">
     </div>
@@ -54,169 +59,188 @@
         <li><a href="Productores.html">Productores</a></li>
         <li><a href="pedidos.html">Pedidos</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="recetas.html">Recetas</a></li>
-        <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
-
-    <!-- Hero / Frase de bienvenida -->
-    <section class="bienvenida" aria-labelledby="titulo-bienvenida">
-      <h1 id="titulo-bienvenida">Conoce a los productores, <br>
-      el alma de nuestra tierra</h1>
-    </section>
   </header>
 
   <!-- Sección de Nuestros Productores -->
   <section class="seccion-productores" aria-labelledby="titulo-productores">
-  <h2 id="titulo-productores" class="titulo-productores">
-    Nuestros Productores
-  </h2>
-  
-  <div class="carrusel-container-productores">
-  
-    <button class="flecha-productores flecha-izq-prod" aria-label="Productor anterior">
-      &#10094;
-    </button>
-    
-    <div class="slide-productores">
+    <h2 id="titulo-productores" class="titulo-productores">Nuestros Productores</h2>
 
-      <div class="info-productor">
-        <div class="etiqueta-nombre">Nombre</div>
-        <ul class="datos-productor">
-          <li>Datos de Salud y Sanidad</li>
-          <li>Ubicación</li>
-          <li>Especialidad</li>
-          <li>Registros de Producción</li>
-        </ul>
-      </div>
+    <div class="carrusel-productores-final">
+      <!-- Flechas -->
+      <button class="flecha-final flecha-izq" aria-label="Anterior"></button>
+      <button class="flecha-final flecha-der" aria-label="Siguiente"></button>
 
-      <div class="imagen-productor">
-        <img src="assets/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" 
-             alt="Lechería La Vaca Feliz" 
-             width="400" 
-             height="300">
-      </div>
-    </div>
-    
-    <button class="flecha-productores flecha-der-prod" aria-label="Productor siguiente">
-      &#10095;
-    </button>
-  </div>
-  
-  <div class="indicadores-productores">
-    <span class="indicador activo"></span>
-    <span class="indicador"></span>
-    <span class="indicador"></span>
-    <span class="indicador"></span>
-  </div>
-</section>
+      <!-- Carrusel -->
+      <div class="carrusel-final">
+        <div class="track-final">
 
-<section class="seccion-eres-productor" aria-labelledby="titulo-eres-productor">
-  <h2 id="titulo-eres-productor" class="titulo-eres-productor">
-    ¿Eres Productor?
-  </h2>
-  
-  <div class="contenido-eres-productor">
-    <div class="info-beneficios">
-      <button class="btn-conoce-beneficios">Conoce los Beneficios</button>
-      
-      <div class="textos-incentivo">
-        <p class="texto-principal">TEXTO DESCRIPTIVO INCENTIVANDO A UNIRSE</p>
-        <p class="texto-secundario">TEXTO</p>
-        <p class="texto-secundario">TEXTO</p>
-      </div>
-      
-      <div class="lista-beneficios">
-        <h3>Lista de Beneficios</h3>
-        <ul>
-          <li>beneficio</li>
-          <li>beneficio</li>
-          <li>beneficio</li>
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Imagen -->
-    <div class="imagen-eres-productor">
-      <img src="assets/images/productores-campo.jpg" 
-           alt="Productores en el campo" 
-           width="500" 
-           height="400">
-    </div>
-  </div>
-  
-  <!-- Botones de acción -->
-  <div class="botones-accion">
-    <button class="btn-postulate">Postúlate Aquí</button>
-    <button class="btn-zona-productores">Zona de Productores</button>
-  </div>
-</section>
+          <!-- PRODUCTOR 1 -->
+          <div class="slide-final activo">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 100% certificada</p>
+                <p><strong>Ubicación:</strong> Veraguas, Santiago</p>
+                <p><strong>Especialidad:</strong> Queso fresco artesanal</p>
+                <p><strong>Producción:</strong> 900 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="assets/images/productor2.jpg" alt="Granja Don Pedro">
+              </div>
+            </div>
+          </div>
 
+          <!-- PRODUCTOR 2 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 98% vacunadas</p>
+                <p><strong>Ubicación:</strong> Chiriquí, Boquete</p>
+                <p><strong>Especialidad:</strong> Leche Jersey A2</p>
+                <p><strong>Producción:</strong> 1,200 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="assets/images/productor1.jpg" alt="Finca La Esperanza">
+              </div>
+            </div>
+          </div>
 
-  <!-- Sección de Nuestras Rutas -->
-<section class="seccion-nuestras-rutas" aria-labelledby="titulo-rutas">
-  <h2 id="titulo-rutas" class="titulo-seccion-rutas">Nuestras Rutas</h2>
-  
-  <div class="contenedor-rutas">
-    
-    <aside class="panel-rutas">
-      <button class="header-panel">
-        <span class="texto-header">Nuestras Rutas</span>
-        <span class="icono-flecha">▲</span>
-      </button>
-      
-      <div class="contenido-panel">
-        <div class="dropdown-ruta">
-          <button class="btn-dropdown">
-            <span>DropDown (NombreRuta)</span>
-            <span class="icono-dropdown">▲</span>
-          </button>
-          <div class="lista-items-ruta">
-            <div class="item-ruta" data-ruta="ruta1">NombreRuta 1</div>
-            <div class="item-ruta" data-ruta="ruta2">NombreRuta 2</div>
-            <div class="item-ruta" data-ruta="ruta3">NombreRuta 3</div>
+          <!-- PRODUCTOR 3 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="assets/images/productor3.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTOR 4 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="assets/images/productor3.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
+          </div>
+          
+          <!-- PRODUCTOR 5 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="assets/images/productor3.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </aside>
-    
-    <div class="info-ruta-seleccionada">
-      <h3>Selecciona una ruta</h3>
-      <p class="placeholder">Haz clic en una ruta del menú lateral para ver su información detallada aquí.</p>
-    </div>
-    
-    <!-- Mapa -->
-    <div class="contenedor-mapa">
-      <div id="mapa-rutas" class="mapa-placeholder">
-        <div class="mensaje-mapa">
-          <p>Mapa de Rutas</p>
-          <small>Se cargará con JavaScript</small>
-        </div>
+
+      <!-- PUNTOS DE NAVEGACIÓN -->
+      <div class="puntos-carrusel">
+        <span class="punto activo" data-slide="0"></span>
+        <span class="punto" data-slide="1"></span>
+        <span class="punto" data-slide="2"></span>
+        <span class="punto" data-slide="3"></span>
+        <span class="punto" data-slide="4"></span>
       </div>
     </div>
-    
-  </div>
-</section>
+  </section>
+
+  <!-- Sección de Nuestras Rutas -->
+  <section class="seccion-nuestras-rutas" aria-labelledby="titulo-rutas">
+    <h2 id="titulo-rutas" class="titulo-seccion-rutas">Nuestras Rutas</h2>
+
+    <div class="contenedor-rutas">
+
+      <!-- Panel lateral -->
+      <aside class="panel-rutas">
+        <button class="header-panel">
+          <span class="texto-header">Nuestras Rutas</span>
+          <span class="icono-flecha">▼</span>
+        </button>
+
+        <div class="contenido-panel">
+          <div class="dropdown-ruta">
+            <button class="btn-dropdown activo">
+              <span>Ruta Norte - Centro</span>
+              <span class="icono-dropdown">▼</span>
+            </button>
+            <div class="lista-items-ruta">
+              <div class="item-ruta" data-ruta="ruta1">Ruta Norte - Centro</div>
+              <div class="item-ruta" data-ruta="ruta2">Ruta Este - Sur</div>
+              <div class="item-ruta" data-ruta="ruta3">Ruta Oeste - Rural</div>
+              <div class="item-ruta" data-ruta="ruta4">Ruta Express City</div>
+            </div>
+          </div>
+          <div class="contador-rutas">
+            <strong>4 rutas activas</strong> recorriendo tu ciudad
+          </div>
+        </div>
+      </aside>
+
+      <!-- Información de ruta -->
+      <div class="info-ruta-seleccionada">
+        <h3>Ruta Norte - Centro</h3>
+        <p>Cubre las zonas norte de la ciudad, pasando por los sectores A, B y C. Entregas diarias de 6:00 a.m. a 12:00
+          p.m.</p>
+        <ul>
+          <li>Frecuencia: Diaria</li>
+          <li>Vehículos: 3 camiones refrigerados</li>
+          <li>Productores: 12 fincas asociadas</li>
+        </ul>
+      </div>
+
+      <!-- Mapa con Google Maps -->
+      <div class="contenedor-mapa">
+        <iframe id="google-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.463!2d-79.534!3d8.948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTYnNTIuOCJOIDc5wrAzMScwMC4wIlc!5e0!3m2!1ses!2spa!4v1733950000000!5m2!1ses!2spa"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="logo">
       <img src="assets/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
     </div>
-    
+
     <div class="social">
       <a href="#" aria-label="Instagram">Instagram</a>
       <a href="#" aria-label="Facebook">Facebook</a>
       <a href="#" aria-label="WhatsApp">WhatsApp</a>
       <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
     </div>
-    
+
     <div class="derechos">
       <p>&copy; 2025 Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-   <script src="javascript/rutas.js"></script>
+  <script src="javascript/rutas.js"></script>
+  <script src="javascript/NProductores.js"></script>
 
-  </body>
+</body>
+
 </html>

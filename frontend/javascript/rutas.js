@@ -1,132 +1,99 @@
 document.addEventListener('DOMContentLoaded', function() {
   
-  // ===== TOGGLE PANEL LATERAL =====
+  // Elementos
   const headerPanel = document.querySelector('.header-panel');
   const contenidoPanel = document.querySelector('.contenido-panel');
   const iconoFlecha = document.querySelector('.icono-flecha');
-  
-  headerPanel.addEventListener('click', function() {
-    if (contenidoPanel.style.maxHeight && contenidoPanel.style.maxHeight !== '0px') {
-
-      contenidoPanel.style.maxHeight = '0';
-      contenidoPanel.style.padding = '0 20px';
-      iconoFlecha.classList.remove('rotado');
-    } else {
-
-      contenidoPanel.style.maxHeight = contenidoPanel.scrollHeight + 40 + 'px';
-      contenidoPanel.style.padding = '20px';
-      iconoFlecha.classList.add('rotado');
-    }
-  });
-  
-  
-  // ===== TOGGLE DROPDOWN DE RUTAS =====
   const btnDropdown = document.querySelector('.btn-dropdown');
   const listaItems = document.querySelector('.lista-items-ruta');
   const iconoDropdown = document.querySelector('.icono-dropdown');
-  
-  btnDropdown.addEventListener('click', function() {
-    if (listaItems.style.maxHeight && listaItems.style.maxHeight !== '0px') {
+  const itemsRuta = document.querySelectorAll('.item-ruta');
+  const infoRuta = document.querySelector('.info-ruta-seleccionada');
+  const iframeMap = document.getElementById('google-map');
 
-      listaItems.style.maxHeight = '0';
-      iconoDropdown.classList.remove('rotado');
+  // Datos de rutas
+  const rutas = {
+    ruta1: {
+      nombre: "Ruta Norte - Centro",
+      info: "Cubre las zonas norte de la ciudad, pasando por los sectores A, B y C. Entregas diarias de 6:00 a.m. a 12:00 p.m.",
+      mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.463!2d-79.534!3d8.948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTYnNTIuOCJOIDc5wrAzMScwMC4wIlc!5e0!3m2!1ses!2spa!4v1733950000000!5m2!1ses!2spa",
+      detalles: ["Frecuencia: Diaria", "Vehículos: 3 camiones refrigerados", "Productores: 12 fincas asociadas"]
+    },
+    ruta2: {
+      nombre: "Ruta Este - Sur",
+      info: "Recorre el área central y este, incluyendo puntos de distribución principales. Servicio de lunes a sábado.",
+      mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980.2!2d-79.510!3d8.970!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTggMTIuMCJOIDc5wrAzMCDigKIwLjAiVyc!5e0!3m2!1ses!2spa!4v1733951000000!5m2!1ses!2spa",
+      detalles: ["Frecuencia: 6 días", "Vehículos: 2 camiones", "Productores: 8 fincas"]
+    },
+    ruta3: {
+      nombre: "Ruta Oeste - Rural",
+      info: "Zona sur y oeste, con cobertura en áreas rurales y urbanas. Enfocada en fincas grandes.",
+      mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490.5!2d-79.550!3d8.930!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTUgNDguMCJOIDc5wrAzMycwMC4wIlc!5e0!3m2!1ses!2spa!4v1733952000000!5m2!1ses!2spa",
+      detalles: ["Frecuencia: 5 días", "Vehículos: 4 camiones", "Productores: 15 fincas"]
+    },
+    ruta4: {
+      nombre: "Ruta Express City",
+      info: "Servicio premium para supermercados y restaurantes en el centro. Entregas en 2 horas.",
+      mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1225.8!2d-79.520!3d8.960!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTcgMzYuMCJOIDc5wrAzMScxMi4wIlc!5e0!3m2!1ses!2spa!4v1733953000000!5m2!1ses!2spa",
+      detalles: ["Frecuencia: Bajo demanda", "Vehículos: 1 furgoneta", "Productores: 5 exclusivos"]
+    }
+  };
+
+  // Abrir/cerrar panel
+  headerPanel.addEventListener('click', () => {
+    const estaAbierto = contenidoPanel.classList.contains('abierto');
+    contenidoPanel.classList.toggle('abierto');
+    iconoFlecha.classList.toggle('rotado');
+    
+    if (estaAbierto) {
+      contenidoPanel.style.maxHeight = '0';
     } else {
-
-      listaItems.style.maxHeight = listaItems.scrollHeight + 'px';
-      iconoDropdown.classList.add('rotado');
+      contenidoPanel.style.maxHeight = contenidoPanel.scrollHeight + 40 + 'px';
     }
   });
-  
-  
-  // ===== SELECCIONAR RUTA =====
-  const itemsRuta = document.querySelectorAll('.item-ruta');
-  const infoRutaSeleccionada = document.querySelector('.info-ruta-seleccionada');
-  const rutasInfo = {
-    'ruta1': 'Información detallada de la Ruta 1: Cubre las zonas norte de la ciudad, pasando por los sectores A, B y C.',
-    'ruta2': 'Información detallada de la Ruta 2: Abarca el área central y este, incluyendo puntos de distribución principales.',
-    'ruta3': 'Información detallada de la Ruta 3: Zona sur y oeste, con cobertura en áreas rurales y urbanas.'
-  };
-  
+
+  // Dropdown
+  btnDropdown.addEventListener('click', () => {
+    listaItems.classList.toggle('abierto');
+    iconoDropdown.classList.toggle('rotado');
+  });
+
+  // Seleccionar ruta
   itemsRuta.forEach(item => {
     item.addEventListener('click', function() {
-
-      itemsRuta.forEach(i => i.classList.remove('activo'));
-      
-      this.classList.add('activo');
-      
       const rutaId = this.getAttribute('data-ruta');
-      const nombreRuta = this.textContent;
+      const ruta = rutas[rutaId];
 
-      if (rutasInfo[rutaId]) {
-        infoRutaSeleccionada.innerHTML = `
-          <h3>Información de ${nombreRuta}</h3>
-          <p>${rutasInfo[rutaId]}</p>
-        `;
-      } else {
-        infoRutaSeleccionada.innerHTML = `
-          <h3>Información de ${nombreRuta}</h3>
-          <p>Información no disponible para esta ruta.</p>
-        `;
-      }
-      
-      btnDropdown.querySelector('span:first-child').textContent = nombreRuta;
-      
-      // Cerrar el dropdown
-      listaItems.style.maxHeight = '0';
+      // Actualizar botón
+      btnDropdown.querySelector('span:first-child').textContent = ruta.nombre;
+      btnDropdown.classList.add('activo');
+
+      // Actualizar info
+      infoRuta.innerHTML = `
+        <h3>${ruta.nombre}</h3>
+        <p>${ruta.info}</p>
+        <ul>
+          ${ruta.detalles.map(d => `<li>${d}</li>`).join('')}
+        </ul>
+      `;
+
+      // Actualizar mapa
+      iframeMap.src = ruta.mapa;
+
+      // Cerrar dropdown
+      listaItems.classList.remove('abierto');
       iconoDropdown.classList.remove('rotado');
-      
-      // Aquí llamarías la función para actualizar el mapa
-      console.log('Ruta seleccionada:', rutaId, nombreRuta);
-      // actualizarMapa(rutaId); // Función que crearás más adelante
+
+      // Resaltar item
+      itemsRuta.forEach(i => i.classList.remove('activo'));
+      this.classList.add('activo');
     });
   });
 
-  let mapa;
-let marcadores = [];
-
-function inicializarMapa() {
-
-  mapa = L.map('mapa-rutas').setView([9.145, -79.451], 12);
-  
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(mapa);
-  
-  document.getElementById('mapa-rutas').classList.add('mapa-cargado');
-}
-
-function actualizarMapa(rutaId) {
-
-  marcadores.forEach(m => mapa.removeLayer(m));
-  marcadores = [];
-  
-  const rutas = {
-    'ruta1': {
-      puntos: [[9.145, -79.451], [9.155, -79.461]],
-      color: 'blue'
-    },
-    'ruta2': {
-      puntos: [[9.135, -79.441], [9.145, -79.431]],
-      color: 'orange'
-    },
-    'ruta3': {
-      puntos: [[9.125, -79.471], [9.135, -79.461]],
-      color: 'red'
-    }
-  };
-  
-  if (rutas[rutaId]) {
-    const ruta = rutas[rutaId];
-    
-    const polyline = L.polyline(ruta.puntos, {color: ruta.color}).addTo(mapa);
-    marcadores.push(polyline);
-    
-    mapa.fitBounds(polyline.getBounds());
+  // Abrir panel por defecto en desktop
+  if (window.innerWidth > 992) {
+    contenidoPanel.classList.add('abierto');
+    contenidoPanel.style.maxHeight = contenidoPanel.scrollHeight + 40 + 'px';
+    iconoFlecha.classList.add('rotado');
   }
-}
-
-
-document.addEventListener('DOMContentLoaded', inicializarMapa);
-
-  
 });
