@@ -6,7 +6,7 @@
 }
 
 :root {
-  --color-primario: #c3541c;
+  --color-primario: #f5712f;
   --color-secundario: #d2691e;
   --color-naranja-claro: #f5e1bf;
   --color-marron: #4b2e1a;
@@ -508,7 +508,7 @@ nav ul li a:hover {
 .franja-naranja .titulo {
   color: var(--color-negro);
   font-size: 2.2rem;
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
 }
 
@@ -576,8 +576,8 @@ nav ul li a:hover {
 }
 
 .post .fecha {
-  background: rgba(245, 225, 191, 0.95);
-  color: var(--color-negro);
+  background:var(--color-marron);
+  color: var(--color-blanco);
   padding: 10px 20px;
   font-weight: bold;
   position: absolute;
@@ -656,6 +656,160 @@ nav ul li a:hover {
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 20px;
+}
+
+/* ===== SECCIÓN PRODUCTORES ===== */
+.seccion-productores {
+  background: var(--color-primario); 
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Título con iconos */
+.titulo-productores {
+  font-size: 2.5rem;
+  color: var(--color-negro);
+  background: var(--color-naranja-claro); 
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.icono-izq,
+.icono-der {
+  font-size: 2rem;
+}
+
+.carrusel-container-productores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slide-productores {
+  display: flex;
+  align-items: stretch; 
+  gap: 0; 
+  background: #fdf3e6; 
+  border-radius: var(--radio-borde);
+  overflow: hidden; 
+  box-shadow: var(--sombra-media);
+  flex: 1;
+  min-height: 350px;
+}
+
+/* Columna izquierda - Información */
+.info-productor {
+  flex: 1; 
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #fdf3e6; 
+}
+
+/* Etiqueta "Nombre" */
+.etiqueta-nombre {
+  background: var(--color-marron); 
+  color: var(--color-blanco);
+  padding: 12px 30px;
+  border-radius: var(--radio-borde);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-start; 
+}
+
+/* Lista de datos del productor */
+.datos-productor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.datos-productor li {
+  font-size: 1.1rem;
+  color: var(--color-gris);
+  padding-left: 0; /* Sin sangría */
+  line-height: 1.5;
+}
+
+/* Columna derecha - Imagen */
+.imagen-productor {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8dcc8; 
+  overflow: hidden;
+}
+
+.imagen-productor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.flecha-productores {
+  font-size: 3rem; 
+  color: var(--color-blanco); 
+  cursor: pointer;
+  padding: 15px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3); 
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flecha-productores:hover {
+  background: rgba(0, 0, 0, 0.5); 
+  color: var(--color-naranja-claro);
+  transform: scale(1.1); 
+}
+
+/* Indicadores de navegación */
+.indicadores-productores {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.indicador {
+  width: 80px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4); 
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicador:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.indicador.activo {
+  background: var(--color-negro); 
+  width: 100px; 
 }
 
 /* ===== MEDIA QUERIES RESPONSIVE ===== */
@@ -891,6 +1045,53 @@ nav ul li a:hover {
   
   .proyecto-card {
     min-height: 400px;
+  }
+}
+
+/* ===== RESPONSIVE PARA PRODUCTORES ===== */
+@media (max-width: 768px) {
+  .titulo-productores {
+    font-size: 1.8rem;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .slide-productores {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .info-productor {
+    padding: 25px 20px;
+  }
+  
+  .etiqueta-nombre {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    align-self: center;
+  }
+  
+  .imagen-productor {
+    min-height: 250px;
+  }
+  
+  .flecha-productores {
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .indicadores-productores {
+    gap: 10px;
+  }
+  
+  .indicador {
+    width: 50px;
+  }
+  
+  .indicador.activo {
+    width: 70px;
   }
 }
 
