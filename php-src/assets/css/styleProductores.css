@@ -1,0 +1,870 @@
+/* ===== SECCIÓN ¿ERES PRODUCTOR? ===== */
+.seccion-eres-productor {
+  background: var(--color-gris-claro);
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Título ¿ERES PRODUCTOR? */
+.titulo-eres-productor {
+  font-size: 2.5rem;
+  color: var(--color-blanco);
+  background: var(--color-marron); 
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+  box-shadow: var(--sombra-suave); 
+}
+
+.icono-botella-izq,
+.icono-botella-der {
+  font-size: 2.5rem;
+}
+
+/* Contenedor principal de dos columnas */
+.contenido-eres-productor {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  background: var(--color-naranja-claro);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  box-shadow: var(--sombra-media);
+  min-height: 450px;
+}
+
+/* Columna izquierda - Información */
+.info-beneficios {
+  flex: 1;
+  padding: 40px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: left;
+  background: var(--color-naranja-claro);
+}
+
+/* Botón "Conoce los Beneficios" */
+.btn-conoce-beneficios {
+  background: var(--color-blanco);
+  color: var(--color-negro);
+  border: 2px solid var(--color-negro);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  align-self: flex-start;
+}
+
+.btn-conoce-beneficios:hover {
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Textos incentivos */
+.textos-incentivo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.texto-principal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-negro);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.texto-secundario {
+  font-size: 1rem;
+  color: var(--color-gris);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Lista de beneficios */
+.lista-beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lista-beneficios h3 {
+  font-size: 1.3rem;
+  color: var(--color-negro);
+  margin: 0;
+  font-weight: 600;
+}
+
+.lista-beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.lista-beneficios ul li {
+  font-size: 1rem;
+  color: var(--color-gris);
+  position: relative;
+  padding-left: 15px;
+}
+
+/* Viñetas personalizadas */
+.lista-beneficios ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-negro);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Columna derecha - Imagen */
+.imagen-eres-productor {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #e8dcc8; 
+}
+
+.imagen-eres-productor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenedor de botones de acción */
+.botones-accion {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Botón "Postúlate Aquí" */
+.btn-postulate {
+  background: var(--color-secundario); 
+  color: var(--color-blanco);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  box-shadow: var(--sombra-suave);
+  min-width: 200px;
+}
+
+.btn-postulate:hover {
+  background: var(--color-primario); 
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Botón "Zona de Productores" */
+.btn-zona-productores {
+  background: var(--color-naranja-claro); 
+  color: var(--color-negro);
+  border: 2px solid var(--color-negro);
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fuente-principal);
+  min-width: 200px;
+}
+
+.btn-zona-productores:hover {
+  background: var(--color-blanco);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-suave);
+}
+
+/* ===== SECCIÓN NUESTRAS RUTAS ===== */
+.seccion-nuestras-rutas {
+  padding: 80px 5% 100px;
+  background: linear-gradient(135deg, #fdf4e8 0%, #f9e6d3 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.seccion-nuestras-rutas::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../assets/images/mapa-fondo-suave.png') center/cover no-repeat;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+.titulo-seccion-rutas {
+  font-size: 2.8rem;
+  color: var(--color-marron);
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.titulo-seccion-rutas::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-primario);
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+.contenedor-rutas {
+  display: grid;
+  grid-template-columns: 280px 1fr 1fr;
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Panel lateral */
+.panel-rutas {
+  background: var(--color-blanco);
+  border-radius: 18px;
+  box-shadow: var(--sombra-media);
+  overflow: hidden;
+}
+
+.header-panel {
+  background: var(--color-marron);
+  color: white;
+  padding: 18px 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-panel:hover {
+  background: #3a2315;
+}
+
+.icono-flecha {
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.icono-flecha.rotado {
+  transform: rotate(180deg);
+}
+
+.contenido-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background: #fdf4e8;
+}
+
+.contenido-panel.abierto {
+  max-height: 500px;
+  padding: 20px;
+}
+
+.dropdown-ruta {
+  margin-bottom: 15px;
+}
+
+.btn-dropdown {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-dropdown:hover {
+  background: #e55a1b;
+  transform: translateY(-1px);
+}
+
+.btn-dropdown.activo {
+  background: var(--color-secundario);
+}
+
+.icono-dropdown {
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.icono-dropdown.rotado {
+  transform: rotate(180deg);
+}
+
+.lista-items-ruta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: white;
+  border-radius: 10px;
+  margin-top: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.lista-items-ruta.abierto {
+  max-height: 300px;
+}
+
+.item-ruta {
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #eee;
+}
+
+.item-ruta:hover {
+  background: #f5712f;
+  color: white;
+  padding-left: 25px;
+}
+
+.item-ruta:last-child {
+  border-bottom: none;
+}
+
+.item-ruta.activo {
+  background: var(--color-marron);
+  color: white;
+  font-weight: 600;
+}
+
+.contador-rutas {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-marron);
+  padding: 12px;
+  background: #f9e6d3;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* Info ruta */
+.info-ruta-seleccionada {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: var(--sombra-media);
+  align-self: start;
+}
+
+.info-ruta-seleccionada h3 {
+  color: var(--color-primario);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.info-ruta-seleccionada p {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.info-ruta-seleccionada ul {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.info-ruta-seleccionada ul li {
+  padding: 6px 0;
+  color: #555;
+  position: relative;
+}
+
+.info-ruta-seleccionada ul li::before {
+  content: '✓';
+  color: var(--color-primario);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Mapa */
+.contenedor-mapa {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--sombra-media);
+  height: 480px;
+  position: relative;
+}
+
+#google-map {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+}
+
+/* ===== CARRUSEL PRODUCTORES ===== */
+.seccion-productores {
+  background: #f5712f;
+  padding: 100px 5% 130px;
+  text-align: center;
+}
+
+.titulo-productores {
+  background: white;
+  color: #000;
+  padding: 16px 80px;
+  border-radius: 50px;
+  font-size: 2.6rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 60px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.carrusel-productores-final {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 80px;
+}
+
+.carrusel-final {
+  overflow: hidden;
+  border-radius: 32px;
+  background: #fdf4e8;
+  box-shadow: 0 22px 55px rgba(0,0,0,0.32);
+}
+
+.track-final {
+  display: flex;
+  transition: transform 0.7s ease;
+}
+
+.slide-final {
+  min-width: 100%;
+  padding: 70px 50px 90px;
+}
+
+/* CONTENIDO: DOS COLUMNAS */
+.contenido-final {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Texto a la izquierda */
+.datos-final {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+  font-size: 1.35rem;
+  line-height: 2.3;
+  color: #4b2e1a;
+}
+
+.datos-final p {
+  color: #f5712f;
+  margin: 10px 0;
+}
+
+.datos-final strong {
+  color: #4b2e1a;
+  font-weight: 700;
+}
+
+/* Imagen a la derecha */
+.imagen-final {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.imagen-final img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.28);
+  object-fit: cover;
+}
+
+/* FLECHAS */
+.flecha-final {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  background: #4b2e1a;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(75,46,26,0.6);
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+
+.flecha-final::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 16px; height: 16px;
+  background: white;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 3px;
+}
+
+.flecha-izq::before { transform: translate(-50%, -50%) rotate(135deg); }
+.flecha-izq { left: 5px; }
+.flecha-der { right: 5px; }
+
+.flecha-final:hover {
+  background: white;
+  border: 2px solid #4b2e1a;
+}
+
+.flecha-final:hover::before {
+  background: #4b2e1a;
+}
+
+/* PUNTOS */
+.puntos-carrusel {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.punto {
+  width: 14px;
+  height: 14px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.punto.activo {
+  background: #4b2e1a;
+  transform: scale(1.4);
+}
+
+/* ===== SECCIÓN NUESTRO COMPROMISO ===== */
+.seccion-compromiso {
+  background: var(--color-marron);
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.titulo-compromiso {
+  font-size: 2.5rem;
+  color: var(--color-negro);
+  background: var(--color-naranja-claro);
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: inline-block;
+  font-weight: 600;
+  box-shadow: var(--sombra-suave);
+}
+
+.compromisos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--color-naranja-claro); 
+  padding: 40px;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-media);
+}
+
+.compromiso-card {
+  background: var(--color-blanco);
+  padding: 25px;
+  border-radius: var(--radio-borde);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.3s ease;
+}
+
+.compromiso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-media);
+}
+
+.imagen-compromiso {
+  margin-bottom: 20px;
+}
+
+.imagen-compromiso img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.compromiso-card h3 {
+  font-size: 1.5rem;
+  color: var(--color-marron);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.compromiso-card p {
+  font-size: 1rem;
+  color: var(--color-gris);
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE PARA ¿ERES PRODUCTOR? ===== */
+@media (min-width: 768px) {
+  .slide-productor {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-eres-productor {
+    font-size: 1.8rem;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contenido-eres-productor {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .info-beneficios {
+    padding: 30px 25px;
+  }
+  
+  .btn-conoce-beneficios {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    align-self: center; 
+  }
+  
+  .texto-principal {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .texto-secundario {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  .lista-beneficios {
+    text-align: left;
+  }
+  
+  .imagen-eres-productor {
+    min-height: 300px;
+  }
+  
+  .botones-accion {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .btn-postulate,
+  .btn-zona-productores {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo-eres-productor {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+  }
+  
+  .icono-botella-izq,
+  .icono-botella-der {
+    font-size: 2rem;
+  }
+  
+  .info-beneficios {
+    padding: 25px 20px;
+  }
+  
+  .btn-conoce-beneficios {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
+  .texto-principal {
+    font-size: 0.95rem;
+  }
+  
+  .texto-secundario {
+    font-size: 0.9rem;
+  }
+  
+  .lista-beneficios h3 {
+    font-size: 1.1rem;
+  }
+  
+  .lista-beneficios ul li {
+    font-size: 0.95rem;
+  }
+  
+  .imagen-eres-productor {
+    min-height: 250px;
+  }
+  
+  .btn-postulate,
+  .btn-zona-productores {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carrusel-container-productores {
+    padding: 0 10px;
+  }
+  
+  .datos-productor li {
+    font-size: 1rem;
+  }
+  
+  .flecha-productores {
+    display: none; 
+  }
+
+  @media (max-width: 992px) {
+  .contenido-final {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .datos-final {
+    text-align: center;
+  }
+  
+  .carrusel-productores-final {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo-productores {
+    font-size: 2rem;
+    padding: 12px 40px;
+  }
+  
+  .slide-final {
+    padding: 50px 30px;
+  }
+  
+  .flecha-final {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .flecha-izq { left: 5px; }
+  .flecha-der { right: 5px; }
+}
+}
+
+/* ===== RESPONSIVE RUTAS ===== */
+@media (max-width: 992px) {
+  .contenedor-rutas {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+  }
+  
+  .panel-rutas, .info-ruta-seleccionada, .contenedor-mapa {
+    grid-column: 1;
+  }
+  
+  .contenedor-mapa {
+    height: 400px;
+  }
+  
+  .contenido-panel {
+    max-height: 600px !important;
+  }
+  
+  .contenido-panel.abierto {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo-seccion-rutas {
+    font-size: 2.2rem;
+  }
+  
+  .info-ruta-seleccionada {
+    padding: 20px;
+  }
+  
+  .contenedor-mapa {
+    height: 350px;
+  }
+  
+  .header-panel, .btn-dropdown {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+  .compromisos-grid {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .titulo-compromiso {
+    font-size: 2rem;
+    padding: 12px 30px;
+  }
+  }
+}
