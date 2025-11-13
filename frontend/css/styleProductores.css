@@ -9,7 +9,7 @@
 .titulo-eres-productor {
   font-size: 2.5rem;
   color: var(--color-blanco);
-  background: var(--color-marron); 
+  background: var(--color-marron);
   padding: 15px 40px;
   margin: 0 auto 40px;
   max-width: 90%;
@@ -19,7 +19,7 @@
   justify-content: center;
   gap: 20px;
   font-weight: 600;
-  box-shadow: var(--sombra-suave); 
+  box-shadow: var(--sombra-suave);
 }
 
 .icono-botella-izq,
@@ -141,16 +141,22 @@
 .imagen-eres-productor {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #e8dcc8; 
+  background: #e8dcc8;
+  gap: 20px;
+  padding: 20px;
 }
 
 .imagen-eres-productor img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 350px;
   object-fit: cover;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-media);
 }
 
 /* Contenedor de botones de acción */
@@ -159,11 +165,12 @@
   justify-content: center;
   gap: 30px;
   margin-top: 20px;
+  width: 100%;
 }
 
 /* Botón "Postúlate Aquí" */
 .btn-postulate {
-  background: var(--color-secundario); 
+  background: var(--color-secundario);
   color: var(--color-blanco);
   border: none;
   padding: 15px 40px;
@@ -178,14 +185,14 @@
 }
 
 .btn-postulate:hover {
-  background: var(--color-primario); 
+  background: var(--color-primario);
   transform: translateY(-3px);
   box-shadow: var(--sombra-media);
 }
 
 /* Botón "Zona de Productores" */
 .btn-zona-productores {
-  background: var(--color-naranja-claro); 
+  background: var(--color-naranja-claro);
   color: var(--color-negro);
   border: 2px solid var(--color-negro);
   padding: 15px 40px;
@@ -634,12 +641,18 @@
 
 .imagen-compromiso {
   margin-bottom: 20px;
+  width: 150px;  
+  height: 150px; 
+  overflow: hidden; 
+  border-radius: 8px; 
+  background-color: #f0f0f0; 
 }
 
 .imagen-compromiso img {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
+  width: 100%;  
+  height: 100%; 
+  object-fit: cover;
+  object-position: center; 
 }
 
 .compromiso-card h3 {
@@ -656,75 +669,35 @@
 }
 
 /* ===== RESPONSIVE PARA ¿ERES PRODUCTOR? ===== */
-@media (min-width: 768px) {
-  .slide-productor {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .titulo-eres-productor {
-    font-size: 1.8rem;
-    padding: 12px 20px;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
+@media (max-width: 992px) {
   .contenido-eres-productor {
     flex-direction: column;
     min-height: auto;
   }
-  
-  .info-beneficios {
+
+  .info-beneficios,
+  .imagen-eres-productor {
     padding: 30px 25px;
   }
-  
-  .btn-conoce-beneficios {
-    font-size: 1.1rem;
-    padding: 10px 25px;
-    align-self: center; 
-  }
-  
-  .texto-principal {
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  .texto-secundario {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-  
-  .lista-beneficios {
-    text-align: left;
-  }
-  
-  .imagen-eres-productor {
-    min-height: 300px;
-  }
-  
+
   .botones-accion {
     flex-direction: column;
-    align-items: center;
     gap: 15px;
   }
-  
+
   .btn-postulate,
   .btn-zona-productores {
-    width: 100%;
-    max-width: 300px;
-    font-size: 1.1rem;
-    padding: 12px 30px;
+    min-width: 100%;
   }
 }
 
 @media (max-width: 576px) {
   .titulo-eres-productor {
-    font-size: 1.5rem;
-    padding: 10px 15px;
+    font-size: 2rem;
+    padding: 12px 20px;
+    gap: 10px;
   }
-  
+
   .icono-botella-izq,
   .icono-botella-der {
     font-size: 2rem;
