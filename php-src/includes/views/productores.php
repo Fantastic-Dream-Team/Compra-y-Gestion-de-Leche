@@ -1,0 +1,329 @@
+<?php
+
+$page_data = [
+    'page_title' => 'Lácteos Don Joaquín - Productores',
+    'current_page' => 'productores',
+    'assets_path' => ASSETS_PATH,  
+    'base_url' => dirname($_SERVER['SCRIPT_NAME']),
+    'current_year' => date('Y')
+];
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php echo $page_data['page_title']; ?></title>
+  <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/reseteo.css">
+  <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styles.css">
+  <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styleProductores.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <!-- Barra superior -->
+    <div class="top-bar">
+      <div class="ubicacion"></div>
+      <div class="redes"></div>
+    </div>
+
+    <!-- Header con logo y menú -->
+    <div id="barra-negra"></div>
+
+    <div id="barra-principal">
+      <div class="informacion-contacto">
+        <ul>
+          <li>Av. Principal 123</li>
+          <li>Sucursal Centro</li>
+          <li>Sucursal Norte</li>
+          <li>(123) 456-7890</li>
+        </ul>
+      </div>
+      <div class="social-correo">
+        <ul>
+          <li>Facebook</li>
+          <li>info@lacteosdonjoaquin.com</li>
+          <li>Instagram</li>
+          <li>X Twitter</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="logo-container">
+      <img id="logo" src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="100" height="100">
+    </div>
+
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="<?php echo $page_data['base_url']; ?>/">Home</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/productores">Productores</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/pedidos">Pedidos</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/blog">Blog</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sección de Nuestros Productores -->
+  <section class="seccion-productores" aria-labelledby="titulo-productores">
+    <h2 id="titulo-productores" class="titulo-productores">Nuestros Productores</h2>
+
+    <div class="carrusel-productores-final">
+      <!-- Flechas -->
+      <button class="flecha-final flecha-izq" aria-label="Anterior"></button>
+      <button class="flecha-final flecha-der" aria-label="Siguiente"></button>
+
+      <!-- Carrusel -->
+      <div class="carrusel-final">
+        <div class="track-final">
+
+          <!-- PRODUCTOR 1 -->
+          <div class="slide-final activo">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 100% certificada</p>
+                <p><strong>Ubicación:</strong> Veraguas, Santiago</p>
+                <p><strong>Especialidad:</strong> Queso fresco artesanal</p>
+                <p><strong>Producción:</strong> 900 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/productor1.jpg" alt="Granja Don Pedro">
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTOR 2 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 98% vacunadas</p>
+                <p><strong>Ubicación:</strong> Chiriquí, Boquete</p>
+                <p><strong>Especialidad:</strong> Leche Jersey A2</p>
+                <p><strong>Producción:</strong> 1,200 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/productor2.jpg" alt="Finca La Esperanza">
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTOR 3 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/productor3.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTOR 4 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/productor4.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCTOR 5 -->
+          <div class="slide-final">
+            <div class="contenido-final">
+              <div class="datos-final">
+                <p><strong>Salud Animal:</strong> 95% libre de mastitis</p>
+                <p><strong>Ubicación:</strong> Los Santos, Las Tablas</p>
+                <p><strong>Especialidad:</strong> Yogur natural</p>
+                <p><strong>Producción:</strong> 1,500 L/día</p>
+              </div>
+              <div class="imagen-final">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/productor5.jpg" alt="Lechería El Roble">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PUNTOS DE NAVEGACIÓN -->
+      <div class="puntos-carrusel">
+        <span class="punto activo" data-slide="0"></span>
+        <span class="punto" data-slide="1"></span>
+        <span class="punto" data-slide="2"></span>
+        <span class="punto" data-slide="3"></span>
+        <span class="punto" data-slide="4"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección ¿Eres Productor? -->
+  <section class="seccion-eres-productor">
+    <h2 class="titulo-eres-productor">
+      ¿Eres Productor?
+    </h2>
+
+    <div class="contenido-eres-productor">
+      <!-- Columna Izquierda -->
+      <div class="info-beneficios">
+        <button class="btn-conoce-beneficios">Conoce los Beneficios</button>
+
+        <div class="textos-incentivo">
+          <p class="texto-principal">Únete a nuestra red de productores y recibe pago justo, apoyo técnico y
+            distribución garantizada.</p>
+          <p class="texto-secundario">Forma parte de una empresa comprometida con la calidad y el desarrollo sostenible
+            de Panamá.</p>
+        </div>
+
+        <div class="lista-beneficios">
+          <h3>Lista de Beneficios</h3>
+          <ul>
+            <li>Pago puntual y transparente</li>
+            <li>Asesoría veterinaria gratuita</li>
+            <li>Capacitación continua en buenas prácticas</li>
+            <li>Acceso a tecnología de ordeño moderna</li>
+            <li>Seguro para tu ganado</li>
+          </ul>
+        </div>
+
+        <div class="botones-accion">
+          <button class="btn-postulate">Postúlate Aquí</button>
+        </div>
+      </div>
+
+      <!-- Columna Derecha -->
+      <div class="imagen-eres-productor">
+        <img src="<?php echo $page_data['assets_path']; ?>/images/vaca.jpg" alt="Productores en la finca">
+        <div class="botones-accion">
+          <button class="btn-zona-productores">Zona de Productores</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Nuestras Rutas -->
+  <section class="seccion-nuestras-rutas" aria-labelledby="titulo-rutas">
+    <h2 id="titulo-rutas" class="titulo-seccion-rutas">Nuestras Rutas</h2>
+
+    <div class="contenedor-rutas">
+
+      <!-- Panel lateral -->
+      <aside class="panel-rutas">
+        <button class="header-panel">
+          <span class="texto-header">Nuestras Rutas</span>
+          <span class="icono-flecha">▼</span>
+        </button>
+
+        <div class="contenido-panel">
+          <div class="dropdown-ruta">
+            <button class="btn-dropdown activo">
+              <span>Ruta Norte - Centro</span>
+              <span class="icono-dropdown">▼</span>
+            </button>
+            <div class="lista-items-ruta">
+              <div class="item-ruta" data-ruta="ruta1">Ruta Norte - Centro</div>
+              <div class="item-ruta" data-ruta="ruta2">Ruta Este - Sur</div>
+              <div class="item-ruta" data-ruta="ruta3">Ruta Oeste - Rural</div>
+              <div class="item-ruta" data-ruta="ruta4">Ruta Express City</div>
+            </div>
+          </div>
+          <div class="contador-rutas">
+            <strong>4 rutas activas</strong> recorriendo tu ciudad
+          </div>
+        </div>
+      </aside>
+
+      <!-- Información de ruta -->
+      <div class="info-ruta-seleccionada">
+        <h3>Ruta Norte - Centro</h3>
+        <p>Cubre las zonas norte de la ciudad, pasando por los sectores A, B y C. Entregas diarias de 6:00 a.m. a 12:00
+          p.m.</p>
+        <ul>
+          <li>Frecuencia: Diaria</li>
+          <li>Vehículos: 3 camiones refrigerados</li>
+          <li>Productores: 12 fincas asociadas</li>
+        </ul>
+      </div>
+
+      <!-- Mapa con Google Maps -->
+      <div class="contenedor-mapa">
+        <iframe id="google-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.463!2d-79.534!3d8.948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTYnNTIuOCJOIDc5wrAzMScwMC4wIlc!5e0!3m2!1ses!2spa!4v1733950000000!5m2!1ses!2spa"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Nuestro Compromiso -->
+  <section class="seccion-compromiso" aria-labelledby="titulo-compromiso">
+    <h2 id="titulo-compromiso" class="titulo-compromiso">Nuestro Compromiso</h2>
+
+    <div class="compromisos-grid">
+      <!-- Compromiso 1 -->
+      <div class="compromiso-card">
+        <div class="imagen-compromiso">
+          <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Botella de leche fresca con desayuno saludable">
+        </div>
+        <h3>Calidad Garantizada</h3>
+        <p>Implementamos un sistema de gestión integral que asegura la trazabilidad desde la finca hasta el consumidor,
+          priorizando la frescura y pureza de nuestra leche.</p>
+      </div>
+
+      <!-- Compromiso 2 -->
+      <div class="compromiso-card">
+        <div class="imagen-compromiso">
+          <img src="<?php echo $page_data['assets_path']; ?>/images/productor5.jpg" alt="Vaca en pastos ecológicos">
+        </div>
+        <h3>Sostenibilidad Ambiental</h3>
+        <p>Nuestro proceso de compra apoya prácticas ecológicas en las fincas, promoviendo el bienestar animal y
+          reduciendo el impacto ambiental en la producción lechera.</p>
+      </div>
+
+      <!-- Compromiso 3 -->
+      <div class="compromiso-card">
+        <div class="imagen-compromiso">
+          <img src="<?php echo $page_data['assets_path']; ?>/images/tecnologiaL.jpg" alt="Cartón de leche con sello de calidad">
+        </div>
+        <h3>Apoyo a la Comunidad</h3>
+        <p>Facilitamos un sistema de compra justo y eficiente que beneficia directamente a nuestros productores locales,
+          fomentando el crecimiento económico sostenible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="logo">
+      <img src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
+    </div>
+
+    <div class="social">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
+    </div>
+
+    <div class="derechos">
+      <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="<?php echo $page_data['assets_path']; ?>/javascript/rutas.js"></script>
+  <script src="<?php echo $page_data['assets_path']; ?>/javascript/NProductores.js"></script>
+
+</body>
+</html>
