@@ -275,6 +275,15 @@ nav ul li a.active {
   background: #ddd;
   height: 160px;
   width: 100%;
+  overflow: hidden;      /* Oculta lo que se salga */
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Hace que todas las imágenes tengan el mismo tamaño */
+  object-position: center; /* Centra el recorte */
+  display: block;
 }
 
 .card h3 {
