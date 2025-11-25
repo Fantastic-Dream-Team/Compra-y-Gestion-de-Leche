@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
+  <link rel="stylesheet" href="css/Productos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <title>Lácteos Don Joaquín - Productos</title>
+</head>
+<body>
+  <header>
+    <div class="top-bar"></div>
+    
+    <div id="barra-principal">
+      <ul class="informacion-contacto">
+        <li>Av. Principal 123</li>
+        <li>Sucursal Centro</li>
+        <li>Sucursal Norte</li>
+        <li>(123) 456-7890</li>
+      </ul>
+      <ul class="social-correo">
+        <li>Facebook</li>
+        <li>info@lacteosdonjoaquin.com</li>
+        <li>Instagram</li>
+        <li>X (Twitter)</li>
+      </ul>
+    </div>
+
+    <div class="logo-container">
+      <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín">
+    </div>
+
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="pedidos.html">Pedidos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
+      </ul>
+    </nav>
+
+    <section class="bienvenida" aria-labelledby="titulo-bienvenida">
+      <h1 id="titulo-bienvenida">Nuestros productos, Nuestra pasión</h1>
+    </section>
+
+   <!-- carrusel en caso de quererlo, porque no es obligatorio
+    Carrusel sticky de categorías (solo productos, sin blog/recetas)
+    <div class="sticky-carousel">
+      <div class="carousel-container">
+        <button class="arrow left" aria-label="Izquierda">&lt;</button>
+
+        <div class="categories" id="categories">
+          <button class="category-btn active" data-filter="all">Todas</button>
+          <button class="category-btn" data-filter="quesos">Quesos</button>
+          <button class="category-btn" data-filter="yogurts">Yogures</button>
+          <button class="category-btn" data-filter="postres">Postres</button>
+        </div>
+
+        <button class="arrow right" aria-label="Derecha">&gt;</button>
+
+        <input type="search" id="search-input" placeholder="Buscar producto..." aria-label="Buscar producto">
+      </div>
+    </div>
+    -->
+  </header>
+<main class="productos-main">
+    <!-- CATEGORÍA QUESOS -->
+    <section class="categoria">
+      <h2 class="titulo-categoria">Quesos</h2>
+      <div class="carrusel">
+        <button class="flecha izquierda">&#9664;</button>
+        <div class="contenedor-productos">
+          <div class="producto">
+            <img src="assets/images/Productos/queso-brie.jpg" alt="Brie Artesanal">
+            <div class="caja-titulo">Brie Artesanal</div>
+            <p>Queso blando de corteza florida, cremoso y con delicado sabor a nuez.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/queso-camembert.jpg" alt="Camembert">
+            <div class="caja-titulo">Camembert Tradicional</div>
+            <p>Textura cremosa y aroma intenso. Perfecto para derretir o disfrutar solo.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/queso-fresco.jpg" alt="Queso Fresco">
+            <div class="caja-titulo">Queso Fresco de Vaca</div>
+            <p>Suave, ligeramente salado. Ideal para ensaladas, tacos y postres.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/queso-gouda.jpg" alt="Gouda Ahumado">
+            <div class="caja-titulo">Gouda Ahumado</div>
+            <p>Curado y ahumado naturalmente con madera de encino. Sabor profundo.</p>
+          </div>
+        </div>
+        <button class="flecha derecha">&#9654;</button>
+      </div>
+    </section>
+
+    <!-- CATEGORÍA YOGURTS -->
+    <section class="categoria">
+      <h2 class="titulo-categoria">Yogurts</h2>
+      <div class="carrusel">
+        <button class="flecha izquierda">&#9664;</button>
+        <div class="contenedor-productos">
+          <div class="producto">
+            <img src="assets/images/Productos/yogur-fresa.jpg" alt="Yogur con Fresa">
+            <div class="caja-titulo">Yogur con Fresa</div>
+            <p>Yogur cremoso batido con trozos de fresa fresca natural.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/yogur-frutosrojos.jpg" alt="Yogur Griego Frutos Rojos">
+            <div class="caja-titulo">Yogur Griego Frutos Rojos</div>
+            <p>Extra espeso con mermelada casera de frutos del bosque.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/yogur-natural.jpg" alt="Yogur Natural">
+            <div class="caja-titulo">Yogur Natural Entero</div>
+            <p>100% natural, sin azúcar añadida. Ideal para desayunos saludables.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/yogur-vainilla.jpg" alt="Yogur Vainilla">
+            <div class="caja-titulo">Yogur Cremoso Vainilla</div>
+            <p>Sabor suave a vainilla bourbon. Perfecto como postre ligero.</p>
+          </div>
+        </div>
+        <button class="flecha derecha">&#9654;</button>
+      </div>
+    </section>
+
+    <!-- CATEGORÍA MOUSSE / POSTRES -->
+    <section class="categoria">
+      <h2 class="titulo-categoria">Mousse</h2>
+      <div class="carrusel">
+        <button class="flecha izquierda">&#9664;</button>
+        <div class="contenedor-productos">
+          <div class="producto">
+            <img src="assets/images/Productos/mousse-fresa.jpg" alt="Mousse de Fresa">
+            <div class="caja-titulo">Mousse de Fresa</div>
+            <p>Delicado mousse de yogur natural con fresas frescas y miel.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/mousse-vainilla.jpg" alt="Mousse de Vainilla">
+            <div class="caja-titulo">Mousse de Vainilla</div>
+            <p>Crema suave de vainilla con caramelo artesanal por encima.</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/mousse-mora.jpg" alt="Mousse de Mora Azul">
+            <div class="caja-titulo">Mousse de Mora Azul</div>
+            <p>Intenso sabor a mora silvestre. ¡Nuestro best-seller!</p>
+          </div>
+          <div class="producto">
+            <img src="assets/images/Productos/mousse-chocolate.jpg" alt="Mousse de Chocolate">
+            <div class="caja-titulo">Mousse de Chocolate</div>
+            <p>Chocolate amargo 70% con crema de leche fresca. Irresistible.</p>
+          </div>
+        </div>
+        <button class="flecha derecha">&#9654;</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+<footer class="footer">
+    <div class="logo">
+      <img src="assets/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
+    </div>
+    
+    <div class="social">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
+    </div>
+    
+    <div class="derechos">
+      <p>&copy; 2025 Lácteos Don Joaquín. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/Productos.js"></script>
+</body>
+</html>
