@@ -26,50 +26,42 @@ body {
   color: var(--color-negro);
 }
 
-/* ===== HEADER PRINCIPAL ===== */
+
+
+/* ========================================
+   HEADER Tienes que copiar esto bryan   ======================================== */
 header {
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* capa oscura */
-    url('../assets/images/consumo_de_lacteos.jpg') no-repeat center center/cover;
-  position: relative;
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../assets/images/consumo_de_lacteos.jpg') center/cover no-repeat;
   min-height: 800px;
+  position: relative;
+  color: var(--color-blanco);
 }
 
-
-/* Barra superior */
 .top-bar {
   background: var(--color-negro);
   height: 20px;
 }
 
-/* Barra principal de contacto */
 #barra-principal {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
-  height: 50px;
   background-color: rgba(195, 84, 28, 0.635);
-  width: 100%;
   padding: 0 5%;
-  font-family: var(--fuente-principal);
+  height: 50px;
+  color: var(--color-blanco);
   font-weight: 500;
-  color: var(--color-negro);
+  font-size: 0.9rem;
 }
 
-.informacion-contacto ul,
-.social-correo ul {
+#barra-principal ul {
   display: flex;
   list-style: none;
   gap: 20px;
 }
 
-.informacion-contacto ul li,
-.social-correo ul li {
-  font-size: 0.9rem;
-}
-
-/* Logo */
 .logo-container {
   position: absolute;
   top: 10%;
@@ -87,20 +79,20 @@ header {
 }
 
 #logo {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   object-fit: contain;
 }
 
-/* Navegación principal */
 nav ul {
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(130, 68, 37, 0.6);
-  width: 60%;
+  background: rgba(130, 68, 37, 0.8);
+  width: 70%;
+  max-width: 900px;
   height: 60px;
   border-radius: 18px;
   display: flex;
@@ -108,31 +100,32 @@ nav ul {
   justify-content: center;
   list-style: none;
   gap: 30px;
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  z-index: 9;
 }
 
 nav ul li a {
   color: var(--color-blanco);
   text-decoration: none;
   font-weight: 600;
-  transition: opacity 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-nav ul li a:hover {
-  opacity: 0.8;
+nav ul li a:hover,
+nav ul li a.active {
+  background: var(--color-primario);
 }
 
-/* Sección de bienvenida */
 .bienvenida {
   min-height: 800px;
-  color: var(--color-blanco);
-  text-align: center;
-  padding: 120px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .bienvenida h1 {
@@ -142,11 +135,15 @@ nav ul li a:hover {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.bienvenida p {
-  font-size: 1.5rem;
-  max-width: 800px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
+
+/* ========================================
+hasta aqui header bryan   ======================================== */
+
+
+
+
+
+
 
 /* ===== SECCIÓN BIENVENIDA ===== */
 .seccion-bienvenida {
@@ -510,6 +507,15 @@ nav ul li a:hover {
   font-size: 2.2rem;
   font-weight: bold;
   display: block;
+}
+
+/* Corregir color del título del blog: la regla
+   original (.franja-naranja .titulo) establece
+   color negro. Para el título específico del
+   blog usamos el id #titulo-blog con mayor
+   especificidad para que aparezca en blanco. */
+.franja-naranja #titulo-blog {
+  color: var(--color-blanco);
 }
 
 .carrusel-blog {
@@ -904,4 +910,7 @@ nav ul li a:hover {
 
 .titulo titulo-blog {
   color :white
+}
+#titulo-calidad.titulo-carrusel {
+  color :rgb(56, 32, 14);
 }
