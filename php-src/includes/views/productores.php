@@ -1,19 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-echo "BASE_PATH definido: " . (defined('BASE_PATH') ? 'SÍ' : 'NO') . "<br>";
-echo "BASE_PATH = " . (defined('BASE_PATH') ? BASE_PATH : 'NO DEFINIDO') . "<br>";
-
-if (!defined('BASE_PATH')) {
-  die("ERROR: BASE_PATH no está definido");
-}
-
 require_once BASE_PATH . '/includes/conexion.php';
 
 // ====== CARGA DE PRODUCTORES DESDE LA BASE DE DATOS ======
@@ -56,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registrar_entrega'])) 
 
   if ($stmt->execute()) {
     echo "<script>alert('Entrega registrada correctamente');</script>";
+
     // Recargar página para actualizar notificaciones y carrusel
     echo "<script>window.location.reload();</script>";
   } else {
@@ -90,18 +77,6 @@ $page_data = [
   <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styleProductores.css">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .alerta-pendiente {
-      background: #ffebee;
-      color: #c62828;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 20px auto;
-      max-width: 800px;
-      text-align: center;
-      font-weight: 500;
-    }
-  </style>
 </head>
 
 <body>
@@ -144,12 +119,12 @@ $page_data = [
 
   <main>
     <!-- ALERTAS DE PRODUCTORES SIN ENTREGA -->
-    <?php if (!empty($notificaciones)): ?>
-      <div class="alerta-pendiente">
-        <strong>Notificaciones:</strong><br>
+<?php if (!empty($notificaciones)): ?>
+    <section class="alerta-pendiente" role="alert" aria-live="assertive">
+        <strong>¡Atención! Productores sin entrega reciente</strong>
         <?php echo implode("<br>", $notificaciones); ?>
-      </div>
-    <?php endif; ?>
+    </section>
+<?php endif; ?>
 
     <!-- CARRUSEL DE PRODUCTORES -->
     <section class="seccion-productores">
@@ -377,31 +352,32 @@ $page_data = [
   <!-- FOOTER -->
   <footer class="footer">
     <div class="logo">
-      <img src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo">
+      <img src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
     </div>
-    <div class="social">…</div>
+    
+    <div class="social">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
+    </div>
+    
     <div class="derechos">
-      <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín</p>
+      <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script src="<?php echo $page_data['assets_path']; ?>/js/NProductores.js"></script>
-  <script src="<?php echo $page_data['assets_path']; ?>/js/rutas.js"></script>
-  <script>
-    // Notificaciones automáticas
-    <?php if (!empty($notificaciones)): ?>
-      setTimeout(() => {
-        alert("NOTIFICACIONES IMPORTANTES:\n\n" + "<?php echo implode("\n", $notificaciones); ?>");
-      }, 1500);
-    <?php endif; ?>
-
-    const modal = document.getElementById("modalEntrega");
-    document.querySelector(".btn-registrar-entrega").onclick = () => modal.style.display = "block";
-    document.querySelector(".cerrar").onclick = () => modal.style.display = "none";
-    window.onclick = (e) => {
-      if (e.target == modal) modal.style.display = "none";
-    };
-  </script>
+<script src="<?php echo $page_data['assets_path']; ?>/js/NProductores.js"></script>
+<script defer src="<?php echo $page_data['assets_path']; ?>/js/entregaModal.js"></script>  <!-- defer asegura que cargue después del HTML -->
+<script src="<?php echo $page_data['assets_path']; ?>/js/rutas.js"></script>
+<script>
+  // Notificaciones 
+  <?php if (!empty($notificaciones)): ?>
+    setTimeout(() => {
+      alert("NOTIFICACIONES IMPORTANTES:\n\n" + "<?php echo implode("\n", $notificaciones); ?>");
+    }, 1500);
+  <?php endif; ?>
+</script>
 
 </body>
 

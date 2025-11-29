@@ -288,12 +288,12 @@
 }
 
 .contenido-panel.completo-fondo {
-    background: var(--color-naranja-claro); /* ¡Fondo continuo! */
+    background: var(--color-naranja-claro);
     padding: 25px 20px 30px;
 }
 
 .contenido-panel.abierto {
-    max-height: 600px; /* más que suficiente */
+    max-height: 600px; 
 }
 
 .contador-rutas {
@@ -305,7 +305,7 @@
     text-align: center;
 }
 
-/* Dropdown bonito */
+/* Dropdown */
 .btn-dropdown {
     background: var(--color-primario);
     color: white;
@@ -804,53 +804,27 @@
     box-shadow: 0 10px 25px rgba(245, 113, 47, 0.4);
 }
 
-/* Notificaciones mejoradas - estilo elegante */
+/* ===== ALERTA DE PRODUCTORES PENDIENTES ===== */
 .alerta-pendiente {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
-    color: #8b0000;
-    padding: 25px 40px;
-    border-radius: 16px;
+    background: #ffebee;
+    color: #c62828;
+    padding: 18px 24px;
+    border-radius: 12px;
     margin: 30px auto;
     max-width: 900px;
-    text-align: left;
-    font-weight: 500;
-    box-shadow: 0 8px 24px rgba(198, 40, 40, 0.15);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--sombra-suave);
     border-left: 6px solid #c62828;
-    position: relative;
-    overflow: hidden;
-}
-
-.alerta-pendiente::before {
-    content: '⚠';
-    position: absolute;
-    top: 50%;
-    left: -15px;
-    transform: translateY(-50%);
-    font-size: 60px;
-    color: rgba(198, 40, 40, 0.1);
+    line-height: 1.5;
 }
 
 .alerta-pendiente strong {
     display: block;
     font-size: 1.3rem;
-    margin-bottom: 12px;
-    color: #c62828;
-    font-weight: 700;
-}
-
-.alerta-pendiente br + * {
-    display: block;
-    margin-top: 8px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.alerta-pendiente br + *::before {
-    content: '•';
-    position: absolute;
-    left: 10px;
-    color: #c62828;
-    font-weight: bold;
+    margin-bottom: 8px;
+    color: #b71c1c;
 }
 
 /* Sección Productores */
