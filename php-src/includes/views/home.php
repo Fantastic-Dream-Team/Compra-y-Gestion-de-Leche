@@ -56,14 +56,14 @@ $page_data = [
     </div>
 
     <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="<?php echo $page_data['base_url']; ?>/">Home</a></li>
-        <li><a href="<?php echo $page_data['base_url']; ?>/productores-y-pedidos">Productores y Pedidos</a></li>
-        <li><a href="<?php echo $page_data['base_url']; ?>/productores">Productores</a></li>
-        <li><a href="<?php echo $page_data['base_url']; ?>/blog">Blog y Recetas</a></li>
-        <li><a href="<?php echo $page_data['base_url']; ?>/acerca-de-nosotros">Acerca de Nosotros</a></li>
-      </ul>
-    </nav>
+  <ul>
+    <li><a href="<?php echo $page_data['base_url']; ?>/" class="<?php echo $page_data['current_page'] === 'home' ? 'active' : ''; ?>">Home</a></li>
+    <li><a href="<?php echo $page_data['base_url']; ?>/productos-y-pedidos" class="<?php echo $page_data['current_page'] === 'productos-y-pedidos' ? 'active' : ''; ?>">Productos y Pedidos</a></li>
+    <li><a href="<?php echo $page_data['base_url']; ?>/productores" class="<?php echo $page_data['current_page'] === 'productores' ? 'active' : ''; ?>">Productores</a></li>
+    <li><a href="<?php echo $page_data['base_url']; ?>/blog" class="<?php echo $page_data['current_page'] === 'blog' ? 'active' : ''; ?>">Blog y Recetas</a></li>
+    <li><a href="<?php echo $page_data['base_url']; ?>/acerca-de-nosotros" class="<?php echo $page_data['current_page'] === 'acerca-de-nosotros' ? 'active' : ''; ?>">Acerca de Nosotros</a></li>
+  </ul>
+</nav>
 
     <!-- Hero / Frase de bienvenida -->
     <section class="bienvenida" aria-labelledby="titulo-bienvenida">
@@ -309,6 +309,5 @@ $page_data = [
       <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
   </footer>
-  <script src="<?php echo $page_data['assets_path']; ?>/js/main.js"></script>
 </body>
 </html>
