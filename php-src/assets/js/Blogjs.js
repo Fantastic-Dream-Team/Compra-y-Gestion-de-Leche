@@ -1,172 +1,115 @@
-/**
- * Blog.js - Funcionalidad del blog: filtros, búsqueda, paginación y carrusel
- * Optimizado para rendimiento y claridad
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  // === ELEMENTOS DEL DOM ===
+  // ================= SELECTORES =================
   const categoriesContainer = document.getElementById('categories');
-  const categoryBtns = document.querySelectorAll('.category-btn');
-  const cards = document.querySelectorAll('.card');
-  const searchInput = document.getElementById('search-input');
-  const prevBtn = document.querySelector('.arrow.left');
-  const nextBtn = document.querySelector('.arrow.right');
-  const prevPageBtn = document.getElementById('prev-page');
-  const nextPageBtn = document.getElementById('next-page');
-  const pageNumbersContainer = document.getElementById('page-numbers');
+  const categoryBtns       = document.querySelectorAll('.category-btn');
+  const cards              = document.querySelectorAll('.card');
+  const searchInput        = document.getElementById('search-input');
+  const prevArrow          = document.querySelector('.arrow.left');
+  const nextArrow          = document.querySelector('.arrow.right');
+  const prevPage           = document.getElementById('prev-page');
+  const nextPage           = document.getElementById('next-page');
+  const pageNumbersDiv     = document.getElementById('page-numbers');
 
-  // === ESTADO ===
+  // ================= ESTADO =================
   let currentPage = 1;
   const postsPerPage = 9;
   let filteredCards = Array.from(cards);
-  let scrollPosition = 0;
-  const scrollAmount = 120;
 
-  // === CARRUSEL DE CATEGORÍAS ===
-  const updateCarouselArrows = () => {
-    if (!categoriesContainer || !prevBtn || !nextBtn) return;
-    // sincroniza scrollPosition con el estado real por si el usuario hace scroll manual
-    scrollPosition = categoriesContainer.scrollLeft;
-    const maxScroll = Math.max(0, categoriesContainer.scrollWidth - categoriesContainer.clientWidth);
-    prevBtn.disabled = scrollPosition === 0;
-    nextBtn.disabled = scrollPosition >= maxScroll - 1; // -1 para tolerancia de subpixel
+  // ================= CARRUSEL DE CATEGORÍAS =================
+  const updateArrows = () => {
+    if (!categoriesContainer) return;
+    const atStart = categoriesContainer.scrollLeft <= 5;
+    const atEnd   = categoriesContainer.scrollLeft >= (categoriesContainer.scrollWidth - categoriesContainer.clientWidth - 5);
+    prevArrow.disabled = atStart;
+    nextArrow.disabled = atEnd;
   };
 
-  if (nextBtn && categoriesContainer) {
-    nextBtn.addEventListener('click', () => {
-      const maxScroll = Math.max(0, categoriesContainer.scrollWidth - categoriesContainer.clientWidth);
-      scrollPosition = Math.min(categoriesContainer.scrollLeft + scrollAmount, maxScroll);
-      categoriesContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-      // actualizar después de un pequeño delay para reflejar el scroll (pero también sincronizamos al inicio)
-      setTimeout(updateCarouselArrows, 200);
-    });
-  }
+  prevArrow?.addEventListener('click', () => {
+    categoriesContainer.scrollBy({ left: -150, behavior: 'smooth' });
+  });
+  nextArrow?.addEventListener('click', () => {
+    categoriesContainer.scrollBy({ left: 150, behavior: 'smooth' });
+  });
+  categoriesContainer?.addEventListener('scroll', updateArrows);
+  updateArrows();
 
-  if (prevBtn && categoriesContainer) {
-    prevBtn.addEventListener('click', () => {
-      scrollPosition = Math.max(categoriesContainer.scrollLeft - scrollAmount, 0);
-      categoriesContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-      setTimeout(updateCarouselArrows, 200);
-    });
-  }
-
-  // sincronizar si el usuario hace scroll manual con el mouse o touch
-  if (categoriesContainer) {
-    categoriesContainer.addEventListener('scroll', () => {
-      scrollPosition = categoriesContainer.scrollLeft;
-      updateCarouselArrows();
-    });
-  }
-
-  // === FILTROS Y BÚSQUEDA ===
-  const filterPosts = () => {
-    const activeFilter = document.querySelector('.category-btn.active')?.dataset?.filter || 'all';
-    const searchTerm = (searchInput?.value || '').toLowerCase().trim();
+  // ================= FILTROS Y BÚSQUEDA =================
+  const applyFilters = () => {
+    const activeFilter = document.querySelector('.category-btn.active')?.dataset.filter || 'all';
+    const term = searchInput.value.toLowerCase().trim();
 
     filteredCards = Array.from(cards).filter(card => {
-      const type = card.dataset?.type || '';
-      const titleEl = card.querySelector('h3');
-      const excerptEl = card.querySelector('p');
-      const title = titleEl ? titleEl.textContent.toLowerCase() : '';
-      const excerpt = excerptEl ? excerptEl.textContent.toLowerCase() : '';
+      const type = card.dataset.type;
+      const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+      const text  = card.querySelector('p')?.textContent.toLowerCase() || '';
 
-      const matchesFilter = activeFilter === 'all' || type === activeFilter;
-      const matchesSearch = !searchTerm || title.includes(searchTerm) || excerpt.includes(searchTerm);
+      const matchFilter = activeFilter === 'all' || type === activeFilter;
+      const matchSearch = !term || title.includes(term) || text.includes(term);
 
-      return matchesFilter && matchesSearch;
+      card.style.display = matchFilter && matchSearch ? 'block' : 'none';
+      return matchFilter && matchSearch;
     });
 
     currentPage = 1;
-    renderPosts();
     renderPagination();
-    updateCarouselArrows();
+    showPage();
   };
 
-  // Activar botón de categoría
-  if (categoryBtns && categoryBtns.length) {
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterPosts();
-      });
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
     });
-  }
+  });
 
-  if (searchInput) {
-    searchInput.addEventListener('input', filterPosts);
-  }
+  searchInput?.addEventListener('input', applyFilters);
 
-  // === RENDERIZADO DE POSTS ===
-  const renderPosts = () => {
-    // ocultar todas
-    cards.forEach(card => (card.style.display = 'none'));
-
-    if (!filteredCards.length) return;
-
+  // ================= PAGINACIÓN =================
+  const showPage = () => {
     const start = (currentPage - 1) * postsPerPage;
-    const end = start + postsPerPage;
-    filteredCards.slice(start, end).forEach(card => (card.style.display = 'block'));
+    const end   = start + postsPerPage;
+
+    filteredCards.forEach((card, i) => {
+      card.style.display = (i >= start && i < end) ? 'block' : 'none';
+    });
   };
 
-  // === PAGINACIÓN ===
   const renderPagination = () => {
-    if (!pageNumbersContainer || !prevPageBtn || !nextPageBtn) return;
+    if (!pageNumbersDiv) return;
+    pageNumbersDiv.innerHTML = '';
 
     const totalPages = Math.max(1, Math.ceil(filteredCards.length / postsPerPage));
-    pageNumbersContainer.innerHTML = '';
 
-    prevPageBtn.disabled = currentPage === 1;
-    nextPageBtn.disabled = currentPage === totalPages;
+    prevPage.disabled = currentPage === 1;
+    nextPage.disabled = currentPage === totalPages;
 
     for (let i = 1; i <= totalPages; i++) {
-      const pageBtn = document.createElement('span');
-      pageBtn.className = 'page-number';
-      pageBtn.textContent = i;
-      if (i === currentPage) pageBtn.classList.add('active');
-      else pageBtn.classList.remove('active');
-
-      pageBtn.addEventListener('click', () => {
+      const btn = document.createElement('span');
+      btn.className = 'page-number';
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add('active');
+      btn.addEventListener('click', () => {
         currentPage = i;
-        renderPosts();
+        showPage();
         renderPagination();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-
-      pageNumbersContainer.appendChild(pageBtn);
+      pageNumbersDiv.appendChild(btn);
     }
   };
 
-  if (prevPageBtn) {
-    prevPageBtn.addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        renderPosts();
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  }
+  prevPage?.addEventListener('click', () => {
+    if (currentPage > 1) { currentPage--; showPage(); renderPagination(); }
+  });
+  nextPage?.addEventListener('click', () => {
+    if (currentPage < Math.ceil(filteredCards.length / postsPerPage)) {
+      currentPage++; showPage(); renderPagination();
+    }
+  });
 
-  if (nextPageBtn) {
-    nextPageBtn.addEventListener('click', () => {
-      const totalPages = Math.max(1, Math.ceil(filteredCards.length / postsPerPage));
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderPosts();
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  }
-
-  // === INICIALIZACIÓN ===
-  // aseguramos el estado inicial
-  filteredCards = Array.from(cards);
-  renderPosts();
+  // ================= INICIALIZACIÓN =================
   renderPagination();
-  updateCarouselArrows();
-
-  // Actualizar estado al redimensionar
-  window.addEventListener('resize', updateCarouselArrows);
+  showPage();
+  window.addEventListener('resize', updateArrows);
 });
