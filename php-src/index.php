@@ -6,10 +6,17 @@
 
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 // Configuración
 define('BASE_PATH', __DIR__);
 define('ASSETS_PATH', '/Compra-y-Gestion-de-Leche/php-src/assets');
 define('INCLUDES_PATH', BASE_PATH . '/includes');
+define('BASE_URL', '/Compra-y-Gestion-de-Leche/php-src');
+
 
 // Cargar configuración si existe
 if (file_exists(INCLUDES_PATH . '/config.php')) {
@@ -29,19 +36,28 @@ $path = str_replace(dirname($script_name), '', $request_uri);
 $path = parse_url($path, PHP_URL_PATH);
 $path = trim($path, '/');
 
-// Servir archivos estáticos directamente
-if (preg_match('/\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$/', $request_uri)) {
-    return false;
+// ----------------------------------------------------------
+// SERVIR ARCHIVOS ESTÁTICOS DIRECTAMENTE (CSS, JS, imágenes, etc.)
+// ----------------------------------------------------------
+$request_uri = $_SERVER['REQUEST_URI'];
+$script_name = $_SERVER['SCRIPT_NAME'];
+
+$request = str_replace(dirname($script_name), '', parse_url($request_uri, PHP_URL_PATH));
+
+if (preg_match('#^/assets/#', $request)) {
+    return false; // Dejar que Apache sirva el archivo directamente
 }
 
 // ENRUTAMIENTO EXACTO SEGÚN TU MENÚ
 $routes = [
-    '' => 'home.php',                                  // http://localhost/tu-proyecto/
-    'home' => 'home.php',                              // http://localhost/tu-proyecto/home
-    'productores-y-pedidos' => 'productores-pedidos.php', // http://localhost/tu-proyecto/productores-y-pedidos
-    'productores' => 'productores.php',                // http://localhost/tu-proyecto/productores
-    'blog' => 'blog.php',                              // http://localhost/tu-proyecto/blog
-    'acerca-de-nosotros' => 'acerca-de-nosotros.php'   // http://localhost/tu-proyecto/acerca-de-nosotros
+    '' => 'home.php',                                  
+    'home' => 'home.php',                              
+    'productos-y-pedidos' => 'productos-y-pedidos.php', 
+    'productores' => 'productores.php',                
+    'blog' => 'blog.php',                              
+    'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
+    'panel-productor' => 'panel_productor.php'
+
 ];
 
 // Encontrar ruta

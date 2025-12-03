@@ -1,0 +1,53 @@
+/* FORZAR EL FOOTER A USAR LOS ESTILOS DE styles.css */
+/* Esto asegura que no haya conflictos */
+.footer,
+footer.footer {
+    all: unset;
+    background: var(--color-gris) !important;
+    color: var(--color-blanco) !important;
+    padding: 40px 5% !important;
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    gap: 40px !important;
+    align-items: center !important;
+}
+
+.footer .logo img {
+    width: 150px !important;
+    height: auto !important;
+}
+
+.footer .social {
+    display: flex !important;
+    gap: 15px !important;
+}
+
+.footer .social a {
+    color: var(--color-blanco) !important;
+    text-decoration: none !important;
+    padding: 8px 12px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px !important;
+    transition: background 0.3s ease !important;
+}
+
+.footer .social a:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.derechos {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 20px !important;
+}
+
+/* Responsive forzado */
+@media (max-width: 1024px) {
+    .footer {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+}

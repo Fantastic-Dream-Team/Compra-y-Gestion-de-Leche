@@ -6,7 +6,7 @@
 }
 
 :root {
-  --color-primario: #f5712f;
+  --color-primario: #c3541c;
   --color-secundario: #d2691e;
   --color-naranja-claro: #f5e1bf;
   --color-marron: #4b2e1a;
@@ -29,8 +29,8 @@ body {
 /* ===== HEADER PRINCIPAL ===== */
 header {
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* capa oscura */
-    url('../assets/images/consumo_de_lacteos.jpg') no-repeat center center/cover;
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('/Compra-y-Gestion-de-Leche/php-src/assets/images/consumo_de_lacteos.jpg') no-repeat center center/cover;
   position: relative;
   min-height: 800px;
 }
@@ -95,32 +95,36 @@ header {
 
 /* Navegación principal */
 nav ul {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(130, 68, 37, 0.6);
-  width: 60%;
-  height: 60px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  gap: 30px;
-  font-size: 1.2rem;
-  font-weight: 300;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(130, 68, 37, 0.8);
+    width: 60%;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    z-index: 9;
 }
 
 nav ul li a {
-  color: var(--color-blanco);
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.3s ease;
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-nav ul li a:hover {
-  opacity: 0.8;
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--color-primario);
 }
 
 /* Sección de bienvenida */
