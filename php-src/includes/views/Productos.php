@@ -49,9 +49,9 @@ foreach ($categorias as $cat) {
   <nav aria-label="Navegación principal">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="productos.html">Productos</a></li>
+        <li><a href="productos.html"class="active">Productos</a></li>
         <li><a href="productores.html">Productores</a></li>
-        <li><a href="blog.html" class="active">Blog y Recetas</a></li>
+        <li><a href="blog.html" >Blog y Recetas</a></li>
         <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
       </ul>
     </nav>
