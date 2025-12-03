@@ -1,6 +1,15 @@
 <?php
 global $conn;
-require_once INCLUDES_PATH . '/config.php';  // Usa tu conexión
+require_once INCLUDES_PATH . '/conexion.php'; 
+
+// ===== DATOS DE PÁGINA (FALTANTE) =====
+$page_data = [
+    'page_title' => 'Lácteos Don Joaquín - Productos',
+    'current_page' => 'productos-y-pedidos',
+    'assets_path' => ASSETS_PATH,
+    'base_url' => dirname($_SERVER['SCRIPT_NAME']),
+    'current_year' => date('Y')
+];
 
 // Obtener categorías
 $categorias = $conn->query("SELECT * FROM categorias_productos ORDER BY nombre")->fetch_all(MYSQLI_ASSOC);
@@ -19,8 +28,10 @@ foreach ($categorias as $cat) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lácteos Don Joaquín - Productos</title>
-    <link rel="stylesheet" href="assets/css/Productos.css">
+    <title><?php echo $page_data['page_title']; ?></title>
+    <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/reseteo.css">
+    <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styles.css">
+    <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/Productos.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -29,39 +40,43 @@ foreach ($categorias as $cat) {
     <div class="top-bar"></div>
 
     <div id="barra-principal">
-        <ul class="informacion-contacto">
-            <li>Av. Principal 123</li>
-            <li>Sucursal Centro</li>
-            <li>Sucursal Norte</li>
-            <li>(123) 456-7890</li>
-        </ul>
-        <ul class="social-correo">
-            <li>Facebook</li>
-            <li>info@lacteosdonjoaquin.com</li>
-            <li>Instagram</li>
-            <li>X (Twitter)</li>
-        </ul>
+        <div class="informacion-contacto">
+            <ul>
+                <li>Av. Principal 123</li>
+                <li>Sucursal Centro</li>
+                <li>Sucursal Norte</li>
+                <li>(123) 456-7890</li>
+            </ul>
+        </div>
+        <div class="social-correo">
+            <ul>
+                <li>Facebook</li>
+                <li>info@lacteosdonjoaquin.com</li>
+                <li>Instagram</li>
+                <li>X (Twitter)</li>
+            </ul>
+        </div>
     </div>
 
     <div class="logo-container">
-        <img id="logo" src="assets/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="90" height="90">
+        <img id="logo" src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo de Lácteos Don Joaquín" width="90" height="90">
     </div>
 
     <nav aria-label="Navegación principal">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="productos.html"class="active">Productos</a></li>
-            <li><a href="productores.html">Productores</a></li>
-            <li><a href="blog.html" >Blog y Recetas</a></li>
-            <li><a href="acercaDeNosotros.html">Acerca de Nosotros</a></li>
-        </ul>
+      <ul>
+        <li><a href="<?php echo $page_data['base_url']; ?>/" class="<?php echo $page_data['current_page'] === 'home' ? 'active' : ''; ?>">Home</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/productos-y-pedidos" class="<?php echo $page_data['current_page'] === 'productos-y-pedidos' ? 'active' : ''; ?>">Productos</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/productores" class="<?php echo $page_data['current_page'] === 'productores' ? 'active' : ''; ?>">Productores</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/blog" class="<?php echo $page_data['current_page'] === 'blog' ? 'active' : ''; ?>">Blog y Recetas</a></li>
+        <li><a href="<?php echo $page_data['base_url']; ?>/acerca-de-nosotros" class="<?php echo $page_data['current_page'] === 'acerca-de-nosotros' ? 'active' : ''; ?>">Acerca de Nosotros</a></li>
+      </ul>
     </nav>
 
     <section class="bienvenida" aria-labelledby="titulo-bienvenida">
-        <h1 id="titulo-bienvenida">Descubre historias, consejos y sabores directamente de nuestra tierra.</h1>
+        <h1 id="titulo-bienvenida">Nuestros Productos de Calidad</h1>
+        <p>Descubre la variedad de productos lácteos frescos y naturales elaborados con dedicación y tradición.</p>
     </section>
 </header>
-
 
 <!-- BARRA STICKY -->
 <div class="sticky-bar">
@@ -105,7 +120,7 @@ foreach ($categorias as $cat) {
 
 <footer class="footer">
     <div class="logo">
-        <img src="assets/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
+        <img src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
     </div>
     <div class="social">
         <a href="#" aria-label="Instagram">Instagram</a>
@@ -114,11 +129,10 @@ foreach ($categorias as $cat) {
         <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
     </div>
     <div class="derechos">
-        <p>&copy; 2025 Lácteos Don Joaquín. Todos los derechos reservados.</p>
+        <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
 </footer>
 
-
-<script src="assets/js/Productos.js"></script>
+<script src="<?php echo $page_data['assets_path']; ?>/js/Productos.js"></script>
 </body>
 </html>
