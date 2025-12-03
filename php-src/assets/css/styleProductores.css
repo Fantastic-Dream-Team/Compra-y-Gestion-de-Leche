@@ -1,3 +1,13 @@
+header {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('/Compra-y-Gestion-de-Leche/php-src/assets/images/Conferencias-Proveedore.jpg') no-repeat center center/cover;
+  position: relative;
+  min-height: 800px;
+}
+
+
+
 /* ===== SECCIÓN ¿ERES PRODUCTOR? ===== */
 .seccion-eres-productor {
   background: var(--color-gris-claro);
