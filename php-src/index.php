@@ -40,7 +40,7 @@ if (preg_match('/\.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|otf|eot)
 $routes = [
     '' => 'home.php',
     'home' => 'home.php',
-    'productos-y-pedidos' => 'productos-pedidos.php',
+    'productos-y-pedidos' => 'productos-y-pedidos.php',
     'productores' => 'productores.php',
     'blog' => 'Blog.php',
     'acerca-de-nosotros' => 'acerca-de-nosotros.php'
