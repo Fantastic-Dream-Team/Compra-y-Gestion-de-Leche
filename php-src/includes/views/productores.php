@@ -201,8 +201,8 @@ $page_data = [
 
       <!-- Botón para registrar entrega -->
       <div style="text-align:center; margin:50px 0;">
-        <button class="btn-registrar-entrega" style="font-size:1.2rem; padding:15px 40px;">
-          Registrar Nueva Entrega de Leche
+         <!-- Botón para registrar entrega <button class="btn-registrar-entrega" style="font-size:1.2rem; padding:15px 40px;"> 
+          Registrar Nueva Entrega de Leche -->
         </button>
       </div>
     </section>
@@ -274,9 +274,11 @@ $page_data = [
           </div>
 
           <!-- BOTONES JUNTOS EN LA PARTE INFERIOR -->
+          <!-- BOTONES JUNTOS EN LA PARTE INFERIOR -->
           <div class="botones-accion">
             <button class="btn-postulate">Postúlate Aquí</button>
-            <button class="btn-zona-productores">Zona de Productores</button>
+            <!-- CAMBIA ESTE BOTÓN POR UN ENLACE -->
+            <a href="/Compra-y-Gestion-de-Leche/php-src/includes/views/login.php" class="btn-zona-productores">Zona de Productores</a>
           </div>
         </div>
 

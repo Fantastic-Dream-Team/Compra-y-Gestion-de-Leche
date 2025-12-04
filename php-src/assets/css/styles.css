@@ -554,15 +554,15 @@ nav ul li a.active {
 }
 
 .post1 {
-  background-image: url('../assets/images/controlcalidad.jpg');
+  background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/controlcalidad.jpg');
 }
 
 .post2 {
-  background-image: url('../assets/images/vaca.jpg');
+  background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/vaca.jpg');
 }
 
 .post3 {
-  background-image: url('../assets/images/tecnologiaL.jpg');
+  background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/tecnologiaL.jpg');
 }
 
 .post::before {

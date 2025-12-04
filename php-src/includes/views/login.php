@@ -15,25 +15,24 @@ if (isset($_SESSION['productor_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso de Productor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/Compra-y-Gestion-de-Leche/php-src/assets/css/login.css">
 </head>
 <body>
     <div class="login-container">
         <!-- Panel izquierdo con información -->
         <div class="login-left">
             <div class="logo">
-                <i class="fas fa-seedling"></i> AgroProductores
+                <i class="fas fa-seedling"></i> Don Joaquin
             </div>
             
             <div class="welcome-text">
                 <h1>Acceso de Productor</h1>
-                <p>Bienvenido al portal exclusivo para productores. Accede a tu cuenta para gestionar tu inventario, ver pedidos y conectar con distribuidores.</p>
+                <p>Bienvenido a este portal</p>
                 
                 <ul class="features">
-                    <li><i class="fas fa-check-circle"></i> Gestiona tu inventario en tiempo real</li>
-                    <li><i class="fas fa-check-circle"></i> Accede a reportes de ventas detallados</li>
-                    <li><i class="fas fa-check-circle"></i> Conéctate directamente con distribuidores</li>
-                    <li><i class="fas fa-check-circle"></i> Recibe notificaciones de pedidos nuevos</li>
+                    <li><i class="fas fa-check-circle"></i> Gestiona tus entregas de leche</li>
+                    <li><i class="fas fa-check-circle"></i> Analiza estadísticas de producción</li>
+                    <li><i class="fas fa-check-circle"></i> Recibe notificaciones en tiempo real</li>
                 </ul>
             </div>
         </div>
@@ -105,32 +104,20 @@ if (isset($_SESSION['productor_id'])) {
                 <button type="submit" class="login-btn">
                     <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                 </button>
+
+                <a href="includes/views/home.php" class="volver-btn">
+                    <i class="fas fa-home"></i> Volver a la página principal
+                </a>
+
             </form>
             
-            <div class="separator">
-                <span>O accede con</span>
-            </div>
-            
-            <div class="alternate-login">
-                <button class="alt-btn" type="button">
-                    <i class="fab fa-google" style="color: #DB4437;"></i> Google
-                </button>
-                <button class="alt-btn" type="button">
-                    <i class="fab fa-facebook-f" style="color: #4267B2;"></i> Facebook
-                </button>
-            </div>
-            
-            <div class="forgot-password">
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </div>
-            
             <div class="footer">
-                <p>&copy; 2023 AgroProductores. Todos los derechos reservados.</p>
-                <p>Contacto: soporte@agroproductores.com | Tel: +1 234 567 890</p>
+                <p>&copy; 2025 Don Joaquin. Todos los derechos reservados.</p>
+                <p>Contacto: soporte@donjoaquin.com </p>
             </div>
         </div>
     </div>
     
-    <script src="js/login.js"></script>
+    <script src="/Compra-y-Gestion-de-Leche/php-src/assets/js/login.js"></script>
 </body>
 </html>

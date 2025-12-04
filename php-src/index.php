@@ -56,7 +56,8 @@ $routes = [
     'productores' => 'productores.php',                
     'blog' => 'blog.php',                              
     'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
-    'panel-productor' => 'panel_productor.php'
+    'panel-productor' => 'panel_productor.php',
+    'login' => 'login.php'
 
 ];
 
