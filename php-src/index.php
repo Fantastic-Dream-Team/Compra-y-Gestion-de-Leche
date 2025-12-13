@@ -45,6 +45,9 @@ $routes = [
     'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
     'panel-productor' => 'panel_productor.php',
     'login' => 'login.php'
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 $static_extensions = [

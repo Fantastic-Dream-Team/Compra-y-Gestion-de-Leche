@@ -4,7 +4,11 @@ $username   = "root";
 $password   = "";
 $dbname     = "donjoaquin";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 $port       = 3308;   
+=======
+$port       = 3308;
+>>>>>>> Stashed changes
 =======
 $port       = 3308;
 >>>>>>> Stashed changes
