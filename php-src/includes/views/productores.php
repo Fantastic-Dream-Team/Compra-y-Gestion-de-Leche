@@ -119,12 +119,12 @@ $page_data = [
 
   <main>
     <!-- ALERTAS DE PRODUCTORES SIN ENTREGA -->
-<?php if (!empty($notificaciones)): ?>
-    <section class="alerta-pendiente" role="alert" aria-live="assertive">
+    <?php if (!empty($notificaciones)): ?>
+      <section class="alerta-pendiente" role="alert" aria-live="assertive">
         <strong>¡Atención! Productores sin entrega reciente</strong>
         <?php echo implode("<br>", $notificaciones); ?>
-    </section>
-<?php endif; ?>
+      </section>
+    <?php endif; ?>
 
     <!-- CARRUSEL DE PRODUCTORES -->
     <section class="seccion-productores">
@@ -156,12 +156,30 @@ $page_data = [
                         </span>
                       </p>
                     </div>
+
                     <div class="imagen-final">
                       <?php
-                      $foto = $p['foto'] ?? 'default.jpg';
-                      $ruta_foto = $page_data['assets_path'] . '/images/productores/' . $foto;
+                      $id_productor = $p['id'] ?? 0;
+                      $nombre_archivo = "productor" . $id_productor . ".jpg";
+                      $ruta_completa = $_SERVER['DOCUMENT_ROOT'] . $page_data['assets_path'] . '/images/productores/' . $nombre_archivo;
+
+                      // Verificar si existe el archivo
+                      if (file_exists($ruta_completa)) {
+                        $imagen_src = $page_data['assets_path'] . '/images/productores/' . $nombre_archivo;
+                      } else {
+
+                        $nombre_minusculas = "productor" . $id_productor . ".jpg";
+                        $ruta_minusculas = $_SERVER['DOCUMENT_ROOT'] . $page_data['assets_path'] . '/images/productores/' . $nombre_minusculas;
+
+                        if (file_exists($ruta_minusculas)) {
+                          $imagen_src = $page_data['assets_path'] . '/images/productores/' . $nombre_minusculas;
+                        } else {
+                          $imagen_src = $page_data['assets_path'] . '/images/productores/default.jpg';
+                        }
+                      }
                       ?>
-                      <img src="<?php echo $ruta_foto; ?>"
+
+                      <img src="<?php echo $imagen_src; ?>"
                         alt="<?php echo htmlspecialchars($p['nombre']); ?>"
                         onerror="this.src='<?php echo $page_data['assets_path']; ?>/images/productores/default.jpg'">
                     </div>
@@ -175,8 +193,8 @@ $page_data = [
 
       <!-- Botón para registrar entrega -->
       <div style="text-align:center; margin:50px 0;">
-        <button class="btn-registrar-entrega" style="font-size:1.2rem; padding:15px 40px;">
-          Registrar Nueva Entrega de Leche
+         <!-- Botón para registrar entrega <button class="btn-registrar-entrega" style="font-size:1.2rem; padding:15px 40px;"> 
+          Registrar Nueva Entrega de Leche -->
         </button>
       </div>
     </section>
@@ -248,9 +266,11 @@ $page_data = [
           </div>
 
           <!-- BOTONES JUNTOS EN LA PARTE INFERIOR -->
+          <!-- BOTONES JUNTOS EN LA PARTE INFERIOR -->
           <div class="botones-accion">
             <button class="btn-postulate">Postúlate Aquí</button>
-            <button class="btn-zona-productores">Zona de Productores</button>
+            <!-- CAMBIA ESTE BOTÓN POR UN ENLACE -->
+            <a href="/Compra-y-Gestion-de-Leche/php-src/includes/views/login.php" class="btn-zona-productores">Zona de Productores</a>
           </div>
         </div>
 
@@ -273,7 +293,6 @@ $page_data = [
             <span class="icono-flecha">▼</span>
           </button>
 
-          <!-- AQUÍ ESTÁ EL TRUCO: todo envuelto en un div con fondo -->
           <div class="contenido-panel completo-fondo">
             <div class="dropdown-ruta">
               <button class="btn-dropdown activo">
@@ -282,7 +301,7 @@ $page_data = [
               </button>
               <div class="lista-items-ruta">
                 <div class="item-ruta" data-ruta="ruta1">Ruta Norte - Centro</div>
-                <div class="item-ruta activo" data-ruta="ruta2">Ruta Este - Sur</div> <!-- activo -->
+                <div class="item-ruta activo" data-ruta="ruta2">Ruta Este - Sur</div> 
                 <div class="item-ruta" data-ruta="ruta3">Ruta Oeste - Rural</div>
                 <div class="item-ruta" data-ruta="ruta4">Ruta Express City</div>
               </div>
@@ -306,7 +325,7 @@ $page_data = [
 
         <!-- Mapa estático -->
         <div class="contenedor-mapa">
-          <img src="<?php echo $page_data['assets_path']; ?>/images/mapa_david.jpg"
+          <img src="<?php echo $page_data['assets_path']; ?>/images/mapa-david.png"
             alt="Mapa de rutas en Chiriquí"
             id="mapa-ruta"
             style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
@@ -354,30 +373,30 @@ $page_data = [
     <div class="logo">
       <img src="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" alt="Logo Lácteos Don Joaquín" width="150" height="80">
     </div>
-    
+
     <div class="social">
       <a href="#" aria-label="Instagram">Instagram</a>
       <a href="#" aria-label="Facebook">Facebook</a>
       <a href="#" aria-label="WhatsApp">WhatsApp</a>
       <a href="mailto:info@lacteosdonjoaquin.com" aria-label="Correo electrónico">Email</a>
     </div>
-    
+
     <div class="derechos">
       <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-<script src="<?php echo $page_data['assets_path']; ?>/js/NProductores.js"></script>
-<script defer src="<?php echo $page_data['assets_path']; ?>/js/entregaModal.js"></script>  <!-- defer asegura que cargue después del HTML -->
-<script src="<?php echo $page_data['assets_path']; ?>/js/rutas.js"></script>
-<script>
-  // Notificaciones 
-  <?php if (!empty($notificaciones)): ?>
-    setTimeout(() => {
-      alert("NOTIFICACIONES IMPORTANTES:\n\n" + "<?php echo implode("\n", $notificaciones); ?>");
-    }, 1500);
-  <?php endif; ?>
-</script>
+  <script src="<?php echo $page_data['assets_path']; ?>/js/NProductores.js"></script>
+  <script defer src="<?php echo $page_data['assets_path']; ?>/js/entregaModal.js"></script> <!-- defer asegura que cargue después del HTML -->
+  <script src="<?php echo $page_data['assets_path']; ?>/js/rutas.js"></script>
+  <script>
+    // Notificaciones 
+    <?php if (!empty($notificaciones)): ?>
+      setTimeout(() => {
+        alert("NOTIFICACIONES IMPORTANTES:\n\n" + "<?php echo implode("\n", $notificaciones); ?>");
+      }, 1500);
+    <?php endif; ?>
+  </script>
 
 </body>
 
