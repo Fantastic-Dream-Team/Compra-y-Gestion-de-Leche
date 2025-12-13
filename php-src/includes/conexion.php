@@ -3,7 +3,11 @@ $servername = "localhost";
 $username   = "root";
 $password   = "";
 $dbname     = "donjoaquin";
+<<<<<<< Updated upstream
 $port       = 3308;   
+=======
+$port       = 3308;
+>>>>>>> Stashed changes
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 

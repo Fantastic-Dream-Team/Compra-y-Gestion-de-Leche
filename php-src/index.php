@@ -19,8 +19,33 @@ $path = str_replace(dirname($script_name), '', $request_uri);
 $path = parse_url($path, PHP_URL_PATH);
 $path = trim($path, '/');
 
+<<<<<<< Updated upstream
 $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $extension = strtolower(pathinfo($uri_path, PATHINFO_EXTENSION));
+=======
+// ----------------------------------------------------------
+// SERVIR ARCHIVOS ESTÁTICOS DIRECTAMENTE (CSS, JS, imágenes, etc.)
+// ----------------------------------------------------------
+$request_uri = $_SERVER['REQUEST_URI'];
+$script_name = $_SERVER['SCRIPT_NAME'];
+
+$request = str_replace(dirname($script_name), '', parse_url($request_uri, PHP_URL_PATH));
+
+if (preg_match('#^/assets/#', $request)) {
+    return false; // Dejar que Apache sirva el archivo directamente
+}
+
+// ENRUTAMIENTO EXACTO SEGÚN TU MENÚ
+$routes = [
+    '' => 'home.php',                                  
+    'home' => 'home.php',                              
+    'productos-y-pedidos' => 'productos-y-pedidos.php', 
+    'productores' => 'productores.php',                
+    'blog' => 'blog.php',                              
+    'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
+    'panel-productor' => 'panel_productor.php',
+    'login' => 'login.php'
+>>>>>>> Stashed changes
 
 $static_extensions = [
     'css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'ico', 'svg',
