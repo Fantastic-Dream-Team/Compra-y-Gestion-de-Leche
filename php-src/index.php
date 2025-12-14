@@ -19,8 +19,8 @@ define('BASE_URL', '/Compra-y-Gestion-de-Leche/php-src');
 
 
 // Cargar configuración si existe
-if (file_exists(INCLUDES_PATH . '/config.php')) {
-    require_once INCLUDES_PATH . '/config.php';
+if (file_exists(INCLUDES_PATH . '/conexion.php')) {
+    require_once INCLUDES_PATH . '/conexion.php';
 } else {
     // Configuración básica
     define('APP_NAME', 'Lácteos Don Joaquín');
