@@ -30,6 +30,7 @@ CREATE TABLE entregas (
     id_usuario_productor INT NOT NULL,
     litros DECIMAL(10,2) NOT NULL,
     calidad VARCHAR(50) NOT NULL,
+    observaciones text NULL DEFAULT NULL,
     fecha DATE NOT NULL,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     fecha_modificacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
