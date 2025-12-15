@@ -1,23 +1,22 @@
 <?php
-// logout.php
+// logout.php - VERSIÓN MEJORADA
 session_start();
 
-// Destruir todas las variables de sesión
-$_SESSION = array();
+// Registrar el logout
+error_log("Usuario " . ($_SESSION['productor_username'] ?? 'desconocido') . " cerró sesión");
 
-// Si se desea destruir la sesión completamente, borrar también la cookie de sesión
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+// Destruir todas las variables de sesión
+$_SESSION = [];
+
+// Borrar la cookie de sesión
+if (isset($_COOKIE[session_name()])) {
+    setcookie(session_name(), '', time() - 3600, '/');
 }
 
-// Finalmente, destruir la sesión
+// Destruir la sesión
 session_destroy();
 
-// Redirigir a la página de login
-header('Location: login.php');
+// Redirigir a login con parámetro de logout exitoso
+header('Location: login.php?logout=exitoso');
 exit();
 ?>

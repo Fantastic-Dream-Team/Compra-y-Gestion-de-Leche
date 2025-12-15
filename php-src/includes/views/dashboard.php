@@ -1,5 +1,5 @@
 <?php
-// dashboard.php modificado
+// dashboard.php - VERSIÓN FUNCIONAL MODIFICADA
 session_start();
 
 // Verificar si el usuario está logueado
@@ -11,35 +11,77 @@ if (!isset($_SESSION['productor_id'])) {
 // Conectar a la base de datos para obtener datos reales
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Compra-y-Gestion-de-Leche/php-src/includes/conexion.php';
 
-// Obtener datos del productor desde la base de datos
-$productor_id = $_SESSION['productor_id'];
-$sql = "SELECT p.*, up.nombre_usuario, up.codigo_productor
+// Obtener ID del usuario_productor desde la sesión
+$usuario_productor_id = $_SESSION['usuario_id'] ?? null;
+
+if (!$usuario_productor_id) {
+    session_destroy();
+    header('Location: login.php?error=sesion_expirada');
+    exit();
+}
+
+// Obtener datos del productor con los campos correctos
+$sql = "SELECT p.*, up.id as usuario_productor_id, up.nombre_usuario, up.codigo_productor
         FROM productores p
         INNER JOIN usuarios_productor up ON p.id = up.id_productor
-        WHERE p.id = ?";
+        WHERE up.id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $productor_id);
+$stmt->bind_param("i", $usuario_productor_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $productor = $result->fetch_assoc();
 
-// Obtener estadísticas reales del productor
-$sql_entregas = "SELECT COUNT(*) as total_entregas, 
-                        COALESCE(SUM(litros), 0) as total_litros,
-                        COALESCE(AVG(CASE 
-                            WHEN calidad = 'Excelente' THEN 100
-                            WHEN calidad = 'Buena' THEN 80
-                            WHEN calidad = 'Regular' THEN 60
-                            WHEN calidad = 'Deficiente' THEN 40
-                            ELSE 0 
-                        END), 0) as promedio_calidad
-                 FROM entregas 
-                 WHERE id_usuario_productor = (SELECT id FROM usuarios_productor WHERE id_productor = ?)";
+// Si no se encuentra el productor, redirigir
+if (!$productor) {
+    session_destroy();
+    header('Location: login.php?error=sesion_expirada');
+    exit();
+}
+
+// Obtener estadísticas reales del productor (CORREGIDO)
+$sql_entregas = "SELECT 
+    (SELECT COUNT(*) FROM entregas WHERE id_usuario_productor = ?) as total_entregas,
+    (SELECT COALESCE(SUM(litros), 0) FROM entregas WHERE id_usuario_productor = ?) as total_litros,
+    (SELECT COALESCE(AVG(CASE 
+        WHEN calidad = 'Excelente' THEN 100
+        WHEN calidad = 'Óptima' THEN 90
+        WHEN calidad = 'Buena' THEN 80
+        WHEN calidad = 'Regular' THEN 60
+        WHEN calidad = 'Deficiente' THEN 40
+        ELSE 0 
+    END), 0) FROM entregas WHERE id_usuario_productor = ?) as promedio_calidad
+FROM DUAL";
+
 $stmt2 = $conn->prepare($sql_entregas);
-$stmt2->bind_param("i", $productor_id);
+$stmt2->bind_param("iii", $usuario_productor_id, $usuario_productor_id, $usuario_productor_id);
 $stmt2->execute();
 $result2 = $stmt2->get_result();
 $estadisticas = $result2->fetch_assoc();
+
+// Obtener notificaciones reales de la base de datos
+$notificaciones_reales = [];
+$sql_notificaciones = "SELECT 
+                        n.id,
+                        n.mensaje,
+                        n.fecha_creacion,
+                        n.leida,
+                        tn.titulo,
+                        tn.prioridad,
+                        n.datos_contexto
+                    FROM notificaciones n
+                    INNER JOIN tipos_notificaciones tn ON n.id_tipo_notificacion = tn.id
+                    WHERE n.id_usuario_productor = ?
+                    ORDER BY n.leida ASC, n.fecha_creacion DESC
+                    LIMIT 20";
+    
+$stmt_notif = $conn->prepare($sql_notificaciones);
+$stmt_notif->bind_param("i", $usuario_productor_id);
+$stmt_notif->execute();
+$result_notif = $stmt_notif->get_result();
+    
+while ($notificacion = $result_notif->fetch_assoc()) {
+    $notificaciones_reales[] = $notificacion;
+}
 
 // Calcular tiempo de sesión
 $tiempo_sesion = time() - $_SESSION['login_time'];
@@ -48,6 +90,7 @@ $minutos = floor(($tiempo_sesion % 3600) / 60);
 
 $stmt->close();
 $stmt2->close();
+$stmt_notif->close();
 $conn->close();
 ?>
 
@@ -134,141 +177,132 @@ $conn->close();
             </div>
         </div>
         
-        <!-- Modal de Notificaciones (SIN MODIFICAR - MANTENIENDO FUNCIONALIDAD ORIGINAL) -->
+        <!-- Modal de Notificaciones (ACTUALIZADO CON DATOS REALES DE BD Y FUNCIONALIDAD AJAX) -->
         <div id="notificacionesModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>Notificaciones</h2>
+                    <h2>
+                        <i class="fas fa-bell"></i> Notificaciones
+                        <?php if (count($notificaciones_reales) > 0): ?>
+                            <span class="badge"><?php echo count($notificaciones_reales); ?></span>
+                        <?php endif; ?>
+                    </h2>
                     <span class="close" onclick="closeModal('notificacionesModal')">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <ul class="notificaciones-list">
-                        <?php
-                        // Notificaciones reales basadas en estadísticas
-                        $notificaciones = [];
+                    <?php if (count($notificaciones_reales) > 0): ?>
+                        <div class="notificaciones-stats">
+                            <?php 
+                            $nuevas = count(array_filter($notificaciones_reales, fn($n) => !$n['leida']));
+                            ?>
+                            <span class="badge new">
+                                <i class="fas fa-envelope"></i> 
+                                <?php echo $nuevas; ?> nuevas
+                            </span>
+                            <span class="badge total">
+                                <i class="fas fa-list"></i> 
+                                <?php echo count($notificaciones_reales); ?> total
+                            </span>
+                        </div>
                         
-                        if ($estadisticas['total_entregas'] > 0) {
-                            $notificaciones[] = [
-                                'id' => 1,
-                                'mensaje' => 'Tienes ' . $estadisticas['total_entregas'] . ' entregas registradas',
-                                'fecha' => date('Y-m-d H:i'),
-                                'leida' => false
-                            ];
-                            
-                            $notificaciones[] = [
-                                'id' => 2,
-                                'mensaje' => 'Total de ' . number_format($estadisticas['total_litros'], 0) . ' litros entregados',
-                                'fecha' => date('Y-m-d H:i', strtotime('-1 day')),
-                                'leida' => true
-                            ];
-                            
-                            $notificaciones[] = [
-                                'id' => 3,
-                                'mensaje' => 'Calidad promedio: ' . number_format($estadisticas['promedio_calidad'], 1) . '%',
-                                'fecha' => date('Y-m-d H:i', strtotime('-2 days')),
-                                'leida' => true
-                            ];
-                        } else {
-                            $notificaciones[] = [
-                                'id' => 1,
-                                'mensaje' => 'Aún no has registrado entregas. ¡Registra tu primera entrega!',
-                                'fecha' => date('Y-m-d H:i'),
-                                'leida' => false
-                            ];
-                        }
-                        
-                        $notificaciones[] = [
-                            'id' => 4,
-                            'mensaje' => 'Especialidad: ' . htmlspecialchars($productor['especialidad'] ?? 'No definida'),
-                            'fecha' => date('Y-m-d H:i', strtotime('-3 days')),
-                            'leida' => true
-                        ];
-                        
-                        $notificaciones[] = [
-                            'id' => 5,
-                            'mensaje' => 'Producción: ' . htmlspecialchars($productor['produccion'] ?? 'No definida'),
-                            'fecha' => date('Y-m-d H:i', strtotime('-4 days')),
-                            'leida' => true
-                        ];
-                        
-                        foreach ($notificaciones as $notificacion):
-                        ?>
-                        <li class="notificacion-item <?php echo $notificacion['leida'] ? 'leida' : 'no-leida'; ?>">
-                            <div class="notificacion-icon">
-                                <i class="fas fa-<?php echo $notificacion['leida'] ? 'envelope-open' : 'envelope'; ?>"></i>
-                            </div>
-                            <div class="notificacion-content">
-                                <p class="notificacion-mensaje"><?php echo htmlspecialchars($notificacion['mensaje']); ?></p>
-                                <span class="notificacion-fecha"><?php echo $notificacion['fecha']; ?></span>
-                            </div>
-                            <?php if (!$notificacion['leida']): ?>
-                            <div class="notificacion-actions">
-                                <button class="btn-marcar-leida" onclick="marcarComoLeida(<?php echo $notificacion['id']; ?>)">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                            </div>
-                            <?php endif; ?>
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
+                        <ul class="notificaciones-list">
+                            <?php foreach ($notificaciones_reales as $notificacion): ?>
+                            <li class="notificacion-item <?php echo $notificacion['leida'] ? 'leida' : 'no-leida'; ?>" 
+                                data-id="<?php echo $notificacion['id']; ?>">
+                                <div class="notificacion-icon">
+                                    <i class="fas fa-<?php echo $notificacion['leida'] ? 'envelope-open' : 'envelope'; ?>"></i>
+                                </div>
+                                <div class="notificacion-content">
+                                    <h4><?php echo htmlspecialchars($notificacion['titulo'] ?? 'Notificación'); ?></h4>
+                                    <p class="notificacion-mensaje"><?php echo htmlspecialchars($notificacion['mensaje']); ?></p>
+                                    <span class="notificacion-fecha">
+                                        <i class="far fa-clock"></i>
+                                        <?php echo date('d/m/Y H:i', strtotime($notificacion['fecha_creacion'])); ?>
+                                    </span>
+                                </div>
+                                <?php if (!$notificacion['leida']): ?>
+                                <div class="notificacion-actions">
+                                    <button class="btn-marcar-leida" onclick="marcarComoLeida(<?php echo $notificacion['id']; ?>, this)">
+                                        <i class="fas fa-check"></i> Marcar como leída
+                                    </button>
+                                </div>
+                                <?php else: ?>
+                                <div class="notificacion-actions">
+                                    <button class="btn-marcar-no-leida" onclick="marcarComoNoLeida(<?php echo $notificacion['id']; ?>, this)">
+                                        <i class="fas fa-envelope"></i> Marcar como no leída
+                                    </button>
+                                </div>
+                                <?php endif; ?>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <div style="text-align: center; padding: 40px 20px;">
+                            <i class="far fa-bell-slash" style="font-size: 48px; color: #bdc3c7; margin-bottom: 20px;"></i>
+                            <h3>No hay notificaciones</h3>
+                            <p>No tienes notificaciones pendientes en este momento.</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" onclick="closeModal('notificacionesModal')">Cerrar</button>
+                    <?php if (count($notificaciones_reales) > 0): ?>
                     <button class="btn btn-primary" onclick="marcarTodasLeidas()">Marcar todas como leídas</button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
 
         <!-- Modal de Registrar Nueva Entrega (CON CONEXIÓN REAL A BD) -->
-<div id="registrarEntregaModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <form id="formRegistrarEntrega" action="procesar_entrega.php" method="POST">
-            <div class="modal-header">
-                <h2>Registrar Nueva Entrega</h2>
-                <span class="close" onclick="closeModal('registrarEntregaModal')">&times;</span>
+        <div id="registrarEntregaModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <form id="formRegistrarEntrega" action="procesar_entrega.php" method="POST">
+                    <div class="modal-header">
+                        <h2>Registrar Nueva Entrega</h2>
+                        <span class="close" onclick="closeModal('registrarEntregaModal')">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="usuario_id" value="<?php echo $usuario_productor_id; ?>">
+                        
+                        <div class="form-group">
+                            <label for="litros"><i class="fas fa-gas-pump"></i> Litros de Leche *</label>
+                            <input type="number" id="litros" name="litros" step="0.01" min="0.1" max="1000" required 
+                                   placeholder="Ingrese la cantidad en litros (ej: 150.5)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="calidad"><i class="fas fa-star"></i> Calidad *</label>
+                            <select id="calidad" name="calidad" required>
+                                <option value="">Seleccione la calidad</option>
+                                <option value="Excelente">Excelente</option>
+                                <option value="Buena">Buena</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Deficiente">Deficiente</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fecha"><i class="fas fa-calendar-alt"></i> Fecha de Entrega *</label>
+                            <input type="date" id="fecha" name="fecha" required 
+                                   value="<?php echo date('Y-m-d'); ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observaciones"><i class="fas fa-sticky-note"></i> Observaciones (Opcional)</label>
+                            <textarea id="observaciones" name="observaciones" 
+                                      placeholder="Observaciones adicionales sobre la entrega (ej: temperatura, color, etc.)"
+                                      rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('registrarEntregaModal')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Registrar Entrega
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body">
-                <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['usuario_id']; ?>">
-                
-                <div class="form-group">
-                    <label for="litros"><i class="fas fa-gas-pump"></i> Litros de Leche *</label>
-                    <input type="number" id="litros" name="litros" step="0.01" min="0.1" max="1000" required 
-                           placeholder="Ingrese la cantidad en litros (ej: 150.5)">
-                </div>
-                
-                <div class="form-group">
-                    <label for="calidad"><i class="fas fa-star"></i> Calidad *</label>
-                    <select id="calidad" name="calidad" required>
-                        <option value="">Seleccione la calidad</option>
-                        <option value="Excelente">Excelente</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Deficiente">Deficiente</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="fecha"><i class="fas fa-calendar-alt"></i> Fecha de Entrega *</label>
-                    <input type="date" id="fecha" name="fecha" required 
-                           value="<?php echo date('Y-m-d'); ?>">
-                </div>
-                
-                <div class="form-group">
-                    <label for="observaciones"><i class="fas fa-sticky-note"></i> Observaciones (Opcional)</label>
-                    <textarea id="observaciones" name="observaciones" 
-                              placeholder="Observaciones adicionales sobre la entrega (ej: temperatura, color, etc.)"
-                              rows="3"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="closeModal('registrarEntregaModal')">Cancelar</button>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Registrar Entrega
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
 
         <!-- Modal de Estadísticas (CON INFORMACIÓN REAL DE LA BD) -->
         <div id="estadisticasModal" class="modal" style="display: none;">
@@ -280,27 +314,27 @@ $conn->close();
                 <div class="modal-body">
                     <div class="estadisticas-container">
                         <div class="estadistica-item">
-                            <h3>Producción Mensual</h3>
+                            <h3>Producción Total</h3>
                             <div style="text-align: center; padding: 20px;">
                                 <div style="font-size: 48px; color: #3498db; margin: 10px 0;">
                                     <?php echo number_format($estadisticas['total_litros'] ?? 0, 0); ?> L
                                 </div>
-                                <p>Total de litros entregados</p>
+                                <p>Litros entregados en total</p>
                             </div>
                         </div>
                         
                         <div class="estadistica-item">
-                            <h3>Calidad por Entregas</h3>
+                            <h3>Calidad Promedio</h3>
                             <div style="text-align: center; padding: 20px;">
                                 <div style="font-size: 48px; color: #2ecc71; margin: 10px 0;">
                                     <?php echo number_format($estadisticas['promedio_calidad'] ?? 0, 1); ?>%
                                 </div>
-                                <p>Calidad promedio</p>
+                                <p>Calidad promedio de entregas</p>
                             </div>
                         </div>
                         
                         <div class="estadistica-item">
-                            <h3>Tendencias</h3>
+                            <h3>Entregas Totales</h3>
                             <div style="text-align: center; padding: 20px;">
                                 <div style="font-size: 48px; color: #e74c3c; margin: 10px 0;">
                                     <?php echo $estadisticas['total_entregas'] ?? 0; ?>
@@ -406,6 +440,142 @@ $conn->close();
         return false;
     }
     
+    // Función para marcar notificación como leída (CON AJAX REAL)
+    function marcarComoLeida(idNotificacion, buttonElement) {
+        fetch('marcar_notificaciones.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'action=marcar_leida&id=' + idNotificacion
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Actualizar la interfaz
+                const notificacionItem = buttonElement.closest('.notificacion-item');
+                notificacionItem.classList.remove('no-leida');
+                notificacionItem.classList.add('leida');
+                
+                // Cambiar icono (verde para no leída, gris para leída)
+                const icon = notificacionItem.querySelector('.notificacion-icon i');
+                icon.className = 'fas fa-envelope-open';
+                icon.style.color = '#95a5a6';
+                
+                // Cambiar botón
+                buttonElement.outerHTML = `
+                    <button class="btn-marcar-no-leida" onclick="marcarComoNoLeida(${idNotificacion}, this)">
+                        <i class="fas fa-envelope"></i> Marcar como no leída
+                    </button>`;
+                
+                // Actualizar contador
+                actualizarContadorNotificaciones();
+            } else {
+                alert('Error: ' + (data.message || 'No se pudo marcar como leída'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al conectar con el servidor');
+        });
+    }
+
+    // Función para marcar notificación como NO leída (CON AJAX REAL)
+    function marcarComoNoLeida(idNotificacion, buttonElement) {
+        fetch('marcar_notificaciones.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'action=marcar_no_leida&id=' + idNotificacion
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Actualizar la interfaz
+                const notificacionItem = buttonElement.closest('.notificacion-item');
+                notificacionItem.classList.remove('leida');
+                notificacionItem.classList.add('no-leida');
+                
+                // Cambiar icono (verde para no leída)
+                const icon = notificacionItem.querySelector('.notificacion-icon i');
+                icon.className = 'fas fa-envelope';
+                icon.style.color = '#2ecc71';
+                
+                // Cambiar botón
+                buttonElement.outerHTML = `
+                    <button class="btn-marcar-leida" onclick="marcarComoLeida(${idNotificacion}, this)">
+                        <i class="fas fa-check"></i> Marcar como leída
+                    </button>`;
+                
+                // Actualizar contador
+                actualizarContadorNotificaciones();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al conectar con el servidor');
+        });
+    }
+
+    // Función para marcar TODAS las notificaciones como leídas
+    function marcarTodasLeidas() {
+        if (!confirm('¿Marcar todas las notificaciones como leídas?')) return;
+        
+        fetch('marcar_notificaciones.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'action=marcar_todas_leidas'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Actualizar todas las notificaciones en la interfaz
+                document.querySelectorAll('.notificacion-item.no-leida').forEach(item => {
+                    item.classList.remove('no-leida');
+                    item.classList.add('leida');
+                    
+                    // Cambiar icono
+                    const icon = item.querySelector('.notificacion-icon i');
+                    if (icon) {
+                        icon.className = 'fas fa-envelope-open';
+                        icon.style.color = '#95a5a6';
+                    }
+                    
+                    // Cambiar botón
+                    const actionsDiv = item.querySelector('.notificacion-actions');
+                    if (actionsDiv) {
+                        const notificacionId = item.getAttribute('data-id');
+                        actionsDiv.innerHTML = `
+                            <button class="btn-marcar-no-leida" onclick="marcarComoNoLeida(${notificacionId}, this)">
+                                <i class="fas fa-envelope"></i> Marcar como no leída
+                            </button>`;
+                    }
+                });
+                
+                // Actualizar contador
+                actualizarContadorNotificaciones();
+                alert('Todas las notificaciones han sido marcadas como leídas');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al conectar con el servidor');
+        });
+    }
+
+    // Función para actualizar contador de notificaciones
+    function actualizarContadorNotificaciones() {
+        const nuevas = document.querySelectorAll('.notificacion-item.no-leida').length;
+        const total = document.querySelectorAll('.notificacion-item').length;
+        
+        // Actualizar badge en el header
+        const badgeNew = document.querySelector('.badge.new');
+        if (badgeNew) badgeNew.innerHTML = `<i class="fas fa-envelope"></i> ${nuevas} nuevas`;
+    }
+
     // Asegurar que dashboard.js se cargue correctamente
     document.addEventListener('DOMContentLoaded', function() {
         // Configurar fecha por defecto en el formulario de entrega
@@ -425,6 +595,9 @@ $conn->close();
                 return true;
             });
         }
+        
+        // Actualizar contador inicial de notificaciones
+        actualizarContadorNotificaciones();
     });
     </script>
 </body>

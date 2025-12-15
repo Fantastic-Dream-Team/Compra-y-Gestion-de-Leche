@@ -47,4 +47,40 @@ BEGIN
     END IF;
 END$$
 
-DELIMITER 
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER trig_notificar_entrega_registrada
+AFTER INSERT ON entregas
+FOR EACH ROW
+BEGIN
+    DECLARE v_tipo_notif_id INT;
+    
+    -- Obtener id del tipo de notificación
+    SELECT id INTO v_tipo_notif_id 
+    FROM tipos_notificaciones 
+    WHERE codigo = 'ENTREGA_REGISTRADA';
+    
+    -- Insertar notificación CON referencia a la entrega
+    INSERT INTO notificaciones (
+        id_usuario_productor,
+        id_tipo_notificacion,
+        id_entrega,
+        mensaje,
+        datos_contexto
+    ) VALUES (
+        NEW.id_usuario_productor,
+        v_tipo_notif_id,
+        NEW.id,  -- ← Aquí la referencia directa
+        CONCAT('Tu entrega de ', NEW.litros, 'L el ', DATE_FORMAT(NEW.fecha, '%d/%m/%Y'), ' ha sido registrada exitosamente.'),
+        JSON_OBJECT(
+            'litros', NEW.litros,
+            'fecha', NEW.fecha,
+            'calidad', NEW.calidad,
+            'entrega_id', NEW.id
+        )
+    );
+END$$
+
+DELIMITER ;

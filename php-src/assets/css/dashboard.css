@@ -199,6 +199,384 @@ body {
     margin-top: 30px;
 }
 
+/* ============================== */
+/* ESTILOS PARA MODALES */
+/* ============================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #d2691e, #d2691e);
+    color: white;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ecf0f1;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ============================== */
+/* ESTILOS PARA NOTIFICACIONES */
+/* ============================== */
+.notificaciones-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notificacion-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s;
+}
+
+.notificacion-item:hover {
+    background-color: #f8f9fa;
+}
+
+.notificacion-item.no-leida {
+    background-color: #f8f9fa;
+    border-left: 4px solid #d2691e;
+}
+
+.notificacion-item.leida {
+    background-color: white;
+    opacity: 0.9;
+}
+
+/* ICONOS DE NOTIFICACIÓN - VERDE PARA NO LEÍDAS */
+.notificacion-icon {
+    margin-right: 15px;
+    margin-top: 3px;
+    min-width: 20px;
+}
+
+.notificacion-item.no-leida .notificacion-icon i.fa-envelope {
+    color: #2ecc71 !important;
+    font-size: 18px;
+}
+
+.notificacion-item.leida .notificacion-icon i.fa-envelope-open {
+    color: #95a5a6 !important;
+    font-size: 18px;
+}
+
+.notificacion-content {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.notificacion-content h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.notificacion-mensaje {
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.notificacion-fecha {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.notificacion-fecha i {
+    font-size: 11px;
+}
+
+.notificacion-actions {
+    margin-left: 10px;
+    min-width: 150px;
+}
+
+/* BOTONES DE MARCAR LEÍDA/NO LEÍDA - VERDE PARA MARCAR LEÍDA */
+.btn-marcar-leida {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-marcar-leida:hover {
+    background: #27ae60;
+}
+
+.btn-marcar-leida i {
+    color: white;
+    font-size: 11px;
+}
+
+.btn-marcar-no-leida {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-marcar-no-leida:hover {
+    background-color: #7f8c8d;
+    color: white;
+    border-color: #7f8c8d;
+}
+
+.btn-marcar-no-leida i {
+    color: #7f8c8d;
+    font-size: 11px;
+}
+
+.btn-marcar-no-leida:hover i {
+    color: white;
+}
+
+/* STATS DE NOTIFICACIONES */
+.notificaciones-stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.badge.new {
+    background-color: #e8f4fd;
+    color: #d2691e;
+    border: 1px solid #d2691e;
+}
+
+.badge.total {
+    background-color: #f5f5f5;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+/* Badge en header del modal */
+.modal-header .badge {
+    margin-left: 15px;
+    background-color: #d2691e;
+    color: white;
+    padding: 5px 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+/* ============================== */
+/* ESTILOS PARA FORMULARIO DE ENTREGA */
+/* ============================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ============================== */
+/* ESTILOS PARA ESTADÍSTICAS */
+/* ============================== */
+.estadisticas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.estadistica-item {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.estadistica-item h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* ============================== */
+/* BOTONES GENERALES */
+/* ============================== */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d2691e, #d2691e);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b8591a, #b8591a);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+/* ============================== */
+/* SIN NOTIFICACIONES */
+/* ============================== */
+.no-notificaciones {
+    text-align: center;
+    padding: 60px 20px;
+    color: #7f8c8d;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.no-notificaciones i {
+    font-size: 48px;
+    color: #bdc3c7;
+    margin-bottom: 20px;
+}
+
+.no-notificaciones h3 {
+    color: #95a5a6;
+    margin-bottom: 10px;
+}
+
+.no-notificaciones p {
+    font-size: 14px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* ============================== */
+/* RESPONSIVE */
+/* ============================== */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -213,221 +591,62 @@ body {
     .actions-grid {
         grid-template-columns: 1fr 1fr;
     }
-}
-
-    /* Estilos para modales */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-    }
     
-    .modal-content {
-        background-color: white;
-        margin: 5% auto;
-        padding: 0;
-        border-radius: 8px;
-        width: 80%;
-        max-width: 800px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    
-    .modal-header {
-        background: linear-gradient(135deg, #d2691e, #d2691e );
-        color: white;
-        padding: 20px;
-        border-radius: 8px 8px 0 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .modal-header h2 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
-    
-    .close {
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-    
-    .close:hover {
-        color: #ecf0f1;
-    }
-    
-    .modal-body {
-        padding: 20px;
-        max-height: 60vh;
-        overflow-y: auto;
-    }
-    
-    .modal-footer {
-        padding: 15px 20px;
-        background-color: #f8f9fa;
-        border-top: 1px solid #dee2e6;
-        border-radius: 0 0 8px 8px;
-        display: flex;
-        justify-content: flex-end;
+    .notificaciones-stats {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 10px;
     }
     
-    /* Estilos para notificaciones */
-    .notificaciones-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    
     .notificacion-item {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-        transition: background-color 0.3s;
-    }
-    
-    .notificacion-item:hover {
-        background-color: #f8f9fa;
-    }
-    
-    .notificacion-item.no-leida {
-        background-color: #e8f4fd;
-        border-left: 4px solid #d2691e;
-    }
-    
-    .notificacion-item.leida {
-        opacity: 0.8;
-    }
-    
-    .notificacion-icon {
-        margin-right: 15px;
-        color: #d2691e;
-        font-size: 1.2rem;
-    }
-    
-    .notificacion-content {
-        flex-grow: 1;
-    }
-    
-    .notificacion-mensaje {
-        margin: 0 0 5px 0;
-        font-weight: 500;
-    }
-    
-    .notificacion-fecha {
-        font-size: 0.85rem;
-        color: #666;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .notificacion-actions {
-        margin-left: 10px;
-    }
-    
-    .btn-marcar-leida {
-        background: #2ecc71;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .btn-marcar-leida:hover {
-        background: #27ae60;
-    }
-    
-    /* Estilos para formulario de entrega */
-    .form-group {
-        margin-bottom: 20px;
-    }
-    
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: #2c3e50;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+        margin-left: 0;
+        margin-top: 15px;
         width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1rem;
-        box-sizing: border-box;
     }
     
-    .form-group textarea {
-        min-height: 100px;
-        resize: vertical;
-    }
-    
-    /* Estilos para estadísticas */
-    .estadisticas-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    
-    .estadistica-item {
-        text-align: center;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: #f8f9fa;
-    }
-    
-    .estadistica-img {
+    .btn-marcar-leida, .btn-marcar-no-leida {
         width: 100%;
-        height: 200px;
-        object-fit: contain;
-        background: white;
-        border-radius: 4px;
-        margin: 10px 0;
+        justify-content: center;
     }
     
-    .estadistica-desc {
-        color: #666;
-        font-size: 0.9rem;
-        margin-top: 10px;
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
     }
-    
-    /* Botones generales */
-    .btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    
-    .btn-primary {
-        background: linear-gradient(135deg, #d2691e, #d2691e);
-        color: white;
-    }
-    
-    .btn-primary:hover {
-        background: linear-gradient(135deg, #d2691e, #d2691e);
-    }
-    
-    .btn-secondary {
-        background: #95a5a6;
-        color: white;
-    }
-    
-    .btn-secondary:hover {
-        background: #7f8c8d;
-    }
+}
+
+/* ============================== */
+/* ANIMACIONES */
+/* ============================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.notificacion-item {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar personalizado para modal */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #d2691e;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #b8591a;
+}
