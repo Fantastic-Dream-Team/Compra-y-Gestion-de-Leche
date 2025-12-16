@@ -100,6 +100,8 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Productor</title>
+    <!-- Chart.js para gráficas -->
+     <script src="/Compra-y-Gestion-de-Leche/php-src/assets/js/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Compra-y-Gestion-de-Leche/php-src/assets/css/dashboard.css">
 </head>
@@ -304,68 +306,191 @@ $conn->close();
             </div>
         </div>
 
-        <!-- Modal de Estadísticas (CON INFORMACIÓN REAL DE LA BD) -->
-        <div id="estadisticasModal" class="modal" style="display: none;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Estadísticas de Producción</h2>
-                    <span class="close" onclick="closeModal('estadisticasModal')">&times;</span>
+        <!-- Modal de Estadísticas Mejorado (CON GRÁFICAS REALES) -->
+    <!-- Modal de Estadísticas Mejorado (CON GRÁFICAS REALES) -->
+    <div id="estadisticasModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-chart-bar"></i> Estadísticas de Producción</h2>
+                <span class="close" onclick="closeModal('estadisticasModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Selector de período -->
+                <div class="periodo-selector">
+                    <label for="periodoGrafica">Período:</label>
+                    <select id="periodoGrafica" onchange="cambiarPeriodoGrafica(this.value)">
+                        <option value="7d">Última semana</option>
+                        <option value="1m">Último mes</option>
+                        <option value="6m">Últimos 6 meses</option>
+                        <option value="1y">Último año</option>
+                    </select>
                 </div>
-                <div class="modal-body">
-                    <div class="estadisticas-container">
-                        <div class="estadistica-item">
-                            <h3>Producción Total</h3>
-                            <div style="text-align: center; padding: 20px;">
-                                <div style="font-size: 48px; color: #3498db; margin: 10px 0;">
-                                    <?php echo number_format($estadisticas['total_litros'] ?? 0, 0); ?> L
-                                </div>
-                                <p>Litros entregados en total</p>
+                
+                <!-- Contenedor de gráficas -->
+                <div class="graficas-container">
+                    <!-- Gráfica 1: Producción Semanal -->
+                    <div class="grafica-card">
+                        <h3><i class="fas fa-chart-line"></i> Producción Semanal</h3>
+                        <div class="grafica-wrapper">
+                            <!-- CANVAS SIEMPRE PRESENTE -->
+                            <canvas id="graficaProduccion"></canvas>
+                            
+                            <!-- LOADING OVERLAY -->
+                            <div class="loading-grafica hidden">
+                                <i class="fas fa-spinner"></i>
+                                <span>Cargando datos...</span>
+                            </div>
+                            
+                            <!-- ERROR OVERLAY -->
+                            <div class="error-grafica hidden">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Error al cargar los datos</p>
+                                <button onclick="cargarGraficas()">Reintentar</button>
                             </div>
                         </div>
-                        
-                        <div class="estadistica-item">
-                            <h3>Calidad Promedio</h3>
-                            <div style="text-align: center; padding: 20px;">
-                                <div style="font-size: 48px; color: #2ecc71; margin: 10px 0;">
-                                    <?php echo number_format($estadisticas['promedio_calidad'] ?? 0, 1); ?>%
-                                </div>
-                                <p>Calidad promedio de entregas</p>
+                        <div class="grafica-stats">
+                            <div class="stat-mini">
+                                <span class="label">Hoy:</span>
+                                <span class="value" id="produccionHoy">0 L</span>
                             </div>
-                        </div>
-                        
-                        <div class="estadistica-item">
-                            <h3>Entregas Totales</h3>
-                            <div style="text-align: center; padding: 20px;">
-                                <div style="font-size: 48px; color: #e74c3c; margin: 10px 0;">
-                                    <?php echo $estadisticas['total_entregas'] ?? 0; ?>
-                                </div>
-                                <p>Entregas realizadas</p>
+                            <div class="stat-mini">
+                                <span class="label">Promedio:</span>
+                                <span class="value" id="produccionPromedio">0 L</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="label">Total semanal:</span>
+                                <span class="value" id="produccionTotal">0 L</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Información adicional -->
-                    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <h3>Información del Productor</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                            <div>
-                                <p><strong>Finca:</strong> <?php echo htmlspecialchars($productor['finca'] ?? 'No definida'); ?></p>
-                                <p><strong>Ubicación:</strong> <?php echo htmlspecialchars($productor['ubicacion'] ?? 'No definida'); ?></p>
-                                <p><strong>Especialidad:</strong> <?php echo htmlspecialchars($productor['especialidad'] ?? 'No definida'); ?></p>
+                    <!-- Gráfica 2: Distribución de Calidad -->
+                    <div class="grafica-card">
+                        <h3><i class="fas fa-chart-pie"></i> Distribución de Calidad</h3>
+                        <div class="grafica-wrapper">
+                            <!-- CANVAS SIEMPRE PRESENTE -->
+                            <canvas id="graficaCalidad"></canvas>
+                            
+                            <!-- LOADING OVERLAY -->
+                            <div class="loading-grafica hidden">
+                                <i class="fas fa-spinner"></i>
+                                <span>Cargando datos...</span>
                             </div>
-                            <div>
-                                <p><strong>Producción:</strong> <?php echo htmlspecialchars($productor['produccion'] ?? 'No definida'); ?></p>
-                                <p><strong>Salud Animal:</strong> <?php echo htmlspecialchars($productor['salud_animal'] ?? 'No definida'); ?></p>
-                                <p><strong>Usuario:</strong> <?php echo htmlspecialchars($productor['nombre_usuario'] ?? 'No definido'); ?></p>
+                            
+                            <!-- ERROR OVERLAY -->
+                            <div class="error-grafica hidden">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Error al cargar los datos</p>
+                                <button onclick="cargarGraficas()">Reintentar</button>
+                            </div>
+                        </div>
+                        <div class="grafica-stats">
+                            <div class="stat-mini">
+                                <span class="label">Excelente:</span>
+                                <span class="value" id="calidadExcelente">0</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="label">Buena:</span>
+                                <span class="value" id="calidadBuena">0</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="label">Total:</span>
+                                <span class="value" id="totalEntregas">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gráfica 3: Tendencia Mensual -->
+                    <div class="grafica-card">
+                        <h3><i class="fas fa-chart-area"></i> Tendencia Mensual</h3>
+                        <div class="grafica-wrapper">
+                            <!-- CANVAS SIEMPRE PRESENTE -->
+                            <canvas id="graficaMensual"></canvas>
+                            
+                            <!-- LOADING OVERLAY -->
+                            <div class="loading-grafica hidden">
+                                <i class="fas fa-spinner"></i>
+                                <span>Cargando datos...</span>
+                            </div>
+                            
+                            <!-- ERROR OVERLAY -->
+                            <div class="error-grafica hidden">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Error al cargar los datos</p>
+                                <button onclick="cargarGraficas()">Reintentar</button>
+                            </div>
+                        </div>
+                        <div class="grafica-stats">
+                            <div class="stat-mini">
+                                <span class="label">Mes actual:</span>
+                                <span class="value" id="produccionMesActual">0 L</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="label">Variación:</span>
+                                <span class="value" id="variacionMensual">0%</span>
+                            </div>
+                            <div class="stat-mini">
+                                <span class="label">Mejor mes:</span>
+                                <span class="value" id="mejorMes">-</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" onclick="closeModal('estadisticasModal')">Cerrar</button>
+                
+                <!-- Resumen estadístico -->
+                <div class="resumen-estadistico">
+                    <h3><i class="fas fa-clipboard-list"></i> Resumen General</h3>
+                    <div class="resumen-grid">
+                        <div class="resumen-item">
+                            <div class="resumen-icon" style="background: #3498db;">
+                                <i class="fas fa-gas-pump"></i>
+                            </div>
+                            <div class="resumen-content">
+                                <h4>Producción Total</h4>
+                                <p><?php echo number_format($estadisticas['total_litros'] ?? 0, 0); ?> L</p>
+                                <small>Litros entregados en total</small>
+                            </div>
+                        </div>
+                        <div class="resumen-item">
+                            <div class="resumen-icon" style="background: #2ecc71;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="resumen-content">
+                                <h4>Calidad Promedio</h4>
+                                <p><?php echo number_format($estadisticas['promedio_calidad'] ?? 0, 1); ?>%</p>
+                                <small>Puntuación promedio</small>
+                            </div>
+                        </div>
+                        <div class="resumen-item">
+                            <div class="resumen-icon" style="background: #e74c3c;">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="resumen-content">
+                                <h4>Entregas Totales</h4>
+                                <p><?php echo $estadisticas['total_entregas'] ?? 0; ?></p>
+                                <small>Entregas realizadas</small>
+                            </div>
+                        </div>
+                        <div class="resumen-item">
+                            <div class="resumen-icon" style="background: #f39c12;">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="resumen-content">
+                                <h4>Días Activo</h4>
+                                <p id="diasActivo">Calculando...</p>
+                                <small>Desde la primera entrega</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('estadisticasModal')">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+            </div>
         </div>
+    </div>
         
         <div class="session-info">
             <p><strong>Información de Sesión:</strong></p>
@@ -381,224 +506,9 @@ $conn->close();
         <p>Si necesitas ayuda, contacta a soporte: soporte@donjoaquin.com</p>
     </div>
 
-    <!-- Incluir JavaScript -->
+    <!-- Incluir JavaScript modularizado -->
+
     <script src="/Compra-y-Gestion-de-Leche/php-src/assets/js/dashboard.js"></script>
-    <script>
-    // Función para registrar entrega (MANTENIENDO FUNCIONALIDAD ORIGINAL)
-    function registrarEntrega() {
-        event.preventDefault(); // Prevenir envío real del formulario
-        
-        // Obtener valores del formulario
-        var litros = document.getElementById('litros').value;
-        var calidad = document.getElementById('calidad').value;
-        var fecha = document.getElementById('fecha').value;
-        var observaciones = document.getElementById('observaciones').value;
-        
-        // Validar datos
-        if (!litros || litros <= 0) {
-            alert('Por favor ingrese una cantidad de litros válida');
-            return false;
-        }
-        
-        if (!calidad) {
-            alert('Por favor seleccione la calidad');
-            return false;
-        }
-        
-        if (!fecha) {
-            alert('Por favor seleccione la fecha de entrega');
-            return false;
-        }
-        
-        // Mostrar resumen de la entrega
-        var resumen = 
-            "¡Entrega registrada exitosamente!\n\n" +
-            "Resumen:\n" +
-            "• Litros: " + litros + " L\n" +
-            "• Calidad: " + calidad + "\n" +
-            "• Fecha: " + fecha + "\n";
-            
-        if (observaciones) {
-            resumen += "• Observaciones: " + observaciones + "\n";
-        }
-        
-        resumen += "\nNota: En producción real, estos datos se guardarían en la base de datos.";
-        
-        alert(resumen);
-        
-        // Cerrar modal
-        closeModal('registrarEntregaModal');
-        
-        // Limpiar formulario
-        document.getElementById('formRegistrarEntrega').reset();
-        
-        // Restablecer fecha actual
-        var now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        document.getElementById('fecha').value = now.toISOString().slice(0,16);
-        
-        return false;
-    }
     
-    // Función para marcar notificación como leída (CON AJAX REAL)
-    function marcarComoLeida(idNotificacion, buttonElement) {
-        fetch('marcar_notificaciones.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'action=marcar_leida&id=' + idNotificacion
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Actualizar la interfaz
-                const notificacionItem = buttonElement.closest('.notificacion-item');
-                notificacionItem.classList.remove('no-leida');
-                notificacionItem.classList.add('leida');
-                
-                // Cambiar icono (verde para no leída, gris para leída)
-                const icon = notificacionItem.querySelector('.notificacion-icon i');
-                icon.className = 'fas fa-envelope-open';
-                icon.style.color = '#95a5a6';
-                
-                // Cambiar botón
-                buttonElement.outerHTML = `
-                    <button class="btn-marcar-no-leida" onclick="marcarComoNoLeida(${idNotificacion}, this)">
-                        <i class="fas fa-envelope"></i> Marcar como no leída
-                    </button>`;
-                
-                // Actualizar contador
-                actualizarContadorNotificaciones();
-            } else {
-                alert('Error: ' + (data.message || 'No se pudo marcar como leída'));
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al conectar con el servidor');
-        });
-    }
-
-    // Función para marcar notificación como NO leída (CON AJAX REAL)
-    function marcarComoNoLeida(idNotificacion, buttonElement) {
-        fetch('marcar_notificaciones.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'action=marcar_no_leida&id=' + idNotificacion
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Actualizar la interfaz
-                const notificacionItem = buttonElement.closest('.notificacion-item');
-                notificacionItem.classList.remove('leida');
-                notificacionItem.classList.add('no-leida');
-                
-                // Cambiar icono (verde para no leída)
-                const icon = notificacionItem.querySelector('.notificacion-icon i');
-                icon.className = 'fas fa-envelope';
-                icon.style.color = '#2ecc71';
-                
-                // Cambiar botón
-                buttonElement.outerHTML = `
-                    <button class="btn-marcar-leida" onclick="marcarComoLeida(${idNotificacion}, this)">
-                        <i class="fas fa-check"></i> Marcar como leída
-                    </button>`;
-                
-                // Actualizar contador
-                actualizarContadorNotificaciones();
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al conectar con el servidor');
-        });
-    }
-
-    // Función para marcar TODAS las notificaciones como leídas
-    function marcarTodasLeidas() {
-        if (!confirm('¿Marcar todas las notificaciones como leídas?')) return;
-        
-        fetch('marcar_notificaciones.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'action=marcar_todas_leidas'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Actualizar todas las notificaciones en la interfaz
-                document.querySelectorAll('.notificacion-item.no-leida').forEach(item => {
-                    item.classList.remove('no-leida');
-                    item.classList.add('leida');
-                    
-                    // Cambiar icono
-                    const icon = item.querySelector('.notificacion-icon i');
-                    if (icon) {
-                        icon.className = 'fas fa-envelope-open';
-                        icon.style.color = '#95a5a6';
-                    }
-                    
-                    // Cambiar botón
-                    const actionsDiv = item.querySelector('.notificacion-actions');
-                    if (actionsDiv) {
-                        const notificacionId = item.getAttribute('data-id');
-                        actionsDiv.innerHTML = `
-                            <button class="btn-marcar-no-leida" onclick="marcarComoNoLeida(${notificacionId}, this)">
-                                <i class="fas fa-envelope"></i> Marcar como no leída
-                            </button>`;
-                    }
-                });
-                
-                // Actualizar contador
-                actualizarContadorNotificaciones();
-                alert('Todas las notificaciones han sido marcadas como leídas');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al conectar con el servidor');
-        });
-    }
-
-    // Función para actualizar contador de notificaciones
-    function actualizarContadorNotificaciones() {
-        const nuevas = document.querySelectorAll('.notificacion-item.no-leida').length;
-        const total = document.querySelectorAll('.notificacion-item').length;
-        
-        // Actualizar badge en el header
-        const badgeNew = document.querySelector('.badge.new');
-        if (badgeNew) badgeNew.innerHTML = `<i class="fas fa-envelope"></i> ${nuevas} nuevas`;
-    }
-
-    // Asegurar que dashboard.js se cargue correctamente
-    document.addEventListener('DOMContentLoaded', function() {
-        // Configurar fecha por defecto en el formulario de entrega
-        var fechaInput = document.getElementById('fecha');
-        if (fechaInput) {
-            var now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-            fechaInput.value = now.toISOString().slice(0,16);
-        }
-        
-        // Agregar validación adicional si es necesario
-        var formRegistrarEntrega = document.getElementById('formRegistrarEntrega');
-        if (formRegistrarEntrega) {
-            formRegistrarEntrega.addEventListener('submit', function(e) {
-                // Aquí podrías agregar validación adicional si lo necesitas
-                // Pero manteniendo la funcionalidad original del alert
-                return true;
-            });
-        }
-        
-        // Actualizar contador inicial de notificaciones
-        actualizarContadorNotificaciones();
-    });
-    </script>
 </body>
 </html>
