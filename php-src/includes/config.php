@@ -1,12 +1,13 @@
 <?php
+
 // includes/config.php
 // Comentario: Este es tu archivo de conexión, solo lo mejoramos un poco
 
 $servername = "localhost";
-$username   = "root";
-$password   = "Tuto040608*";
-$dbname     = "donjoaquin";
-$port       = 3307;
+$username = "root";
+$password = "";
+$dbname = "donjoaquin";
+$port = 3307;
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
@@ -17,7 +18,8 @@ if ($conn->connect_error) {
 $conn->set_charset("utf8mb4");
 
 // Comentario: Función auxiliar para consultas más limpias (opcional pero útil)
-function query($sql, $params = []) {
+function query($sql, $params = [])
+{
     global $conn;
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
@@ -30,4 +32,3 @@ function query($sql, $params = []) {
     $stmt->execute();
     return $stmt;
 }
-?>

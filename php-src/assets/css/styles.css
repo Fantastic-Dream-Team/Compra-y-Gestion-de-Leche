@@ -6,7 +6,7 @@
 }
 
 :root {
-  --color-primario: #f5712f;
+  --color-primario: #c3541c;
   --color-secundario: #d2691e;
   --color-naranja-claro: #f5e1bf;
   --color-marron: #4b2e1a;
@@ -95,32 +95,36 @@ header {
 
 /* Navegación principal */
 nav ul {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(130, 68, 37, 0.6);
-  width: 60%;
-  height: 60px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  gap: 30px;
-  font-size: 1.2rem;
-  font-weight: 300;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(130, 68, 37, 0.8);
+    width: 60%;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    z-index: 9;
 }
 
 nav ul li a {
-  color: var(--color-blanco);
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.3s ease;
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-nav ul li a:hover {
-  opacity: 0.8;
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--color-primario);
 }
 
 /* Sección de bienvenida */
@@ -205,6 +209,7 @@ nav ul li a:hover {
 }
 
 /* ===== CARRUSEL ETAPAS CONTROL CALIDAD ===== */
+
 .etapas-control-calidad {
   background: var(--color-primario);
   padding: 40px 5%;
@@ -293,6 +298,50 @@ nav ul li a:hover {
 .flecha:hover {
   color: var(--color-primario);
 }
+
+/* ===== CARRUSEL CONTROL DE CALIDAD ===== */
+
+.carrusel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carrusel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.etapas-control-calidad .carrusel-slides {
+  display: flex;
+  transition: transform 0.6s ease;
+  width: 400%; /* 4 slides */
+}
+
+.etapas-control-calidad .carrusel-slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  gap: 30px;
+  background: #fdf3e6;
+  padding: 30px;
+  border-radius: var(--radio-borde);
+}
+
+.etapas-control-calidad .flecha {
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gris);
+}
+
+.etapas-control-calidad .flecha:hover {
+  color: var(--color-primario);
+}
+
 
 /* ===== SECCIÓN NUESTRO ENTORNO ===== */
 .nuestro-entorno {
@@ -552,9 +601,11 @@ nav ul li a:hover {
 .post1 {
   background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/controlcalidad.jpg');
 }
+
 .post2 {
   background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/vaca.jpg');
 }
+
 .post3 {
   background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/tecnologiaL.jpg');
 }
@@ -613,6 +664,7 @@ nav ul li a:hover {
 .carrusel-blog .flecha:hover {
   color: var(--color-primario);
 }
+
 
 /* ===== FOOTER ===== */
 .footer {
@@ -1093,6 +1145,35 @@ nav ul li a:hover {
   }
 }
 
-.titulo titulo-blog {
-  color :white
+
+
+
+  
+
+
+/* Estilo para el título del blog */
+.titulo-blog {
+  color: white !important;
+  transition: opacity 0.3s ease;
+}
+
+.titulo-blog:hover {
+  opacity: 0.8;
+}
+
+/* Estilo para los posts con enlace */
+.post {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Asegurar que los enlaces dentro del blog no tengan subrayado */
+.blog a {
+  text-decoration: none;
+  color: inherit;
 }

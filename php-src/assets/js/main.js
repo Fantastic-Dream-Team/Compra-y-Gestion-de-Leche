@@ -23,64 +23,65 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarCarruselAuto("carrusel-proceso");
   iniciarCarruselAuto("carrusel-productos");
 
-  // ==========================
-  // CARRUSEL: Etapas de Control de Calidad
-  // ==========================
-  const slides = document.querySelectorAll(".etapas-control-calidad .carrusel-slide");
-  const prev = document.querySelector(".etapas-control-calidad .flecha-izq");
-  const next = document.querySelector(".etapas-control-calidad .flecha-der");
-  let currentSlide = 0;
+ // ==========================
+// CARRUSEL CONTROL DE CALIDAD
+// ==========================
+const slidesContainer = document.querySelector(
+  ".etapas-control-calidad .carrusel-slides"
+);
+const slides = document.querySelectorAll(
+  ".etapas-control-calidad .carrusel-slide"
+);
+const prev = document.querySelector(".etapas-control-calidad .flecha-izq");
+const next = document.querySelector(".etapas-control-calidad .flecha-der");
 
-  if (slides.length > 1) {
-    function mostrarSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.display = i === index ? "flex" : "none";
-      });
-    }
+let currentSlide = 0;
 
-    mostrarSlide(currentSlide);
+function mostrarSlide(index) {
+  slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+}
 
-    prev?.addEventListener("click", () => {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      mostrarSlide(currentSlide);
-    });
+prev.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  mostrarSlide(currentSlide);
+});
 
-    next?.addEventListener("click", () => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      mostrarSlide(currentSlide);
-    });
-  }
+next.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  mostrarSlide(currentSlide);
+});
 
 // ==========================
-// CARRUSEL: Blog y Eventos
+// CARRUSEL: Blog y Eventos (muestra 3 a la vez, desliza en grupos de 3)
 // ==========================
+const blogContainer = document.querySelector(".carrusel-blog .blog");
 const blogPosts = document.querySelectorAll(".carrusel-blog .post");
 const blogPrev = document.querySelector(".carrusel-blog .flecha-izq");
 const blogNext = document.querySelector(".carrusel-blog .flecha-der");
 let currentPost = 0;
+const postsPerView = 3;  // Número de posts visibles
+const step = 3;          // Deslizar de 3 en 3
 
-// Mostrar SIEMPRE las tres primeras
-if (blogPosts.length > 0) {
+if (blogPosts.length > 0 && blogContainer) {
   function mostrarPost(index) {
-    blogPosts.forEach((post, i) => {
-      // Mostrar 3 a la vez
-      if (i >= index && i < index + 3) {
-        post.style.display = "block";
-      } else {
-        post.style.display = "none";
-      }
-    });
+    // Ajustar índice para ciclo
+    index = index % blogPosts.length;
+    if (index < 0) index += blogPosts.length;
+    
+    // Deslizar el contenedor
+    blogContainer.style.transform = `translateX(-${index * (100 / postsPerView)}%)`;
   }
 
+  // Inicializar
   mostrarPost(currentPost);
 
   blogPrev?.addEventListener("click", () => {
-    currentPost = (currentPost - 1 + blogPosts.length) % blogPosts.length;
+    currentPost -= step;
     mostrarPost(currentPost);
   });
 
   blogNext?.addEventListener("click", () => {
-    currentPost = (currentPost + 1) % blogPosts.length;
+    currentPost += step;
     mostrarPost(currentPost);
   });
 }

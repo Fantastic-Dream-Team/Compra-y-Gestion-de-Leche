@@ -1,32 +1,67 @@
 <?php
+/**
+ * Sistema de Gestión de Lácteos Don Joaquín
+ * Punto de entrada principal - Silver7-7
+ */
+
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+// Configuración
 define('BASE_PATH', __DIR__);
-define('ASSETS_PATH', 'assets');
+define('ASSETS_PATH', '/Compra-y-Gestion-de-Leche/php-src/assets');
 define('INCLUDES_PATH', BASE_PATH . '/includes');
+define('BASE_URL', '/Compra-y-Gestion-de-Leche/php-src');
 
-require_once INCLUDES_PATH . '/config.php'; // Comentario: Requiere config para BD en todas las vistas.
 
+// Cargar configuración si existe
+if (file_exists(INCLUDES_PATH . '/config.php')) {
+    require_once INCLUDES_PATH . '/config.php';
+} else {
+    // Configuración básica
+    define('APP_NAME', 'Lácteos Don Joaquín');
+    define('APP_DEBUG', true);
+}
+
+// Sistema de rutas
 $request_uri = $_SERVER['REQUEST_URI'];
 $script_name = $_SERVER['SCRIPT_NAME'];
 
+// Obtener ruta limpia
 $path = str_replace(dirname($script_name), '', $request_uri);
 $path = parse_url($path, PHP_URL_PATH);
 $path = trim($path, '/');
 
-// ... (tu código de static extensions sigue igual)
+// ----------------------------------------------------------
+// SERVIR ARCHIVOS ESTÁTICOS DIRECTAMENTE (CSS, JS, imágenes, etc.)
+// ----------------------------------------------------------
+$request_uri = $_SERVER['REQUEST_URI'];
+$script_name = $_SERVER['SCRIPT_NAME'];
 
-// Comentario: Rutas actualizadas con nuevas páginas dinámicas.
+$request = str_replace(dirname($script_name), '', parse_url($request_uri, PHP_URL_PATH));
+
+if (preg_match('#^/assets/#', $request)) {
+    return false; // Dejar que Apache sirva el archivo directamente
+}
+
+// ENRUTAMIENTO EXACTO SEGÚN TU MENÚ
 $routes = [
-    '' => 'home.php',
-    'home' => 'home.php',
-    'productos' => 'Productos.php', // Nueva: dinámica con BD
-    'blog' => 'Blog.php',           // Nueva: dinámica con BD
-    'productores-y-pedidos' => 'productores-pedidos.php',
-    'productores' => 'productores.php',
-    'acerca-de-nosotros' => 'acerca-de-nosotros.php'
+    '' => 'home.php',                                  
+    'home' => 'home.php',                              
+    'productos-y-pedidos' => 'productos-y-pedidos.php', 
+    'productores' => 'productores.php',                
+    'blog' => 'blog.php',                              
+    'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
+    'panel-productor' => 'panel_productor.php',
+    'login' => 'login.php'
+
 ];
 
+// Encontrar ruta
 if (array_key_exists($path, $routes)) {
     $view_file = $routes[$path];
     $view_path = INCLUDES_PATH . '/views/' . $view_file;
@@ -35,8 +70,10 @@ if (array_key_exists($path, $routes)) {
         require_once $view_path;
     } else {
         http_response_code(404);
-        echo "Página no encontrada.";
+        require_once INCLUDES_PATH . '/views/404.php';
     }
 } else {
+    // Redirigir a home si no se encuentra la ruta
     require_once INCLUDES_PATH . '/views/home.php';
 }
+?>

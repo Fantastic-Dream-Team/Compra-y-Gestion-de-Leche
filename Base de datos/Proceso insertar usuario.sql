@@ -9,7 +9,7 @@ BEGIN
     BEGIN
         ROLLBACK;
         RESIGNAL;
-END;
+    END;
     
     START TRANSACTION;
     

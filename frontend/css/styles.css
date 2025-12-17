@@ -6,7 +6,7 @@
 }
 
 :root {
-  --color-primario: #c3541c;
+  --color-primario: #f5712f;
   --color-secundario: #d2691e;
   --color-naranja-claro: #f5e1bf;
   --color-marron: #4b2e1a;
@@ -26,42 +26,50 @@ body {
   color: var(--color-negro);
 }
 
-
-
-/* ========================================
-   HEADER Tienes que copiar esto bryan   ======================================== */
+/* ===== HEADER PRINCIPAL ===== */
 header {
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../assets/images/consumo_de_lacteos.jpg') center/cover no-repeat;
-  min-height: 800px;
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* capa oscura */
+    url('../assets/images/consumo_de_lacteos.jpg') no-repeat center center/cover;
   position: relative;
-  color: var(--color-blanco);
+  min-height: 800px;
 }
 
+
+/* Barra superior */
 .top-bar {
   background: var(--color-negro);
   height: 20px;
 }
 
+/* Barra principal de contacto */
 #barra-principal {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(195, 84, 28, 0.635);
-  padding: 0 5%;
+  margin-top: 40px;
   height: 50px;
-  color: var(--color-blanco);
+  background-color: rgba(195, 84, 28, 0.635);
+  width: 100%;
+  padding: 0 5%;
+  font-family: var(--fuente-principal);
   font-weight: 500;
-  font-size: 0.9rem;
+  color: var(--color-blanco);
 }
 
-#barra-principal ul {
+.informacion-contacto ul,
+.social-correo ul {
   display: flex;
   list-style: none;
   gap: 20px;
 }
 
+.informacion-contacto ul li,
+.social-correo ul li {
+  font-size: 0.9rem;
+}
+
+/* Logo */
 .logo-container {
   position: absolute;
   top: 10%;
@@ -79,20 +87,20 @@ header {
 }
 
 #logo {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: contain;
 }
 
+/* Navegación principal */
 nav ul {
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(130, 68, 37, 0.8);
-  width: 70%;
-  max-width: 900px;
+  background: rgba(130, 68, 37, 0.6);
+  width: 60%;
   height: 60px;
   border-radius: 18px;
   display: flex;
@@ -100,32 +108,31 @@ nav ul {
   justify-content: center;
   list-style: none;
   gap: 30px;
-  font-size: 1.1rem;
-  z-index: 9;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 nav ul li a {
   color: var(--color-blanco);
   text-decoration: none;
   font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  background: var(--color-primario);
+nav ul li a:hover {
+  opacity: 0.8;
 }
 
+/* Sección de bienvenida */
 .bienvenida {
   min-height: 800px;
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 120px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 0 20px;
 }
 
 .bienvenida h1 {
@@ -135,15 +142,11 @@ nav ul li a.active {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
-/* ========================================
-hasta aqui header bryan   ======================================== */
-
-
-
-
-
-
+.bienvenida p {
+  font-size: 1.5rem;
+  max-width: 800px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
 
 /* ===== SECCIÓN BIENVENIDA ===== */
 .seccion-bienvenida {
@@ -505,17 +508,8 @@ hasta aqui header bryan   ======================================== */
 .franja-naranja .titulo {
   color: var(--color-negro);
   font-size: 2.2rem;
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
-}
-
-/* Corregir color del título del blog: la regla
-   original (.franja-naranja .titulo) establece
-   color negro. Para el título específico del
-   blog usamos el id #titulo-blog con mayor
-   especificidad para que aparezca en blanco. */
-.franja-naranja #titulo-blog {
-  color: var(--color-blanco);
 }
 
 .carrusel-blog {
@@ -582,8 +576,8 @@ hasta aqui header bryan   ======================================== */
 }
 
 .post .fecha {
-  background: rgba(245, 225, 191, 0.95);
-  color: var(--color-negro);
+  background:var(--color-marron);
+  color: var(--color-blanco);
   padding: 10px 20px;
   font-weight: bold;
   position: absolute;
@@ -623,51 +617,199 @@ hasta aqui header bryan   ======================================== */
 }
 
 /* ===== FOOTER ===== */
-/* Contenedor principal del footer con grid layout de 3 columnas */
 .footer {
-  background: var(--color-gris);              /* Fondo gris oscuro */
-  color: var(--color-blanco);                 /* Texto blanco */
-  padding: 40px 5%;                           /* Espaciado interno */
-  display: grid;                              /* Usa grid layout */
-  grid-template-columns: auto 1fr auto;       /* Logo | Contenido central | Redes */
-  gap: 40px;                                  /* Espaciado entre columnas */
-  align-items: center;                        /* Alineación vertical centrada */
+  background: var(--color-gris);
+  color: var(--color-blanco);
+  padding: 40px 5%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: center;
 }
 
-/* Logo del footer */
 .footer .logo img {
-  width: 150px;                               /* Ancho del logo */
-  height: auto;                               /* Alto proporcional */
+  width: 150px;
+  height: auto;
 }
 
-/* Contenedor de redes sociales */
 .footer .social {
-  display: flex;                              /* Flexbox para alineación horizontal */
-  gap: 15px;                                  /* Espaciado entre botones sociales */
+  display: flex;
+  gap: 15px;
 }
 
-/* Estilos de enlaces a redes sociales */
 .footer .social a {
-  color: var(--color-blanco);                 /* Color del texto blanco */
-  text-decoration: none;                      /* Sin subrayado */
-  padding: 8px 12px;                          /* Espaciado interno */
-  background: rgba(255, 255, 255, 0.1);       /* Fondo semi-transparente */
-  border-radius: 5px;                         /* Bordes redondeados */
-  transition: background 0.3s ease;           /* Animación suave al pasar el ratón */
+  color: var(--color-blanco);
+  text-decoration: none;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
-/* Efecto hover en enlaces sociales */
 .footer .social a:hover {
-  background: rgba(255, 255, 255, 0.2);       /* Fondo más opaco al pasar el ratón */
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Sección de derechos de autor */
 .derechos {
-  grid-column: 1 / -1;                        /* Ocupa todas las columnas */
-  text-align: center;                         /* Texto centrado */
-  padding-top: 20px;                          /* Espaciado superior */
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
-  margin-top: 20px;                           /* Margen superior */
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+}
+
+/* ===== SECCIÓN PRODUCTORES ===== */
+.seccion-productores {
+  background: var(--color-primario); 
+  padding: 60px 5%;
+  text-align: center;
+}
+
+/* Título con iconos */
+.titulo-productores {
+  font-size: 2.5rem;
+  color: var(--color-negro);
+  background: var(--color-naranja-claro); 
+  padding: 15px 40px;
+  margin: 0 auto 40px;
+  max-width: 90%;
+  border-radius: var(--radio-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.icono-izq,
+.icono-der {
+  font-size: 2rem;
+}
+
+.carrusel-container-productores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slide-productores {
+  display: flex;
+  align-items: stretch; 
+  gap: 0; 
+  background: #fdf3e6; 
+  border-radius: var(--radio-borde);
+  overflow: hidden; 
+  box-shadow: var(--sombra-media);
+  flex: 1;
+  min-height: 350px;
+}
+
+/* Columna izquierda - Información */
+.info-productor {
+  flex: 1; 
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #fdf3e6; 
+}
+
+/* Etiqueta "Nombre" */
+.etiqueta-nombre {
+  background: var(--color-marron); 
+  color: var(--color-blanco);
+  padding: 12px 30px;
+  border-radius: var(--radio-borde);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  align-self: flex-start; 
+}
+
+/* Lista de datos del productor */
+.datos-productor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.datos-productor li {
+  font-size: 1.1rem;
+  color: var(--color-gris);
+  padding-left: 0; /* Sin sangría */
+  line-height: 1.5;
+}
+
+/* Columna derecha - Imagen */
+.imagen-productor {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8dcc8; 
+  overflow: hidden;
+}
+
+.imagen-productor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.flecha-productores {
+  font-size: 3rem; 
+  color: var(--color-blanco); 
+  cursor: pointer;
+  padding: 15px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3); 
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flecha-productores:hover {
+  background: rgba(0, 0, 0, 0.5); 
+  color: var(--color-naranja-claro);
+  transform: scale(1.1); 
+}
+
+/* Indicadores de navegación */
+.indicadores-productores {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.indicador {
+  width: 80px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4); 
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicador:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.indicador.activo {
+  background: var(--color-negro); 
+  width: 100px; 
 }
 
 /* ===== MEDIA QUERIES RESPONSIVE ===== */
@@ -906,11 +1048,53 @@ hasta aqui header bryan   ======================================== */
   }
 }
 
-
+/* ===== RESPONSIVE PARA PRODUCTORES ===== */
+@media (max-width: 768px) {
+  .titulo-productores {
+    font-size: 1.8rem;
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .slide-productores {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .info-productor {
+    padding: 25px 20px;
+  }
+  
+  .etiqueta-nombre {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    align-self: center;
+  }
+  
+  .imagen-productor {
+    min-height: 250px;
+  }
+  
+  .flecha-productores {
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .indicadores-productores {
+    gap: 10px;
+  }
+  
+  .indicador {
+    width: 50px;
+  }
+  
+  .indicador.activo {
+    width: 70px;
+  }
+}
 
 .titulo titulo-blog {
   color :white
-}
-#titulo-calidad.titulo-carrusel {
-  color :rgb(56, 32, 14);
 }

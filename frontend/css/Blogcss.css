@@ -275,15 +275,6 @@ nav ul li a.active {
   background: #ddd;
   height: 160px;
   width: 100%;
-  overflow: hidden;      /* Oculta lo que se salga */
-}
-
-.img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* Hace que todas las imágenes tengan el mismo tamaño */
-  object-position: center; /* Centra el recorte */
-  display: block;
 }
 
 .card h3 {
@@ -301,37 +292,48 @@ nav ul li a.active {
 /* ========================================
    PAGINACIÓN
    ======================================== */
-/* ========================================
-   PAGINACIÓN HORIZONTAL
-   ======================================== */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 40px 0;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 0 10px;
+  flex-wrap: wrap;
 }
 
-.page-numbers-horizontal {
-  display: flex;
-  gap: 8px;
-  flex-wrap: nowrap;
+.pagination button {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--color-marron);
+  transform: scale(1.1);
 }
 
 .page-number {
-  min-width: 40px;
+  background: var(--color-naranja-claro);
+  color: var(--color-marron);
+  width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--color-naranja-claro);
-  color: var(--color-marron);
-  font-weight: 500;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
@@ -343,27 +345,6 @@ nav ul li a.active {
 
 .page-number:hover:not(.active) {
   background: #f0c14b;
-}
-
-/* Evitar scroll horizontal innecesario */
-.pagination::-webkit-scrollbar {
-  display: none;
-}
-.pagination {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Responsive: en móviles, permitir scroll suave */
-@media (max-width: 768px) {
-  .page-numbers-horizontal {
-    gap: 6px;
-  }
-  .page-number {
-    min-width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
-  }
 }
 
 /* ========================================
@@ -400,52 +381,4 @@ nav ul li a.active {
   .arrow {
     display: none; /* Ocultar flechas en móvil si no hay scroll */
   }
-}
-
-/* ===== FOOTER ===== */
-/* Contenedor principal del footer con grid layout de 3 columnas */
-.footer {
-  background: var(--color-gris);              /* Fondo gris oscuro */
-  color: var(--color-blanco);                 /* Texto blanco */
-  padding: 40px 5%;                           /* Espaciado interno */
-  display: grid;                              /* Usa grid layout */
-  grid-template-columns: auto 1fr auto;       /* Logo | Contenido central | Redes */
-  gap: 40px;                                  /* Espaciado entre columnas */
-  align-items: center;                        /* Alineación vertical centrada */
-}
-
-/* Logo del footer */
-.footer .logo img {
-  width: 150px;                               /* Ancho del logo */
-  height: auto;                               /* Alto proporcional */
-}
-
-/* Contenedor de redes sociales */
-.footer .social {
-  display: flex;                              /* Flexbox para alineación horizontal */
-  gap: 15px;                                  /* Espaciado entre botones sociales */
-}
-
-/* Estilos de enlaces a redes sociales */
-.footer .social a {
-  color: var(--color-blanco);                 /* Color del texto blanco */
-  text-decoration: none;                      /* Sin subrayado */
-  padding: 8px 12px;                          /* Espaciado interno */
-  background: rgba(255, 255, 255, 0.1);       /* Fondo semi-transparente */
-  border-radius: 5px;                         /* Bordes redondeados */
-  transition: background 0.3s ease;           /* Animación suave al pasar el ratón */
-}
-
-/* Efecto hover en enlaces sociales */
-.footer .social a:hover {
-  background: rgba(255, 255, 255, 0.2);       /* Fondo más opaco al pasar el ratón */
-}
-
-/* Sección de derechos de autor */
-.derechos {
-  grid-column: 1 / -1;                        /* Ocupa todas las columnas */
-  text-align: center;                         /* Texto centrado */
-  padding-top: 20px;                          /* Espaciado superior */
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
-  margin-top: 20px;                           /* Margen superior */
 }

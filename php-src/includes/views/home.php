@@ -96,34 +96,73 @@ $page_data = [
       </div>
     </section>
 
-    <!-- Sección de etapas de control de calidad -->
-    <section class="etapas-control-calidad" aria-labelledby="titulo-calidad">
-      <h2 id="titulo-calidad" class="titulo-carrusel">Gestionamos la Calidad en Cada Etapa</h2>
-      <div class="carrusel-container">
-        <button class="flecha flecha-izq" aria-label="Diapositiva anterior">&#10094;</button>
-        
+  <section class="etapas-control-calidad">
+  <h2 class="titulo-carrusel">Etapas de Control de Calidad</h2>
+
+  <div class="carrusel-wrapper">
+    <!-- Flecha izquierda -->
+    <button class="flecha flecha-izq">&#10094;</button>
+
+    <!-- Ventana del carrusel -->
+    <div class="carrusel-viewport">
+      <div class="carrusel-slides">
+
+        <!-- SLIDE 1 -->
         <div class="carrusel-slide">
           <div class="carrusel-img">
-            <img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Análisis de Calidad en laboratorio" width="600" height="400">
-          </div>
+<img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Proyecto Vacas Jersey - Imagen 1">          </div>
           <div class="carrusel-description">
-            <h3 class="subtitulo">Permanentes Controles de calidad</h3>
-            <p>
-              El primer análisis ocurre en laboratorio y sucede antes de la manipulación de la materia prima. 
-              Una vez aprueba el primer filtro, se procesa en la fábrica, con rigurosos controles de higiene. 
-              Personal técnico vigila que se cumplan las temperaturas ideales durante toda la preparación de nuestros productos. 
-              Un tercer análisis sucede, previo a su distribución, para garantizar que cumplen con altos estándares de calidad.
-            </p>
+            <h3 class="subtitulo">Recepción de la leche</h3>
+            <p>Se verifica temperatura, olor y apariencia antes de iniciar el proceso de seleccion, 
+              aqui es importante la calidad y tambien se determina la frescura de la leche.</p>
           </div>
         </div>
 
-        <button class="flecha flecha-der" aria-label="Diapositiva siguiente">&#10095;</button>
+        <!-- SLIDE 2 -->
+        <div class="carrusel-slide">
+          <div class="carrusel-img">
+            <img src="<?php echo $page_data['assets_path']; ?>/images/vacas.jpg" alt="Control de calidad 2">
+          </div>
+          <div class="carrusel-description">
+            <h3 class="subtitulo">Análisis de laboratorio</h3>
+            <p>Pruebas microbiológicas y fisicoquímicas para asegurar pureza.</p>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="carrusel-slide">
+          <div class="carrusel-img">
+            <img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Proyecto Vacas Jersey - Imagen 1">
+          </div>
+          <div class="carrusel-description">
+            <h3 class="subtitulo">Proceso de pasteurización</h3>
+            <p>Eliminación de bacterias mediante control térmico.</p>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="carrusel-slide">
+          <div class="carrusel-img">
+            <img src="assets/images/control4.jpg" alt="Control de calidad 4">
+          </div>
+          <div class="carrusel-description">
+            <h3 class="subtitulo">Producto final</h3>
+            <p>Verificación final antes del envasado y distribución.</p>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
+
+    <!-- Flecha derecha -->
+    <button class="flecha flecha-der">&#10095;</button>
+  </div>
+</section>
 
     <section class="nuestro-entorno" aria-labelledby="titulo-entorno">
       <h2 id="titulo-entorno" class="titulo-seccion">Nuestro Entorno</h2>
-
+ 
+      
       <div class="proyectos-grid">
         <!-- Proyecto 1: Vacas Jersey -->
         <article class="proyecto-card vacas-jersey">
@@ -138,10 +177,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/vacas2.jpg" alt="Proyecto Vacas Jersey - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/vacas3.jpg" alt="Proyecto Vacas Jersey - Imagen 3">
                 </div>
               </div>
               
@@ -152,11 +191,12 @@ $page_data = [
               </div>
             </div>
           </div>
-          <div class="contenido-proyecto">
-            <h3>Proyecto - Vacas Jersey</h3>
-            <a href="vacasJersey.html" class="ver-mas">VER MÁS</a>
-          </div>
-        </article>
+            <div class="contenido-proyecto">
+     <h3>Proyecto - Vacas Jersey</h3>
+    <a href="https://aurocha.com/raza-jersey-descubre-la-excelencia/" target="_blank" class="ver-mas" 
+       aria-label="Más información sobre Vacas Jersey">VER MÁS</a>
+  </div>
+</article>
         
         <!-- Proyecto 2: Laboratorio de Ordeño -->
         <article class="proyecto-card laboratorio-ordeño">
@@ -171,10 +211,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/lab2.png" alt="Laboratorio de Ordeño - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Laboratorio de Ordeño - Imagen 3">
                 </div>
               </div>
               
@@ -186,11 +226,13 @@ $page_data = [
             </div>
           </div>
           <div class="contenido-proyecto">
-            <h3>Laboratorio de Ordeño</h3>
-            <a href="laboratorio-ordeño.html" class="ver-mas">VER MÁS</a>
-          </div>
-        </article>
-        
+    <h3>Laboratorio de ordeñación</h3>
+    <a href="https://lacteosdonjoaquin.com/nosotros/" 
+       target="_blank" class="ver-mas" 
+       aria-label="Más información sobre procesos de ordeño">VER MÁS</a>
+  </div>
+</article>
+
         <!-- Proyecto 3: Proceso de Ordeño -->
         <article class="proyecto-card proceso-ordeño">
           <div class="carrusel-contenedor">
@@ -204,10 +246,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productor1.jpg" alt="Proceso de Ordeño - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/lab5.jpg" alt="Proceso de Ordeño - Imagen 3">
                 </div>
               </div>
               
@@ -220,9 +262,11 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Proceso de Ordeño</h3>
-            <a href="proceso-ordeño.html" class="ver-mas">VER MÁS</a>
-          </div>
-        </article>
+      <a href="" 
+       target="_blank" class="ver-mas" 
+       aria-label="Más información sobre procesos de ordeño">VER MÁS</a>
+  </div>
+</article>
         
         <!-- Proyecto 4: Productos -->
         <article class="proyecto-card productos">
@@ -234,13 +278,13 @@ $page_data = [
               
               <div class="carrusel-slides">
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 1">
+                  <img src="<?php echo $page_data['assets_path']; ?> /images/productos.jpg" alt="Productos Lácteos - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-gouda.jpg" alt="Productos Lácteos - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-brie.jpg" alt="Productos Lácteos - Imagen 3">
                 </div>
               </div>
               
@@ -253,43 +297,65 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Productos</h3>
-            <a href="productos.html" class="ver-mas">VER MÁS</a>
-          </div>
+            <a href="<?php echo $page_data['base_url']; ?>/productos-y-pedidos" class="ver-mas"
+       aria-label="Ver nuestros productos">VER MÁS</a>
+  </div>
+</div>
+</article>
+
+
+<!-- blog -->
+
+   <section class="seccion blog-y-eventos" aria-labelledby="titulo-blog">
+  <div class="franja-naranja">
+    <h2 id="titulo-blog" class="titulo" style="color: white;">Blog y Eventos</h2>
+  </div>
+
+  <div class="carrusel-blog">
+    <button class="flecha flecha-izq" aria-label="Publicaciones anteriores">&#10094;</button>
+
+ <div class="blog">
+  <?php
+  // Consulta para obtener los últimos 10 posts ordenados por fecha (más reciente primero)
+  $sql = "SELECT p.id, p.titulo, p.contenido, p.imagen, tp.nombre AS tipo, p.fecha_creacion 
+          FROM posts p 
+          JOIN tipos_posts tp ON p.tipo_id = tp.id 
+          ORDER BY p.fecha_creacion DESC 
+          LIMIT 10";
+  $result = $conn->query($sql);
+
+  if ($result && $result->num_rows > 0) {
+    while ($post = $result->fetch_assoc()) {
+      $fecha = date('d/m/Y', strtotime($post['fecha_creacion'] ?? 'now'));
+      $label_class = strtolower($post['tipo']) === 'receta' ? 'receta' : 'blog';
+      $label_text = $post['tipo'];
+      ?>
+      <a href="<?php echo $page_data['base_url']; ?>/blog" class="post-link" aria-label="Ver todos los posts en el blog">
+        <article class="post">
+          <span class="fecha"><?php echo $fecha; ?></span>
+          <h3 class="subtitulo"><?php echo htmlspecialchars($post['titulo']); ?></h3>
+          <span class="label <?php echo $label_class; ?>"><?php echo $label_text; ?></span>
         </article>
-      </div>
-    </section>
+      </a>
+      <?php
+    }
+  } else {
+    // Fallback si no hay posts
+    echo '<a href="' . $page_data['base_url'] . '/blog" class="post-link">
+            <article class="post">
+              <span class="fecha">15/12/2025</span>
+              <h3 class="subtitulo">Bienvenidos al nuevo blog</h3>
+            </article>
+          </a>';
+  }
+  ?>
+</div>
+    <button class="flecha flecha-der" aria-label="Publicaciones siguientes">&#10095;</button>
+  </div>
 
-    <!-- Sección de blog y eventos -->
-    <section class="seccion blog-y-eventos" aria-labelledby="titulo-blog">
-      <div class="franja-naranja">
-        <h2 id="titulo-blog" class="titulo">Blog y Eventos</h2>
-      </div>
+  <div class="franja-naranja"></div>
+</section>
 
-      <div class="carrusel-blog">
-        <button class="flecha flecha-izq" aria-label="Publicaciones anteriores">&#10094;</button>
-
-        <div class="blog">
-          <article class="post post1">
-            <span class="fecha">15/08/2025</span>
-            <h3 class="subtitulo">Control de Calidad: Nuevos estándares implementados para garantizar la excelencia en todos nuestros productos</h3>
-          </article>
-
-          <article class="post post2">
-            <span class="fecha">06/09/2025</span>
-            <h3 class="subtitulo">Ganadería Sostenible: Innovaciones en el cuidado y manejo responsable del ganado bovino</h3>
-          </article>
-
-          <article class="post post3">
-            <span class="fecha">15/09/2025</span>
-            <h3 class="subtitulo">Tecnología GLEP: Revolucionando los procesos industriales con soluciones inteligentes</h3>
-          </article>
-        </div>
-
-        <button class="flecha flecha-der" aria-label="Publicaciones siguientes">&#10095;</button>
-      </div>
-
-      <div class="franja-naranja"></div>
-    </section>
   </main>
 
   <!-- Footer -->
