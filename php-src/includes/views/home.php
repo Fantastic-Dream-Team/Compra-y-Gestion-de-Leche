@@ -170,10 +170,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/vacas2.jpg" alt="Proyecto Vacas Jersey - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/vacas3.jpg" alt="Proyecto Vacas Jersey - Imagen 3">
                 </div>
               </div>
               
@@ -186,7 +186,7 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Proyecto - Vacas Jersey</h3>
-            <a href="vacasJersey.html" class="ver-mas">VER MÁS</a>
+            <a href="https://aurocha.com/raza-jersey-descubre-la-excelencia/" target="_blank" class="ver-mas">VER MÁS</a>
           </div>
         </article>
         
@@ -203,10 +203,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/lab2.png" alt="Laboratorio de Ordeño - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/Control-calidad.jpg" alt="Laboratorio de Ordeño - Imagen 3">
                 </div>
               </div>
               
@@ -219,7 +219,7 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Laboratorio de Ordeño</h3>
-            <a href="laboratorio-ordeño.html" class="ver-mas">VER MÁS</a>
+            <a href="https://lacteosdonjoaquin.com/nosotros/" target="_blank" class="ver-mas">VER MÁS</a>
           </div>
         </article>
         
@@ -236,10 +236,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/procductor1.jpg" alt="Proceso de Ordeño - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/lab5.jpg" alt="Proceso de Ordeño - Imagen 3">
                 </div>
               </div>
               
@@ -252,7 +252,7 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Proceso de Ordeño</h3>
-            <a href="proceso-ordeño.html" class="ver-mas">VER MÁS</a>
+            <a href="https://lacteosdonjoaquin.com/de-la-finca-a-tus-manos/" target="_blank" class="ver-mas">VER MÁS</a>
           </div>
         </article>
         
@@ -269,10 +269,10 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-gouda.jpg" alt="Productos Lácteos - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-brie.jpg" alt="Productos Lácteos - Imagen 3">
                 </div>
               </div>
               
@@ -285,7 +285,7 @@ $page_data = [
           </div>
           <div class="contenido-proyecto">
             <h3>Productos</h3>
-            <a href="productos.html" class="ver-mas">VER MÁS</a>
+            <a href="<?php echo $page_data['base_url']; ?>/productos-y-pedidos"  class="ver-mas">VER MÁS</a>
           </div>
         </article>
       </div>
