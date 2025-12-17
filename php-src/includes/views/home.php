@@ -236,7 +236,7 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procductor1.jpg" alt="Proceso de Ordeño - Imagen 2">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productor1.jpg" alt="Proceso de Ordeño - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
                   <img src="<?php echo $page_data['assets_path']; ?>/images/lab5.jpg" alt="Proceso de Ordeño - Imagen 3">
@@ -272,7 +272,7 @@ $page_data = [
                   <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-gouda.jpg" alt="Productos Lácteos - Imagen 2">
                 </div>
                 <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/queso-brie.jpg" alt="Productos Lácteos - Imagen 3">
+                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos/yogur-fresa.jpg" alt="Productos Lácteos - Imagen 3">
                 </div>
               </div>
               

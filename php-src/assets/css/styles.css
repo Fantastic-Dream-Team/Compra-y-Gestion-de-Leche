@@ -374,14 +374,19 @@ nav ul li a.active {
 }
 
 .carrusel-slide {
-  width: 33.333%;
+  width: 30%;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
 }
 
 .carrusel-slide img {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  object-fit: cover;
+  border-radius: 5%;
+  position: relative;
+  object-fit: cover 25%;
 }
 
 .carrusel-controles {
