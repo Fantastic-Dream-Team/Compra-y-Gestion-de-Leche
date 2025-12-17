@@ -38,7 +38,7 @@ $page_data = [
                 <li>Facebook</li>
                 <li>info@lacteosdonjoaquin.com</li>
                 <li>Instagram</li>
-                <li>X (Twitter)</li>
+                <li>X Twitter</li>
             </ul>
         </div>
     </div>
