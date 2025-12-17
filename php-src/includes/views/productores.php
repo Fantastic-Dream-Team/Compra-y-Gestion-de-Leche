@@ -294,24 +294,29 @@ $page_data = [
       <h2 id="titulo-rutas" class="titulo-seccion-rutas">Nuestras Rutas</h2>
 
       <div class="contenedor-rutas">
-        <!-- Panel lateral -->
+        <!-- Panel lateral - AHORA SOLO TÍTULO ESTÁTICO -->
         <aside class="panel-rutas">
-          <button class="header-panel">
+          <div class="header-panel-static">
             <span class="texto-header">Nuestras Rutas</span>
-            <span class="icono-flecha">▼</span>
-          </button>
+          </div>
 
-          <div class="contenido-panel completo-fondo">
-            <div class="dropdown-ruta">
-              <button class="btn-dropdown activo">
+          <div class="contenido-panel-static">
+            <div class="rutas-lista-estatica">
+              <div class="ruta-item activo" data-ruta="ruta1">
+                <i class="fas fa-route"></i>
+                <span>Ruta Norte - Centro</span>
+              </div>
+              <div class="ruta-item" data-ruta="ruta2">
+                <i class="fas fa-route"></i>
                 <span>Ruta Este - Sur</span>
-                <span class="icono-dropdown">▼</span>
-              </button>
-              <div class="lista-items-ruta">
-                <div class="item-ruta" data-ruta="ruta1">Ruta Norte - Centro</div>
-                <div class="item-ruta activo" data-ruta="ruta2">Ruta Este - Sur</div> 
-                <div class="item-ruta" data-ruta="ruta3">Ruta Oeste - Rural</div>
-                <div class="item-ruta" data-ruta="ruta4">Ruta Express City</div>
+              </div>
+              <div class="ruta-item" data-ruta="ruta3">
+                <i class="fas fa-route"></i>
+                <span>Ruta Oeste - Rural</span>
+              </div>
+              <div class="ruta-item" data-ruta="ruta4">
+                <i class="fas fa-route"></i>
+                <span>Ruta Express City</span>
               </div>
             </div>
             <div class="contador-rutas">
@@ -321,27 +326,27 @@ $page_data = [
         </aside>
 
         <!-- Información de ruta seleccionada -->
-        <div class="info-ruta-seleccionada">
-          <h3>Ruta Norte - Centro</h3>
-          <p>Cubre las zonas norte de David y alrededores. Entregas diarias de 5:00 a.m. a 11:00 a.m.</p>
-          <ul>
+        <div class="info-ruta-seleccionada" id="info-ruta">
+          <h3 id="ruta-titulo">Ruta Norte - Centro</h3>
+          <p id="ruta-descripcion">Cubre las zonas norte de David y alrededores. Entregas diarias de 5:00 a.m. a 11:00 a.m.</p>
+          <ul id="ruta-detalles">
             <li>Frecuencia: Diaria</li>
             <li>Vehículos: 3 camiones refrigerados</li>
             <li>Productores: 12 fincas asociadas</li>
           </ul>
         </div>
 
-        <!-- Mapa estático -->
+        <!-- Mapa estático con imagen precargada -->
         <div class="contenedor-mapa">
           <img src="<?php echo $page_data['assets_path']; ?>/images/mapa-david.png"
-            alt="Mapa de rutas en Chiriquí"
+            alt="Mapa de Rutas en Chiriquí - Ruta Norte - Centro"
             id="mapa-ruta"
             style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
         </div>
       </div>
     </section>
 
-    <!-- Sección Nuestro Compromiso -->
+  <!-- Sección Nuestro Compromiso -->
     <section class="seccion-compromiso" aria-labelledby="titulo-compromiso">
       <h2 id="titulo-compromiso" class="titulo-compromiso">Nuestro Compromiso</h2>
 
@@ -349,7 +354,11 @@ $page_data = [
         <!-- Compromiso 1 -->
         <div class="compromiso-card">
           <div class="imagen-compromiso">
-            <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Botella de leche fresca con desayuno saludable">
+            <div class="aspect-ratio-box">
+              <img src="<?php echo $page_data['assets_path']; ?>/images/queso-pan.jpg" 
+                  alt="Botella de leche fresca con desayuno saludable"
+                  class="imagen-landscape">
+            </div>
           </div>
           <h3>Calidad Garantizada</h3>
           <p>Implementamos un sistema de gestión integral que asegura la trazabilidad desde la finca hasta el consumidor, priorizando la frescura y pureza de nuestra leche.</p>
@@ -358,7 +367,11 @@ $page_data = [
         <!-- Compromiso 2 -->
         <div class="compromiso-card">
           <div class="imagen-compromiso">
-            <img src="<?php echo $page_data['assets_path']; ?>/images/productor5.jpg" alt="Vaca en pastos ecológicos">
+            <div class="aspect-ratio-box">
+              <img src="<?php echo $page_data['assets_path']; ?>/images/ganado-libre.jpg" 
+                  alt="Vaca en pastos ecológicos"
+                  class="imagen-landscape">
+            </div>
           </div>
           <h3>Sostenibilidad Ambiental</h3>
           <p>Nuestro proceso de compra apoya prácticas ecológicas en las fincas, promoviendo el bienestar animal y reduciendo el impacto ambiental en la producción lechera.</p>
@@ -367,7 +380,11 @@ $page_data = [
         <!-- Compromiso 3 -->
         <div class="compromiso-card">
           <div class="imagen-compromiso">
-            <img src="<?php echo $page_data['assets_path']; ?>/images/tecnologiaL.jpg" alt="Cartón de leche con sello de calidad">
+            <div class="aspect-ratio-box">
+              <img src="<?php echo $page_data['assets_path']; ?>/images/Amigos.jpg" 
+                  alt="Cartón de leche con sello de calidad"
+                  class="imagen-landscape">
+            </div>
           </div>
           <h3>Apoyo a la Comunidad</h3>
           <p>Facilitamos un sistema de compra justo y eficiente que beneficia directamente a nuestros productores locales, fomentando el crecimiento económico sostenible.</p>
