@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Consulta para verificar las credenciales
         // La contraseña en la BD se guarda con SHA256 y un salt
         $sql = "SELECT up.id, up.id_productor, up.nombre_usuario, up.codigo_productor,
-                       p.nombre AS productor_nombre, p.finca
+                p.nombre AS productor_nombre, p.finca
                 FROM usuarios_productor up
                 INNER JOIN productores p ON up.id_productor = p.id
-                WHERE up.nombre_usuario = ? 
+                WHERE up.nombre_usuario = ?
                 AND up.codigo_productor = ?
                 AND up.contrasenia = SHA2(CONCAT(?, 'lacteos_salt'), 256)";
         

@@ -434,6 +434,88 @@ header {
   top: 0; left: 0; width: 100%; height: 100%;
 }
 
+/* ===== ESTILOS MODIFICADOS PARA RUTAS ESTÁTICAS ===== */
+
+/* Panel estático */
+.header-panel-static {
+  background: var(--color-marron);
+  color: white;
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 16px 16px 0 0;
+}
+
+.contenido-panel-static {
+  background: var(--color-naranja-claro);
+  padding: 25px 20px 30px;
+  border-radius: 0 0 16px 16px;
+  box-shadow: var(--sombra-media);
+}
+
+.rutas-lista-estatica {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.ruta-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.ruta-item:hover {
+  background: var(--color-blanco);
+  border-color: var(--color-primario);
+  transform: translateX(5px);
+}
+
+.ruta-item.activo {
+  background: var(--color-blanco);
+  color: black;
+  font-weight: 600;
+  border-color: var(--color-primario);
+}
+
+.ruta-item i {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+/* Estilos para la información de rutas */
+#info-ruta {
+  transition: all 0.3s ease;
+}
+
+.contenedor-mapa img.cargado {
+  opacity: 1;
+}
+
+/* Estilos para las imágenes de cada ruta */
+.img-ruta {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.img-ruta.activa {
+  display: block;
+}
+
+
 /* ===== CARRUSEL PRODUCTORES ===== */
 .titulo-productores {
     background: linear-gradient(135deg, #fff 0%, #fdf4e8 100%);
@@ -906,6 +988,8 @@ header {
   text-align: center;
   box-shadow: var(--sombra-suave);
   transition: transform 0.3s ease;
+  height: 100%;
+  min-height: 450px; /* Altura mínima consistente */
 }
 
 .compromiso-card:hover {
@@ -913,27 +997,82 @@ header {
   box-shadow: var(--sombra-media);
 }
 
+/* CONTENEDOR DE IMAGEN MEJORADO */
 .imagen-compromiso {
+  width: 100%;
+  height: 200px; /* Altura fija para todas las imágenes */
   margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #f8f8f8; /* Fondo por si la imagen falla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* IMAGEN CON RECORTE INTELIGENTE */
 .imagen-compromiso img {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto recorta manteniendo proporciones */
+  object-position: center; /* Centra la parte importante */
+  transition: transform 0.5s ease;
+}
+
+/* Efecto hover en imagen */
+.compromiso-card:hover .imagen-compromiso img {
+  transform: scale(1.05);
+}
+
+/* Contenedor para mantener relación de aspecto 16:9 */
+.aspect-ratio-box {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.aspect-ratio-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Clases específicas para diferentes tipos de imágenes */
+.imagen-landscape {
+  object-position: center 30%; /* Ajusta para paisajes */
+}
+
+.imagen-portrait {
+  object-position: center; /* Centra para retratos */
+}
+
+.imagen-cuadrada {
+  object-fit: contain; /* Para imágenes cuadradas */
+  padding: 10px;
 }
 
 .compromiso-card h3 {
   font-size: 1.5rem;
   color: var(--color-marron);
-  margin-bottom: 15px;
+  margin: 20px 0 15px;
   font-weight: 600;
+  min-height: 60px; /* Altura mínima para títulos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .compromiso-card p {
   font-size: 1rem;
   color: var(--color-gris);
   line-height: 1.6;
+  flex-grow: 1; /* Hace que el párrafo ocupe espacio disponible */
 }
 
 /* ===== RESPONSIVE PARA ¿ERES PRODUCTOR? ===== */

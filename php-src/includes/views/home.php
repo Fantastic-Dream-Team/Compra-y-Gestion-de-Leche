@@ -13,6 +13,7 @@ $page_data = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" type="image/x-icon">
   <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
   <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/reseteo.css">
   <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styles.css">
@@ -96,196 +97,279 @@ $page_data = [
       </div>
     </section>
 
-    <!-- Sección de etapas de control de calidad -->
+
+      <!-- Sección de etapas de control de calidad -->
     <section class="etapas-control-calidad" aria-labelledby="titulo-calidad">
       <h2 id="titulo-calidad" class="titulo-carrusel">Gestionamos la Calidad en Cada Etapa</h2>
-      <div class="carrusel-container">
+      
+      <div class="calidad-carrusel-container">
         <button class="flecha flecha-izq" aria-label="Diapositiva anterior">&#10094;</button>
         
-        <div class="carrusel-slide">
-          <div class="carrusel-img">
-            <img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Análisis de Calidad en laboratorio" width="600" height="400">
-          </div>
-          <div class="carrusel-description">
-            <h3 class="subtitulo">Permanentes Controles de calidad</h3>
-            <p>
-              El primer análisis ocurre en laboratorio y sucede antes de la manipulación de la materia prima. 
-              Una vez aprueba el primer filtro, se procesa en la fábrica, con rigurosos controles de higiene. 
-              Personal técnico vigila que se cumplan las temperaturas ideales durante toda la preparación de nuestros productos. 
-              Un tercer análisis sucede, previo a su distribución, para garantizar que cumplen con altos estándares de calidad.
-            </p>
+        <div class="calidad-slides-wrapper">
+          <div class="calidad-slides-container">
+            <!-- SLIDE 1 -->
+            <div class="carrusel-slide slide-1 active">
+              <div class="carrusel-img">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/Controles-Calidad-Lacteos-Don-Joaquin.jpg" alt="Análisis de Calidad en laboratorio">
+              </div>
+              <div class="carrusel-description">
+                <h3 class="subtitulo">Permanentes Controles de calidad</h3>
+                <p>El primer análisis ocurre en laboratorio y sucede antes de la manipulación de la materia prima. Una vez aprueba el primer filtro, se procesa en la fábrica, con rigurosos controles de higiene. Personal técnico vigila que se cumplan las temperaturas ideales durante toda la preparación de nuestros productos. Un tercer análisis sucede, previo a su distribución, para garantizar que cumplen con altos estándares de calidad.</p>
+              </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="carrusel-slide slide-2">
+              <div class="carrusel-img">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Monitoreo de Ordeño Higiénico">
+              </div>
+              <div class="carrusel-description">
+                <h3 class="subtitulo">Higiene en el Proceso de Ordeño</h3>
+                <p>Implementamos protocolos estrictos de higiene desde el momento del ordeño. Cada vaca es limpiada y desinfectada antes de la extracción, utilizando equipos esterilizados. La leche se transporta inmediatamente en tanques refrigerados a 4°C para preservar su frescura y prevenir el desarrollo bacteriano. Monitoreamos constantemente la temperatura y calidad durante el transporte hasta nuestra planta.</p>
+              </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="carrusel-slide slide-3">
+              <div class="carrusel-img">
+                <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Control de Procesos de Pasteurización">
+              </div>
+              <div class="carrusel-description">
+                <h3 class="subtitulo">Pasteurización Controlada</h3>
+                <p>Nuestro proceso de pasteurización es monitoreado 24/7 con tecnología de última generación. Mantenemos registros precisos de tiempos y temperaturas para garantizar la eliminación de patógenos sin afectar el valor nutricional. Cada lote es sometido a pruebas microbiológicas post-pasteurización. Además, verificamos la homogeneización para una textura uniforme en todos nuestros productos.</p>
+              </div>
+            </div>
           </div>
         </div>
-
+        
         <button class="flecha flecha-der" aria-label="Diapositiva siguiente">&#10095;</button>
+      </div>
+      
+      <!-- Indicadores de navegación -->
+      <div class="calidad-indicators">
+        <span class="calidad-indicator active" data-slide="0"></span>
+        <span class="calidad-indicator" data-slide="1"></span>
+        <span class="calidad-indicator" data-slide="2"></span>
       </div>
     </section>
 
     <section class="nuestro-entorno" aria-labelledby="titulo-entorno">
-      <h2 id="titulo-entorno" class="titulo-seccion">Nuestro Entorno</h2>
+    <h2 id="titulo-entorno" class="titulo-seccion">Nuestro Entorno</h2>
 
-      <div class="proyectos-grid">
+    <div class="proyectos-grid">
         <!-- Proyecto 1: Vacas Jersey -->
         <article class="proyecto-card vacas-jersey">
-          <div class="carrusel-contenedor">
-            <div class="carrusel">
-              <input type="radio" name="carrusel-vacas" id="vacas-1" checked>
-              <input type="radio" name="carrusel-vacas" id="vacas-2">
-              <input type="radio" name="carrusel-vacas" id="vacas-3">
-              
-              <div class="carrusel-slides">
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 1">
+            <div class="carrusel-contenedor">
+                <div class="carrusel">
+                    <input type="radio" name="carrusel-vacas" id="vacas-1" checked>
+                    <input type="radio" name="carrusel-vacas" id="vacas-2">
+                    <input type="radio" name="carrusel-vacas" id="vacas-3">
+                    
+                    <div class="carrusel-slides">
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/vacas-jersey-1.jpg" alt="Vacas Jersey pastando en campo verde">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/vacas-jersey-2.jpg" alt="Cuidado veterinario a vacas jersey">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/vacas-jersey-3.jpg" alt="Instalaciones modernas para vacas jersey">
+                        </div>
+                    </div>
+                    
+                    <div class="carrusel-controles">
+                        <label for="vacas-1" class="carrusel-punto"></label>
+                        <label for="vacas-2" class="carrusel-punto"></label>
+                        <label for="vacas-3" class="carrusel-punto"></label>
+                    </div>
                 </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 2">
-                </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/proyectovacasjersey.png" alt="Proyecto Vacas Jersey - Imagen 3">
-                </div>
-              </div>
-              
-              <div class="carrusel-controles">
-                <label for="vacas-1" class="carrusel-punto"></label>
-                <label for="vacas-2" class="carrusel-punto"></label>
-                <label for="vacas-3" class="carrusel-punto"></label>
-              </div>
             </div>
-          </div>
-          <div class="contenido-proyecto">
-            <h3>Proyecto - Vacas Jersey</h3>
-            <a href="vacasJersey.html" class="ver-mas">VER MÁS</a>
-          </div>
+            <div class="contenido-proyecto">
+                <h3>Proyecto - Vacas Jersey</h3>
+                <a href="<?php echo $page_data['base_url']; ?>/vacas-jersey" class="ver-mas">VER MÁS</a>
+            </div>
         </article>
         
         <!-- Proyecto 2: Laboratorio de Ordeño -->
         <article class="proyecto-card laboratorio-ordeño">
-          <div class="carrusel-contenedor">
-            <div class="carrusel">
-              <input type="radio" name="carrusel-lab" id="lab-1" checked>
-              <input type="radio" name="carrusel-lab" id="lab-2">
-              <input type="radio" name="carrusel-lab" id="lab-3">
-              
-              <div class="carrusel-slides">
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 1">
+            <div class="carrusel-contenedor">
+                <div class="carrusel">
+                    <input type="radio" name="carrusel-lab" id="lab-1" checked>
+                    <input type="radio" name="carrusel-lab" id="lab-2">
+                    <input type="radio" name="carrusel-lab" id="lab-3">
+                    
+                    <div class="carrusel-slides">
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorio-1.jpg" alt="Laboratorio moderno de análisis de leche">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorio-2.jpg" alt="Técnicos realizando análisis de calidad">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorio-3.jpg" alt="Equipos de última tecnología en laboratorio">
+                        </div>
+                    </div>
+                    
+                    <div class="carrusel-controles">
+                        <label for="lab-1" class="carrusel-punto"></label>
+                        <label for="lab-2" class="carrusel-punto"></label>
+                        <label for="lab-3" class="carrusel-punto"></label>
+                    </div>
                 </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 2">
-                </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/laboratorioordeño.jpg" alt="Laboratorio de Ordeño - Imagen 3">
-                </div>
-              </div>
-              
-              <div class="carrusel-controles">
-                <label for="lab-1" class="carrusel-punto"></label>
-                <label for="lab-2" class="carrusel-punto"></label>
-                <label for="lab-3" class="carrusel-punto"></label>
-              </div>
             </div>
-          </div>
-          <div class="contenido-proyecto">
-            <h3>Laboratorio de Ordeño</h3>
-            <a href="laboratorio-ordeño.html" class="ver-mas">VER MÁS</a>
-          </div>
+            <div class="contenido-proyecto">
+                <h3>Laboratorio de Ordeño</h3>
+                <a href="<?php echo $page_data['base_url']; ?>/laboratorio-ordeño" class="ver-mas">VER MÁS</a>
+            </div>
         </article>
         
         <!-- Proyecto 3: Proceso de Ordeño -->
         <article class="proyecto-card proceso-ordeño">
-          <div class="carrusel-contenedor">
-            <div class="carrusel">
-              <input type="radio" name="carrusel-proceso" id="proceso-1" checked>
-              <input type="radio" name="carrusel-proceso" id="proceso-2">
-              <input type="radio" name="carrusel-proceso" id="proceso-3">
-              
-              <div class="carrusel-slides">
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 1">
+            <div class="carrusel-contenedor">
+                <div class="carrusel">
+                    <input type="radio" name="carrusel-proceso" id="proceso-1" checked>
+                    <input type="radio" name="carrusel-proceso" id="proceso-2">
+                    <input type="radio" name="carrusel-proceso" id="proceso-3">
+                    
+                    <div class="carrusel-slides">
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/proceso-1.jpg" alt="Sistema automático de ordeño">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/proceso-2.jpg" alt="Higiene y limpieza en el ordeño">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/proceso-3.jpg" alt="Transporte refrigerado de leche">
+                        </div>
+                    </div>
+                    
+                    <div class="carrusel-controles">
+                        <label for="proceso-1" class="carrusel-punto"></label>
+                        <label for="proceso-2" class="carrusel-punto"></label>
+                        <label for="proceso-3" class="carrusel-punto"></label>
+                    </div>
                 </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 2">
-                </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/procesoordeño.png" alt="Proceso de Ordeño - Imagen 3">
-                </div>
-              </div>
-              
-              <div class="carrusel-controles">
-                <label for="proceso-1" class="carrusel-punto"></label>
-                <label for="proceso-2" class="carrusel-punto"></label>
-                <label for="proceso-3" class="carrusel-punto"></label>
-              </div>
             </div>
-          </div>
-          <div class="contenido-proyecto">
-            <h3>Proceso de Ordeño</h3>
-            <a href="proceso-ordeño.html" class="ver-mas">VER MÁS</a>
-          </div>
+            <div class="contenido-proyecto">
+                <h3>Proceso de Ordeño</h3>
+                <a href="<?php echo $page_data['base_url']; ?>/proceso-ordeño" class="ver-mas">VER MÁS</a>
+            </div>
         </article>
         
         <!-- Proyecto 4: Productos -->
         <article class="proyecto-card productos">
-          <div class="carrusel-contenedor">
-            <div class="carrusel">
-              <input type="radio" name="carrusel-productos" id="productos-1" checked>
-              <input type="radio" name="carrusel-productos" id="productos-2">
-              <input type="radio" name="carrusel-productos" id="productos-3">
-              
-              <div class="carrusel-slides">
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 1">
+            <div class="carrusel-contenedor">
+                <div class="carrusel">
+                    <input type="radio" name="carrusel-productos" id="productos-1" checked>
+                    <input type="radio" name="carrusel-productos" id="productos-2">
+                    <input type="radio" name="carrusel-productos" id="productos-3">
+                    
+                    <div class="carrusel-slides">
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/productos-1.jpg" alt="Variedad de quesos artesanales">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/productos-2.jpg" alt="Leche fresca y yogurt natural">
+                        </div>
+                        <div class="carrusel-slide">
+                            <img src="<?php echo $page_data['assets_path']; ?>/images/productos-3.jpg" alt="Productos lácteos en supermercados">
+                        </div>
+                    </div>
+                    
+                    <div class="carrusel-controles">
+                        <label for="productos-1" class="carrusel-punto"></label>
+                        <label for="productos-2" class="carrusel-punto"></label>
+                        <label for="productos-3" class="carrusel-punto"></label>
+                    </div>
                 </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 2">
-                </div>
-                <div class="carrusel-slide">
-                  <img src="<?php echo $page_data['assets_path']; ?>/images/productos.jpg" alt="Productos Lácteos - Imagen 3">
-                </div>
-              </div>
-              
-              <div class="carrusel-controles">
-                <label for="productos-1" class="carrusel-punto"></label>
-                <label for="productos-2" class="carrusel-punto"></label>
-                <label for="productos-3" class="carrusel-punto"></label>
-              </div>
             </div>
-          </div>
-          <div class="contenido-proyecto">
-            <h3>Productos</h3>
-            <a href="productos.html" class="ver-mas">VER MÁS</a>
-          </div>
+            <div class="contenido-proyecto">
+                <h3>Productos</h3>
+                <a href="<?php echo $page_data['base_url']; ?>/productos" class="ver-mas">VER MÁS</a>
+            </div>
         </article>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sección de blog y eventos -->
+   <!-- Sección de blog y eventos -->
     <section class="seccion blog-y-eventos" aria-labelledby="titulo-blog">
       <div class="franja-naranja">
         <h2 id="titulo-blog" class="titulo">Blog y Eventos</h2>
       </div>
 
-      <div class="carrusel-blog">
+      <div class="carrusel-blog-container">
         <button class="flecha flecha-izq" aria-label="Publicaciones anteriores">&#10094;</button>
 
-        <div class="blog">
-          <article class="post post1">
-            <span class="fecha">15/08/2025</span>
-            <h3 class="subtitulo">Control de Calidad: Nuevos estándares implementados para garantizar la excelencia en todos nuestros productos</h3>
-          </article>
+        <div class="blog-carrusel-wrapper">
+          <div class="blog-slides-container">
+            <!-- Grupo 1: Posts 1-3 -->
+            <div class="blog-slide-group active" data-group="1">
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#receta-flan" class="post-link">
+                  <article class="post post1">
+                    <span class="fecha">15/08/2025</span>
+                    <h3 class="subtitulo">Flan Casero con Leche Fresca - Receta Tradicional</h3>
+                  </article>
+                </a>
+              </div>
 
-          <article class="post post2">
-            <span class="fecha">06/09/2025</span>
-            <h3 class="subtitulo">Ganadería Sostenible: Innovaciones en el cuidado y manejo responsable del ganado bovino</h3>
-          </article>
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#blog-beneficios" class="post-link">
+                  <article class="post post2">
+                    <span class="fecha">06/09/2025</span>
+                    <h3 class="subtitulo">Beneficios de la Leche Fresca de Pastoreo</h3>
+                  </article>
+                </a>
+              </div>
 
-          <article class="post post3">
-            <span class="fecha">15/09/2025</span>
-            <h3 class="subtitulo">Tecnología GLEP: Revolucionando los procesos industriales con soluciones inteligentes</h3>
-          </article>
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#receta-queso" class="post-link">
+                  <article class="post post3">
+                    <span class="fecha">15/09/2025</span>
+                    <h3 class="subtitulo">Queso Casero Fácil - Guía Paso a Paso</h3>
+                  </article>
+                </a>
+              </div>
+            </div>
+
+            <!-- Grupo 2: Posts 4-6 -->
+            <div class="blog-slide-group" data-group="2">
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#blog-sostenibilidad" class="post-link">
+                  <article class="post post4">
+                    <span class="fecha">01/10/2025</span>
+                    <h3 class="subtitulo">Ganadería Sostenible: Cuidando el Medio Ambiente</h3>
+                  </article>
+                </a>
+              </div>
+
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#receta-yogur" class="post-link">
+                  <article class="post post5">
+                    <span class="fecha">10/10/2025</span>
+                    <h3 class="subtitulo">Yogur Natural Casero: Salud en Cada Bocado</h3>
+                  </article>
+                </a>
+              </div>
+
+              <div class="post-container">
+                <a href="<?php echo $page_data['base_url']; ?>/blog#blog-pasteurizacion" class="post-link">
+                  <article class="post post6">
+                    <span class="fecha">25/10/2025</span>
+                    <h3 class="subtitulo">La Ciencia Detrás de la Pasteurización</h3>
+                  </article>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <button class="flecha flecha-der" aria-label="Publicaciones siguientes">&#10095;</button>
+      </div>
+            <!-- Indicadores de navegación -->
+      <div class="blog-indicators">
+        <span class="blog-indicator active" data-group="1"></span>
+        <span class="blog-indicator" data-group="2"></span>
       </div>
 
       <div class="franja-naranja"></div>
@@ -309,5 +393,7 @@ $page_data = [
       <p>&copy; <?php echo $page_data['current_year']; ?> Lácteos Don Joaquín. Todos los derechos reservados.</p>
     </div>
   </footer>
+  <script src="<?php echo $page_data['assets_path']; ?>/js/main.js"></script>
+
 </body>
 </html>
