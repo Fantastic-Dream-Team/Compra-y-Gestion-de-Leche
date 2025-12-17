@@ -50,12 +50,12 @@ if (preg_match('#^/assets/#', $request)) {
 
 // ENRUTAMIENTO EXACTO SEGÚN TU MENÚ
 $routes = [
-    '' => 'home.php',                                  
-    'home' => 'home.php',                              
-    'productos-y-pedidos' => 'productos-y-pedidos.php', 
-    'productores' => 'productores.php',                
-    'blog' => 'blog.php',                              
-    'acerca-de-nosotros' => 'acerca-de-nosotros.php',   
+    '' => 'home.php',
+    'home' => 'home.php',
+    'productos-y-pedidos' => 'productos-y-pedidos.php',
+    'productores' => 'productores.php',
+    'blog' => 'blog.php',
+    'acerca-de-nosotros' => 'acerca_de_nosotros.php',
     'panel-productor' => 'panel_productor.php',
     'login' => 'login.php'
 
