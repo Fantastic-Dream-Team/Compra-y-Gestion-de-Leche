@@ -145,8 +145,8 @@ $page_data = [
         </p>
       <?php else: ?>
         <div class="carrusel-productores-final">
-          <button class="flecha-final flecha-izq" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-          <button class="flecha-final flecha-der" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+          <button class="flecha-final flecha-izq" aria-label="Anterior">&lt;</button>
+          <button class="flecha-final flecha-der" aria-label="Siguiente">&gt;</button>
 
           <div class="carrusel-final">
             <div class="track-final">
