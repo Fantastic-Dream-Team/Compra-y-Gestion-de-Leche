@@ -13,6 +13,7 @@ $page_data = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" type="image/x-icon">
   <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
   <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/Blogcss.css">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">

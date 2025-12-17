@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../includes/conexion.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso de Productor</title>
+    <link rel="icon" href="/Compra-y-Gestion-de-Leche/php-src/assets/images/LogoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Compra-y-Gestion-de-Leche/php-src/assets/css/login.css">
 </head>

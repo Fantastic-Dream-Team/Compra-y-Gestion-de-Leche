@@ -102,6 +102,7 @@ $conn->close();
     <title>Dashboard - Productor</title>
     <!-- Chart.js para gráficas -->
      <script src="/Compra-y-Gestion-de-Leche/php-src/assets/js/chart.js"></script>
+    <link rel="icon" href="/Compra-y-Gestion-de-Leche/php-src/assets/images/LogoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Compra-y-Gestion-de-Leche/php-src/assets/css/dashboard.css">
 </head>

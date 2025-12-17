@@ -29,6 +29,7 @@ foreach ($categorias as $cat) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_data['page_title']; ?></title>
+    <link rel="icon" href="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/reseteo.css">
     <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/styles.css">
     <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/Productos.css">
