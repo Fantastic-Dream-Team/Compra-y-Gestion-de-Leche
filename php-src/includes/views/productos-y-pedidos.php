@@ -1,8 +1,8 @@
 <?php
 global $conn;
-require_once INCLUDES_PATH . '/conexion.php'; 
+require_once INCLUDES_PATH. '/conexion.php'; 
 
-// ===== DATOS DE PÁGINA (FALTANTE) =====
+// ===== DATOS DE PÁGINA =====
 $page_data = [
     'page_title' => 'Lácteos Don Joaquín - Productos',
     'current_page' => 'productos-y-pedidos',
@@ -11,6 +11,11 @@ $page_data = [
     'current_year' => date('Y')
 ];
 
+// Definir ASSETS_PATH si no está definida (igual que en blog.php)
+if (!defined('ASSETS_PATH')) {
+    define('ASSETS_PATH', '/Compra-y-Gestion-de-Leche/php-src/assets');
+}
+
 // Obtener categorías
 $categorias = $conn->query("SELECT * FROM categorias_productos ORDER BY nombre")->fetch_all(MYSQLI_ASSOC);
 
@@ -18,8 +23,12 @@ $productosPorCategoria = [];
 foreach ($categorias as $cat) {
     $id = $cat['id'];
     $sql = "SELECT * FROM productos WHERE categoria_id = ? ORDER BY nombre";
-    $stmt = query($sql, [$id]);
-    $productosPorCategoria[$cat['nombre']] = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt = $conn->prepare($sql); // USAR prepare() directamente
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $productosPorCategoria[$cat['nombre']] = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
 }
 ?>
 
@@ -78,21 +87,36 @@ foreach ($categorias as $cat) {
 </section>
 </header>
 
-<!-- BARRA STICKY con franja naranja de fondo -->
-<div class="sticky-carrousel" style="background: var(--color-secundario);">
-    <div class="carousel-container">
-        <button class="arrow left">&lt;</button>
-        <div class="categories" id="categories">
-            <button class="category-btn active" data-filter="all">Todas</button>
-            <?php foreach ($categorias as $cat): ?>
-                <button class="category-btn" data-filter="<?= strtolower($cat['nombre']) ?>">
-                    <?= htmlspecialchars($cat['nombre']) ?>
-                </button>
-            <?php endforeach; ?>
-        </div>
-        <button class="arrow right">&gt;</button>
-        <input type="search" id="search-input" placeholder="Buscar producto...">
+<!-- Carrusel sticky de filtros -->
+<div class="sticky-carousel">
+  <div class="carousel-container">
+    <!-- Botón WhatsApp a la izquierda -->
+    <a href="https://api.whatsapp.com/send?phone=50767479132&text=Hola%2C%20me%20interesa%20uno%20de%20sus%20productos" 
+       class="whatsapp-btn" 
+       target="_blank"
+       aria-label="Ordenar por WhatsApp">
+      <span class="whatsapp-icon"></span>
+      Ordena Ya!
+    </a>
+
+    <!-- Controles centrales (categorías, flechas, buscador) -->
+    <div class="controls-group">
+      <button class="arrow left" aria-label="Desplazar categorías a la izquierda">&lt;</button>
+
+      <div class="categories" id="categories">
+        <button class="category-btn active" data-filter="all">Todas</button>
+        <?php foreach ($categorias as $cat): ?>
+          <button class="category-btn" data-filter="<?= strtolower($cat['nombre']) ?>">
+            <?= htmlspecialchars($cat['nombre']) ?>
+          </button>
+        <?php endforeach; ?>
+      </div>
+
+      <button class="arrow right" aria-label="Desplazar categorías a la derecha">&gt;</button>
+
+      <input type="search" id="search-input" placeholder="Buscar producto..." aria-label="Buscar producto">
     </div>
+  </div>
 </div>
 
 <main class="productos-main">

@@ -240,13 +240,13 @@ nav ul li a.active {
   width: 200px;
   font-size: 0.95rem;
   flex-shrink: 0;
+  margin-left: 100px; 
 }
 
 #search-input:focus {
   outline: 2px solid var(--color-primario);
   border-color: var(--color-primario);
 }
-
 
 
 /* ========================================
@@ -289,16 +289,16 @@ nav ul li a.active {
   display: flex;
   gap: 50px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0 70px; /* espacio para las flechas */
+  padding: 0 70px; 
 }
 
 .producto {
-  min-width: calc((100% - 100px) / 3); /* siempre 3 visibles */
+  min-width: calc((100% - 100px) / 3); 
   flex-shrink: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;           /* ← Centrado perfecto horizontal */
+  align-items: center;           
   justify-content: flex-start;
 }
 
@@ -318,7 +318,7 @@ nav ul li a.active {
   transform: scale(1.05);
 }
 
-/* Caja del título (beige) */
+/* Caja del título  */
 .caja-titulo {
   background: var(--color-naranja-claro);
   color: var(--color-marron);
@@ -375,6 +375,108 @@ nav ul li a.active {
 
 .flecha.izquierda { left: 15px; }
 .flecha.derecha   { right: 15px; }
+
+/* ========================================
+   BOTÓN WHATSAPP
+   ======================================== */
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radio-borde);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  text-decoration: none;
+  font-family: var(--fuente-principal);
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url('/Compra-y-Gestion-de-Leche/php-src/assets/images/WhatsApp-icon.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste del contenedor para incluir el botón */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* Grupo de controles */
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Responsive para sticky carousel */
+@media (max-width: 768px) {
+  .carousel-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .categories,
+  #search-input,
+  .arrow {
+    order: 2;
+    width: 100%;
+  }
+
+  #search-input {
+    max-width: 300px;
+    order: 1;
+  }
+
+  .arrow {
+    display: none; /* Ocultar flechas en móvil si no hay scroll */
+  }
+}
+
+/* Responsive para botón WhatsApp */
+@media (max-width: 768px) {
+  .carousel-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .whatsapp-btn {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .controls-group {
+    order: 2;
+    width: 100%;
+  }
+}
 
 /* Responsive pequeño ajuste (móviles) */
 @media (max-width: 768px) {
