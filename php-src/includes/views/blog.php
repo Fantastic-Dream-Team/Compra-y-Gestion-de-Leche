@@ -13,8 +13,8 @@ $page_data = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" type="image/x-icon">
   <meta name="description" content="Lácteos Don Joaquín - Productos lácteos de la más alta calidad, elaborados con amor y dedicación">
+  <link rel="icon" href="<?php echo $page_data['assets_path']; ?>/images/LogoBlanco.png" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo $page_data['assets_path']; ?>/css/Blogcss.css">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <title><?php echo $page_data['page_title']; ?></title>
@@ -264,6 +264,90 @@ $page_data = [
     </div>
   </main> 
 
+  <!-- Modal para Receta -->
+<div id="modal-receta" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      <h2>Flan Casero con Leche Fresca</h2>
+      <div class="modal-subtitle">Receta tradicional | Tiempo: 60 min | Dificultad: Fácil</div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-description">
+        Un postre tradicional hecho con nuestra leche entera fresca. Su textura suave y cremosa, combinada con el dulce caramelo, lo convierte en el favorito de la familia. Perfecto para ocasiones especiales o para disfrutar un día cualquiera.
+      </div>
+      
+      <div class="modal-section">
+        <h3>Ingredientes</h3>
+        <ul class="ingredientes-list">
+          <li>1 litro de leche entera Don Joaquín</li>
+          <li>5 huevos grandes</li>
+          <li>200g de azúcar (para el caramelo)</li>
+          <li>100g de azúcar (para el flan)</li>
+          <li>1 cucharadita de esencia de vainilla</li>
+          <li>Ralladura de 1 limón (opcional)</li>
+        </ul>
+      </div>
+      
+      <div class="modal-section">
+        <h3>Preparación</h3>
+        <ol class="pasos-list">
+          <li>Precalienta el horno a 180°C.</li>
+          <li>Prepara el caramelo: en una flanera, derrite 200g de azúcar a fuego medio hasta obtener un caramelo dorado. Distribúyelo por toda la base y lados del molde.</li>
+          <li>En un bol grande, bate los huevos con 100g de azúcar hasta que estén espumosos.</li>
+          <li>Añade la leche Don Joaquín poco a poco mientras sigues batiendo.</li>
+          <li>Agrega la esencia de vainilla y la ralladura de limón si la usas. Mezcla bien.</li>
+          <li>Cuela la mezcla para eliminar cualquier grumo.</li>
+          <li>Vierte la mezcla en la flanera con el caramelo.</li>
+          <li>Coloca la flanera en una bandeja para horno con agua caliente (baño María).</li>
+          <li>Hornea por 45-50 minutos o hasta que al insertar un cuchillo, este salga limpio.</li>
+          <li>Deja enfriar a temperatura ambiente y luego refrigera por al menos 4 horas.</li>
+          <li>Desmolda cuidadosamente y sirve frío.</li>
+        </ol>
+      </div>
+      
+      <div class="modal-section">
+        <h3>Consejo del Chef</h3>
+        <p>Para un flan aún más cremoso, sustituye 200ml de leche por crema de leche Don Joaquín. La calidad de la leche fresca hace toda la diferencia en el resultado final.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Blog -->
+<div id="modal-blog" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      <h2>Beneficios de la Leche Fresca</h2>
+      <div class="modal-subtitle">Salud y Nutrición | Actualizado: Marzo 2024</div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-description">
+        La leche fresca de vacas alimentadas con pasto natural no solo es más sabrosa, sino también más nutritiva. Descubre por qué deberías preferirla en tu dieta diaria.
+      </div>
+      
+      <div class="contenido-blog">
+        <h3>Mayor Valor Nutricional</h3>
+        <p>La leche proveniente de vacas que pastan libremente contiene niveles más altos de ácidos grasos omega-3, vitamina E y beta-caroteno en comparación con la leche de vacas en confinamiento. Estos nutrientes son esenciales para la salud cardiovascular y el sistema inmunológico.</p>
+        
+        <h3>Perfil Lipídico Mejorado</h3>
+        <p>Estudios demuestran que la leche de pastoreo tiene una proporción más saludable de ácidos grasos, con mayor contenido de ácido linoleico conjugado (CLA), que se asocia con beneficios antiinflamatorios y propiedades que pueden ayudar en la gestión del peso.</p>
+        
+        <h3>Mejor Sabor y Textura</h3>
+        <p>La alimentación natural y el manejo cuidadoso del ganado resultan en una leche con sabor más intenso y cremosidad natural. Muchos consumidores notan la diferencia desde el primer sorbo: un sabor limpio, fresco y ligeramente dulce que recuerda a la leche de antaño.</p>
+        
+        <h3>Sostenibilidad y Bienestar Animal</h3>
+        <p>Elegir leche de pastoreo apoya sistemas de producción más sostenibles donde las vacas disfrutan de una vida más natural. Estas prácticas no solo son mejores para los animales, sino que también contribuyen a la salud del suelo y reducen la huella ambiental de la producción láctea.</p>
+        
+        <h3>Consejos para Identificar Leche de Calidad</h3>
+        <p>Busca leche con fecha de caducidad próxima (indica menos procesamiento), de color ligeramente amarillento (por el beta-caroteno natural), y preferiblemente de productores locales que especifiquen "de pastoreo" o "grass-fed" en su etiquetado.</p>
+        
+        <p>En Lácteos Don Joaquín, nuestras vacas pastan libremente durante todo el año, garantizando no solo su bienestar sino también la máxima calidad nutricional en cada litro de leche que producimos.</p>
+      </div>
+    </div>
+  </div>
+</div>
   
   <script src="<?php echo $page_data['assets_path']; ?>/js/Blogjs.js"></script>
   <!-- FOOTER -->

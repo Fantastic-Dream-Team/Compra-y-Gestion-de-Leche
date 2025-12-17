@@ -17,6 +17,87 @@ document.addEventListener('DOMContentLoaded', () => {
     pageNumbers: document.getElementById('page-numbers')
   };
 
+// === MODALES ===
+  const modals = {
+    receta: document.getElementById('modal-receta'),
+    blog: document.getElementById('modal-blog'),
+    closeButtons: document.querySelectorAll('.modal-close'),
+    overlay: document.querySelectorAll('.modal-overlay')
+  };
+
+  // === FUNCIONES MODAL ===
+  const openModal = (modalType) => {
+    const modal = modals[modalType];
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Previene scroll del body
+    }
+  };
+
+  const closeModal = () => {
+    modals.receta.style.display = 'none';
+    modals.blog.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restaura scroll
+  };
+
+  // Event listeners para abrir modales 
+  const firstRecipeCard = document.querySelector('.card[data-type="receta"]');
+  const firstBlogCard = document.querySelector('.card[data-type="blog"]');
+
+  if (firstRecipeCard) {
+    const cardTitle = firstRecipeCard.querySelector('h3');
+    if (cardTitle.textContent.includes('Flan Casero')) {
+      cardTitle.style.cursor = 'pointer';
+      cardTitle.style.color = 'var(--color-primario)';
+      cardTitle.addEventListener('click', () => openModal('receta'));
+      
+      // También hacer clickeable toda la tarjeta
+      firstRecipeCard.style.cursor = 'pointer';
+      firstRecipeCard.addEventListener('click', (e) => {
+        if (!e.target.closest('.label')) { // Evita abrir al hacer clic en la etiqueta
+          openModal('receta');
+        }
+      });
+    }
+  }
+
+  if (firstBlogCard) {
+    const cardTitle = firstBlogCard.querySelector('h3');
+    if (cardTitle.textContent.includes('Beneficios de la Leche Fresca')) {
+      cardTitle.style.cursor = 'pointer';
+      cardTitle.style.color = 'var(--color-primario)';
+      cardTitle.addEventListener('click', () => openModal('blog'));
+      
+      // También hacer clickeable toda la tarjeta
+      firstBlogCard.style.cursor = 'pointer';
+      firstBlogCard.addEventListener('click', (e) => {
+        if (!e.target.closest('.label')) {
+          openModal('blog');
+        }
+      });
+    }
+  }
+
+  // Cerrar modales
+  modals.closeButtons.forEach(btn => {
+    btn.addEventListener('click', closeModal);
+  });
+
+  modals.overlay.forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeModal();
+      }
+    });
+  });
+
+  // Cerrar con tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
   // === ESTADO ===
   let currentPage = 1;
   const postsPerPage = 9;
