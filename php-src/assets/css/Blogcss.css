@@ -280,6 +280,19 @@ nav ul li a.active {
   display: block;
 }
 
+.card.clickable {
+  cursor: pointer;
+}
+
+.card.clickable h3 {
+  color: var(--color-primario);
+  transition: color 0.3s ease;
+}
+
+.card.clickable:hover h3 {
+  color: var(--color-secundario);
+}
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -379,6 +392,149 @@ nav ul li a.active {
   scrollbar-width: none;
 }
 
+/* ========================================
+   MODAL
+   ======================================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal {
+  background-color: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--sombra-media);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  padding: 25px 30px;
+  border-radius: var(--radio-borde) var(--radio-borde) 0 0;
+  position: relative;
+}
+
+.modal-header h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: var(--color-blanco);
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+}
+
+.modal-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.modal-content {
+  padding: 30px;
+  color: var(--color-gris);
+}
+
+.modal-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid var(--color-naranja-claro);
+}
+
+.modal-section {
+  margin-bottom: 30px;
+}
+
+.modal-section h3 {
+  color: var(--color-marron);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-primario);
+}
+
+.ingredientes-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.ingredientes-list li {
+  padding: 8px 0;
+  padding-left: 30px;
+  position: relative;
+  font-size: 1rem;
+}
+
+.ingredientes-list li:before {
+  content: "•";
+  color: var(--color-primario);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+
+.pasos-list {
+  list-style-type: decimal;
+  padding-left: 25px;
+}
+
+.pasos-list li {
+  padding: 10px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contenido-blog {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.contenido-blog p {
+  margin-bottom: 20px;
+}
+
+
 /* Responsive: en móviles, permitir scroll suave */
 @media (max-width: 768px) {
   .page-numbers-horizontal {
@@ -473,4 +629,25 @@ nav ul li a.active {
   padding-top: 20px;                          /* Espaciado superior */
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
   margin-top: 20px;                           /* Margen superior */
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 20px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    padding-right: 40px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
 }
